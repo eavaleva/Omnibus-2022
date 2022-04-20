@@ -1,6 +1,7 @@
-package java.nl.hhs.omnibus.models;
+package src.java.nl.hhs.omnibus.models;
 
 
+import java.nl.hhs.omnibus.models.EnhancedBeing;
 import java.util.HashMap;
 import java.util.Map;
 
