@@ -5,13 +5,13 @@ import java.util.Objects;
 /**
  * An Identifiable is something which where it should be able to be identified by an ID.
  */
-public class Identifiable {
+public abstract class Identifiable {
     private static int nextId = 0;
 
     /** An internal identifier which is used in the system to identify an object. */
     private final int id;
 
-    public Identifiable() {
+    protected Identifiable() {
         this.id = ++nextId;
     }
 
