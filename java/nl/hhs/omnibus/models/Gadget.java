@@ -19,8 +19,8 @@ public abstract class Gadget extends Nameable {
     }
 
     private boolean isOwner(EnhancedBeing enhancedBeing) {
-        //This has to return an actual value but I need the EnhancedBeing class first\\
-        return true;
+
+        return this.owner == enhancedBeing;
     }
 
     public EnhancedBeing getOwner() {
