@@ -7,7 +7,6 @@ import nl.hhs.omnibus.models.persons.Fan;
 import nl.hhs.omnibus.models.persons.Hero;
 import nl.hhs.omnibus.models.persons.Villain;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -102,11 +101,11 @@ public class DataLists {
         /** Create list of Vehicles
          * */
 
-        Vehicle batmobile = new Vehicle("Batmobile", "Batman's supercar", batman, 380, 1);
-        Vehicle blackWidowMotor = new Vehicle("Black Widow's Motorcycle", "Fast Harley-Davidson bike", blackWidow, 350, 2);
-        Vehicle dodgeViper = new Vehicle("Dodge Viper", "Fast car", viper, 480, 2);
-        Vehicle zephyrOne = new Vehicle("Zephyr One", "Is a mobile airborne command plane", hulk, 1875, 30);
-        Vehicle f22Raptor = new Vehicle("F-22 Raptor", "A single-seat, twin-engine fifth-generation supermaneuverable fighter aircraft that uses stealth technology.", ironMan, 1845, 1);
+        Vehicle batmobile = new Vehicle("Batmobile", "Batman's supercar", batman, "380 km/h", 1);
+        Vehicle blackWidowMotor = new Vehicle("Black Widow's Motorcycle", "Fast Harley-Davidson bike", blackWidow, "350 km/h", 2);
+        Vehicle dodgeViper = new Vehicle("Dodge Viper", "Fast car", viper, "480 km/h", 2);
+        Vehicle zephyrOne = new Vehicle("Zephyr One", "Is a mobile airborne command plane", hulk, "1875 km/h", 30);
+        Vehicle f22Raptor = new Vehicle("F-22 Raptor", "A single-seat, twin-engine fifth-generation supermaneuverable fighter aircraft that uses stealth technology.", ironMan, "1845 km/h", 1);
 
         this.vehicles = (ArrayList<Vehicle>) Arrays.asList(batmobile, blackWidowMotor, dodgeViper, zephyrOne, f22Raptor);
 

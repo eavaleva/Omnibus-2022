@@ -11,8 +11,6 @@ public class Omnibus {
 
     public static void main(String[] args) {
         System.out.println(Constants.LAUNCHING_APPLICATION_MESSAGE);
-
-
     }
 
     /** Navigates to the provided Menu, shows that Menu and awaits further instructions from the User. */

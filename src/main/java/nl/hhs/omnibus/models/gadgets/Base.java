@@ -1,12 +1,13 @@
 package nl.hhs.omnibus.models.gadgets;
 
 import nl.hhs.omnibus.common.Constants;
+import nl.hhs.omnibus.models.EnhancedBeing;
 
 public class Base extends Gadget {
     private String location;
 
-    public Base(String name, String description, String location) {
-        super(name, description);
+    public Base(String name, String description, EnhancedBeing owner, String location) {
+        super(name, description, owner);
 
         this.location = location;
     }
