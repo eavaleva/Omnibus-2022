@@ -31,7 +31,7 @@ public class Weapon extends Gadget {
     /* GETTERS & SETTERS */
 
     public int getPowerLevel() {
-        return powerLevel;
+        return this.powerLevel;
     }
 
     public void setPowerLevel(int powerLevel) {

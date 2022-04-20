@@ -20,8 +20,12 @@ public abstract class Gadget extends Nameable {
 
     /* GETTERS & SETTERS */
 
-    public void setDescription(String actualDescription) {
-        this.description = actualDescription;
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public EnhancedBeing getOwner() {

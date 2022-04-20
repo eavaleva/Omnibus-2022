@@ -36,7 +36,7 @@ public class Base extends Gadget {
         return this.location;
     }
 
-    public void setLocation(String actualLocation) {
-        this.location = actualLocation;
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
