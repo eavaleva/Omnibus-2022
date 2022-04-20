@@ -14,6 +14,10 @@ public abstract class Gadget extends Nameable {
         this.description = description;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setOwner() {
         this.owner = owner;
     }
@@ -24,7 +28,6 @@ public abstract class Gadget extends Nameable {
     }
 
     public EnhancedBeing getOwner() {
-        //Has an error because of the EnhancedBeing class not being there\\
         return owner;
     }
 
