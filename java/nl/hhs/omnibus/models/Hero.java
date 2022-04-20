@@ -1,4 +1,4 @@
-package src.java.nl.hhs.omnibus.models;
+package java.nl.hhs.omnibus.models;
 
 
 import java.nl.hhs.omnibus.models.EnhancedBeing;
