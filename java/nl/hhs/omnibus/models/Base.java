@@ -1,4 +1,6 @@
-public class Base extends Gadget{
+package java.nl.hhs.omnibus.models;
+
+public class Base extends Gadget {
     private String location;
 
     public void setLocation(){
@@ -6,9 +8,7 @@ public class Base extends Gadget{
     }
 
     Base(String name, String description, EnhancedBeing owner, String location){
-        this.name = name;
-        this.description = description;
-        this.owner = owner;
+        super(name, description, owner);
         this.location = location;
     }
 }

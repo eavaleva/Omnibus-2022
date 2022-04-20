@@ -1,4 +1,6 @@
-public class Gadget extends EnhancedBeing {
+package java.nl.hhs.omnibus.models;
+
+public abstract class Gadget extends Nameable {
     private String description;
     private EnhancedBeing owner;
 
@@ -10,19 +12,19 @@ public class Gadget extends EnhancedBeing {
     }
 
     Gadget (String name,String description, EnhancedBeing owner){
-        this.name = name;
+        super(name);
         this.description = description;
         this.owner = owner;
     }
 
-    private boolean isOwner(EnhancedBeing enhancedBeing){
+    private boolean isOwner(java.nl.hhs.omnibus.models.EnhancedBeing enhancedBeing){
         //This has to return an actual value but I need the EnhancedBeing class first\\
         return true;
     }
 
-    public void getOwner(){
+    public java.nl.hhs.omnibus.models.EnhancedBeing getOwner(){
         //Has an error because of the EnhancedBeing class not being there\\
-        return isOwner();
+        return owner;
     }
 
 }

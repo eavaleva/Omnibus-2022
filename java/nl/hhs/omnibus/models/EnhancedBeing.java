@@ -1,7 +1,7 @@
 package java.nl.hhs.omnibus.models;
 
 /**
- * The EnhancedBeing is the Base class for the Hero and Villain classes.
+ * The EnhancedBeing is the src.java.nl.hhs.omnibus.models.Base class for the Hero and Villain classes.
  */
 public class EnhancedBeing extends Nameable {
     /** The location of which an individual Hero or Villain is known for to be most active in. */

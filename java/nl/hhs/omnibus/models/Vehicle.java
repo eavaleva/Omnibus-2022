@@ -1,3 +1,5 @@
+package java.nl.hhs.omnibus.models;
+
 public class Vehicle extends Gadget {
     private int speed;
     private int capacity;
@@ -11,9 +13,7 @@ public class Vehicle extends Gadget {
     }
 
     Vehicle(String name, String description, EnhancedBeing owner, int speed, int capacity){
-        this.name = name;
-        this.description = description;
-        this.owner = owner;
+        super(name, description, owner);
         this.speed = speed;
         this.capacity = capacity;
     }
