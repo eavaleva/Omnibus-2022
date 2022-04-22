@@ -1,4 +1,4 @@
-package java.nl.hhs.omnibus.models;
+package nl.hhs.omnibus.models;
 
 /**
  * The EnhancedBeing is the Base class for the Hero and Villain classes.
