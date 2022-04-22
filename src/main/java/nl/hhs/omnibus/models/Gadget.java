@@ -23,12 +23,10 @@ public abstract class Gadget extends Nameable {
     }
 
     private boolean isOwner(EnhancedBeing enhancedBeing) {
-
         return this.owner == enhancedBeing;
     }
 
     public EnhancedBeing getOwner() {
         return owner;
     }
-
 }

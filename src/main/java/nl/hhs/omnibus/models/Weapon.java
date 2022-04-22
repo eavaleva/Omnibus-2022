@@ -11,5 +11,4 @@ public class Weapon extends Gadget {
     public void setPowerLevel(int actualPowerLevel) {
         this.powerLevel = actualPowerLevel;
     }
-
 }

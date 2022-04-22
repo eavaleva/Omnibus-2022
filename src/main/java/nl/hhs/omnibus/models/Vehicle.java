@@ -17,6 +17,4 @@ public class Vehicle extends Gadget {
     public void setCapacity(int actualCapacity) {
         this.capacity = actualCapacity;
     }
-
-
 }

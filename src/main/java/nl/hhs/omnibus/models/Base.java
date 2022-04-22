@@ -5,13 +5,11 @@ public class Base extends Gadget {
 
     Base(String name, String description, EnhancedBeing owner, String location) {
         super(name, description, owner);
+
         this.location = location;
     }
 
     public void setLocation(String actualLocation) {
         this.location = actualLocation;
     }
-
 }
-
-
