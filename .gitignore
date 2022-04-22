@@ -1,1 +1,5 @@
-﻿.idea/
+﻿# InteliJ settings
+/.idea/
+
+# Build outputs
+/out/
