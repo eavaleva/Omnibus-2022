@@ -16,7 +16,7 @@ public class Hero extends EnhancedBeing {
     /**
      * if a hero does not have his own phrase, then the program will assign a default phrase to the Hero.
      */
-    private static String defaultPhrase = "Default onliner Hero";
+    private static final String defaultPhrase = "Default onliner Hero";
 
     /**
      * real name is the actual name of a hero.
@@ -33,33 +33,14 @@ public class Hero extends EnhancedBeing {
      */
     //private Set<HeroTeam> teams;
 
-    public Hero(String name, String mostActiveLocation, int powerLevel, String phrase, String realName, String defaultPhrase) {
-        super(name, mostActiveLocation, powerLevel, phrase);
-        this.realName = realName;
-        this.defaultPhrase = defaultPhrase;
-    }
-
     public Hero(String name, String mostActiveLocation, int powerLevel, String phrase, String realName) {
         super(name, mostActiveLocation, powerLevel, phrase);
         this.realName = realName;
     }
 
-
-    public void addRivals(){
-        /* TODO:  Here use the hashMap in order to add rivals to the hero.
-            Also determine the parameters in sid addRivals */
+    public Hero(String name, String mostActiveLocation, int powerLevel, String realName) {
+        super(name, mostActiveLocation, powerLevel, defaultPhrase);
+        this.realName = realName;
     }
 
-    public void addArchRival(){
-        /* TODO: Same as with addRivals, use the hashMap to determine the hero's arch rival.
-            Also determine the parameters in sid addArchRivals*/
-    }
-
-
-    //public void addTeam(Team team){
-        /* TODO: Determine the information you need to loopt trough and compose a team. */
-   // }
-    //public void removeTeam(Team team){
-        /* TODO: Determine the information you need to delete teams? . */
-   // }
 }
