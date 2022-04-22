@@ -12,8 +12,6 @@ public class Base extends Gadget {
         this.location = actualLocation;
     }
 
-    //This is an example, do check if I've made a mistake somewhere :)\\
-    Gadget basis = new Base("Joker's Lair", "Deep in the mountains.", Joker, "USA");
 }
 
 

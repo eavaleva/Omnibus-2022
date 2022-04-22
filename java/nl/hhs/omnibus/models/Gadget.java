@@ -17,7 +17,7 @@ public abstract class Gadget extends Nameable {
     public String getDescription() {
         return description;
     }
-    //actualOwner; is that a viable parameter?\\
+
     public void setOwner(EnhancedBeing actualOwner) {
         this.owner = actualOwner;
     }
@@ -32,4 +32,3 @@ public abstract class Gadget extends Nameable {
     }
 
 }
-// Need to create 10 gadgets (atleast)  \\

@@ -12,6 +12,4 @@ public class Weapon extends Gadget {
         this.powerLevel = actualPowerLevel;
     }
 
-    //This is an example, do check if I've made a mistake somewhere :)\\
-    Gadget batarang = new Weapon("The Batarang", "This weapon is used by Batman to hit his enemies from far distances.", Batman, 20);
 }
