@@ -1,4 +1,6 @@
-package java.nl.hhs.omnibus.models;
+package nl.hhs.omnibus.models.gadgets;
+
+import nl.hhs.omnibus.models.EnhancedBeing;
 
 public class Weapon extends Gadget {
     private int powerLevel;
@@ -11,5 +13,4 @@ public class Weapon extends Gadget {
     public void setPowerLevel(int actualPowerLevel) {
         this.powerLevel = actualPowerLevel;
     }
-
 }

@@ -1,4 +1,6 @@
-package java.nl.hhs.omnibus.models;
+package nl.hhs.omnibus.models.gadgets;
+
+import nl.hhs.omnibus.models.EnhancedBeing;
 
 public class Vehicle extends Gadget {
     private int speed;
@@ -17,6 +19,4 @@ public class Vehicle extends Gadget {
     public void setCapacity(int actualCapacity) {
         this.capacity = actualCapacity;
     }
-
-
 }
