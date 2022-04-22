@@ -8,7 +8,10 @@ public class Base extends Gadget {
         this.location = location;
     }
 
-    public void setLocation() {
-        this.location = location;
+    public void setLocation(String actualLocation) {
+        this.location = actualLocation;
     }
+
 }
+
+

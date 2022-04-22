@@ -10,11 +10,13 @@ public class Vehicle extends Gadget {
         this.capacity = capacity;
     }
 
-    public void setSpeed() {
-        this.speed = speed;
+    public void setSpeed(int actualSpeed) {
+        this.speed = actualSpeed;
     }
 
-    public void setCapacity() {
-        this.capacity = capacity;
+    public void setCapacity(int actualCapacity) {
+        this.capacity = actualCapacity;
     }
+
+
 }

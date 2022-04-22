@@ -10,16 +10,16 @@ public abstract class Gadget extends Nameable {
         this.owner = owner;
     }
 
-    public void setDescription() {
-        this.description = description;
+    public void setDescription(String actualDescription) {
+        this.description = actualDescription;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setOwner() {
-        this.owner = owner;
+    public void setOwner(EnhancedBeing actualOwner) {
+        this.owner = actualOwner;
     }
 
     private boolean isOwner(EnhancedBeing enhancedBeing) {
@@ -32,4 +32,3 @@ public abstract class Gadget extends Nameable {
     }
 
 }
-// Need to create 10 gadgets (atleast)  \\

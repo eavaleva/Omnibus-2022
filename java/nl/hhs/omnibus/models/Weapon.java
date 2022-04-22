@@ -8,8 +8,8 @@ public class Weapon extends Gadget {
         this.powerLevel = powerLevel;
     }
 
-    public void setPowerLevel() {
-        this.powerLevel = powerLevel;
+    public void setPowerLevel(int actualPowerLevel) {
+        this.powerLevel = actualPowerLevel;
     }
 
 }
