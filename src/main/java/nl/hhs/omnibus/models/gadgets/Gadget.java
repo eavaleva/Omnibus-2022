@@ -1,4 +1,7 @@
-package nl.hhs.omnibus.models;
+package nl.hhs.omnibus.models.gadgets;
+
+import nl.hhs.omnibus.models.EnhancedBeing;
+import nl.hhs.omnibus.models.Nameable;
 
 public abstract class Gadget extends Nameable {
     private String description;

@@ -1,4 +1,6 @@
-package nl.hhs.omnibus.models;
+package nl.hhs.omnibus.models.gadgets;
+
+import nl.hhs.omnibus.models.EnhancedBeing;
 
 public class Base extends Gadget {
     private String location;
