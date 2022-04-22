@@ -9,7 +9,7 @@ public class Villain extends EnhancedBeing {
 
     // This will be added once the VillainTeam & Heroes are added to the project\\
     //private HashMap<Hero, Boolean> rivals = new HashMap<Hero, Boolean>();
-    //private HashSet<VillainTeam> teams = new HashSet<HashSet>();
+    //private HashSet<VillainTeam> teams = new HashSet<VillainTeam>();
 
 
     //mostActiveLocation has private access and can not be resolved in the super?\\
