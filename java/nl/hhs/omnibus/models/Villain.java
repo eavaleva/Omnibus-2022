@@ -7,12 +7,8 @@ public class Villain extends EnhancedBeing {
     private static final String defaultPhrase = "Oneliner Villain";
     private String evilPlan;
 
-    // This will be added once the VillainTeam & Heroes are added to the project\\
-    //private HashMap<Hero, Boolean> rivals = new HashMap<Hero, Boolean>();
-    //private HashSet<VillainTeam> teams = new HashSet<VillainTeam>();
-
-
-    //mostActiveLocation has private access and can not be resolved in the super?\\
+    private HashMap<Hero, Boolean> rivals = new HashMap<Hero, Boolean>();
+    private HashSet<VillainTeam> teams = new HashSet<VillainTeam>();
 
     public Villain(String name, String mostActiveLocation, int powerLevel, String evilPlan, String phrase){
         super(name, mostActiveLocation, powerLevel, phrase);
@@ -22,7 +18,6 @@ public class Villain extends EnhancedBeing {
         super(name, mostActiveLocation, powerLevel, defaultPhrase);
         this.evilPlan = evilPlan;
     }
-    //It will still need methods but as the HashMap & HashSet haven't been incorporated yet, the only thing I'll incorporate are errors by creating methods for them.\\
-
+    // TODO: Methods need to be created for the class
 
 }
