@@ -14,11 +14,11 @@ public class Villain extends EnhancedBeing {
 
     //mostActiveLocation has private access and can not be resolved in the super?\\
 
-    public Villain(String name, String activeLocation, int powerLevel, String evilPlan, String phrase){
+    public Villain(String name, String mostActiveLocation, int powerLevel, String evilPlan, String phrase){
         super(name, mostActiveLocation, powerLevel, phrase);
         this.evilPlan = evilPlan;
     }
-    public Villain(String name, String activeLocation, int powerLevel, String evilPlan){
+    public Villain(String name, String mostActiveLocation, int powerLevel, String evilPlan){
         super(name, mostActiveLocation, powerLevel, defaultPhrase);
         this.evilPlan = evilPlan;
     }
