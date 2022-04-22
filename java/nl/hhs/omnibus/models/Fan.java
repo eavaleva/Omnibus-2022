@@ -26,6 +26,7 @@ public class Fan extends Nameable {
         Collections.addAll(this.fanOf, favorite);
     }
 
+    // #Oscar het is mij niet duidelijk wat je hiermee wilt. Kun je aub uitleggen?
     public void removeFromFavorite(EnhancedBeing favorite){
 
     }
@@ -33,6 +34,7 @@ public class Fan extends Nameable {
     public void addMostFavorite(EnhancedBeing mostFavorite){
 
     }
+    // #Oscar het is mij niet duidelijk wat je hiermee wilt. Kun je aub uitleggen?
     public void removeMostFavorite(EnhancedBeing mostFavorite){
 
     }
