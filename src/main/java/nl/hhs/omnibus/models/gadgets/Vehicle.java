@@ -1,13 +1,12 @@
 package nl.hhs.omnibus.models.gadgets;
 
-import nl.hhs.omnibus.models.EnhancedBeing;
-
 public class Vehicle extends Gadget {
     private String speed;
     private int capacity;
 
-    public Vehicle(String name, String description, EnhancedBeing owner, String speed, int capacity) {
-        super(name, description, owner);
+    public Vehicle(String name, String description, String speed, int capacity) {
+        super(name, description);
+
         this.speed = speed;
         this.capacity = capacity;
     }

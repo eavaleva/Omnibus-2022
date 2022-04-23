@@ -7,21 +7,21 @@ public abstract class Gadget extends Nameable {
     private String description;
     private EnhancedBeing owner;
 
-    Gadget(String name, String description, EnhancedBeing owner) {
+    public Gadget(String name, String description) {
         super(name);
+
         this.description = description;
-        this.owner = owner;
     }
 
-    public void setDescription(String actualDescription) {
-        this.description = actualDescription;
+    private boolean isOwner(EnhancedBeing enhancedBeing) {
+        return this.owner.equals(enhancedBeing);
     }
 
     @Override
     public String toString() {
         StringBuilder details = new StringBuilder(String.format("\n%14s%03d\n", "ID:", this.getId()));
         details.append(String.format("%14s%s\n", "Name:", this.getName()));
-        details.append(String.format("%14s%s\n", "Owner:", this.owner.getName()));
+        details.append(String.format("%14s%s\n", "Owner:", this.getOwner().getName()));
 
         return details.toString();
     }
@@ -29,18 +29,22 @@ public abstract class Gadget extends Nameable {
     /* GETTERS & SETTERS */
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
-    public void setOwner(EnhancedBeing actualOwner) {
-        this.owner = actualOwner;
-    }
-
-    private boolean isOwner(EnhancedBeing enhancedBeing) {
-        return this.owner == enhancedBeing;
+    public void setDescription(String actualDescription) {
+        this.description = actualDescription;
     }
 
     public EnhancedBeing getOwner() {
-        return owner;
+        return this.owner;
+    }
+
+    public void setOwner(EnhancedBeing owner) {
+        if (this.owner != null) {
+            this.owner.removeGadget(this);
+        }
+        this.owner = owner;
+        this.owner.addGadget(this);
     }
 }
