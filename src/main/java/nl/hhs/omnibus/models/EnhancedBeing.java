@@ -1,5 +1,11 @@
 package nl.hhs.omnibus.models;
 
+import nl.hhs.omnibus.models.gadgets.Gadget;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * The EnhancedBeing is the Base class for the Hero and Villain classes.
  */
@@ -13,7 +19,9 @@ public class EnhancedBeing extends Nameable {
     /** A word or sentence an individual Hero or Villain is known for saying. */
     private String phrase;
 
-    public EnhancedBeing(String name, String mostActiveLocation, int powerLevel, String phrase) {
+    private final Set<Gadget> gadgets = new HashSet<>();
+
+    protected EnhancedBeing(String name, String mostActiveLocation, int powerLevel, String phrase) {
         super(name);
 
         this.mostActiveLocation = mostActiveLocation;
@@ -40,5 +48,17 @@ public class EnhancedBeing extends Nameable {
 
     public String getPhrase() {
         return this.phrase;
+    }
+
+    public void addAllGadgets(Gadget... gadgets) {
+        Arrays.stream(gadgets).forEach(this::addGadget);
+    }
+
+    public void addGadget(Gadget gadget) {
+        this.gadgets.add(gadget);
+    }
+
+    public void removeGadget(Gadget gadget) {
+        this.gadgets.remove(gadget);
     }
 }
