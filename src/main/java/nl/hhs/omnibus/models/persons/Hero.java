@@ -29,6 +29,51 @@ public class Hero extends EnhancedBeing {
         return this.toString();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder details = new StringBuilder(String.format("%14s#%03d\n", "ID:", this.getId()));
+        details.append(String.format("%14s%s\n", "Hero:", this.getName()));
+        details.append(String.format("%14s%s\n", "Location:", this.getMostActiveLocation()));
+        details.append(String.format("%14s%s\n", "Name:", this.realName));
+        details.append(String.format("\n%14s\"%s\"\n", "One-liner:", this.getPhrase()));
+
+        StringBuilder rivals = new StringBuilder("\nRivals:\n");
+        StringBuilder archRival = new StringBuilder("\nArch rival:\n");
+
+        // Add all rivals and the arch rival to their own lists
+        for (Map.Entry<Villain, Boolean> entry : this.rivals.entrySet()) {
+            Villain rival = entry.getKey();
+            boolean isArchRival = entry.getValue();
+
+            if (isArchRival) {
+                archRival.append(String.format("\t%s\n", rival.getName()));
+
+                continue;
+            }
+            rivals.append(String.format("\t%s\n", rival.getName()));
+        }
+
+        // When a Hero has rivals no
+        if (this.rivals.size() == 0) {
+            rivals.append("\tNone\n");
+            archRival.append("\tNone\n");
+        }
+
+        // When a Hero has no arch rival
+        if (!this.rivals.containsValue(true) && !archRival.toString().contains("None")) {
+            archRival.append("\tNone\n");
+        }
+
+        // When a Hero has no regular rivals (but does have an arch rival)
+        if (!this.rivals.containsValue(false) && !archRival.toString().contains("None")) {
+            rivals.append("\tNone\n");
+        }
+        details.append(rivals);
+        details.append(archRival);
+
+        return details.toString();
+    }
+
     public void addAllRivals(Map<Villain, Boolean> rivals) {
         rivals.forEach(this::addRival);
     }
