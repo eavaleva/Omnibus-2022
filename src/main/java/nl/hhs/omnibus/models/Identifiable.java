@@ -1,4 +1,4 @@
-package java.nl.hhs.omnibus.models;
+package nl.hhs.omnibus.models;
 
 import java.util.Objects;
 
