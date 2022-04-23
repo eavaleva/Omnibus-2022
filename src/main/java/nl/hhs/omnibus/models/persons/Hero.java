@@ -21,6 +21,13 @@ public class Hero extends EnhancedBeing {
         this.realName = realName;
     }
 
+    @Override
+    public String getDetails(boolean getFullDetails) {
+        // Only get the simple details of a Hero (ID and name)
+        if (!getFullDetails) return super.toString();
+
+        return this.toString();
+    }
 
     public void addAllRivals(Map<Villain, Boolean> rivals) {
         rivals.forEach(this::addRival);
