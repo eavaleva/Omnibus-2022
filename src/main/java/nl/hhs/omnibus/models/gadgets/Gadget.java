@@ -17,6 +17,17 @@ public abstract class Gadget extends Nameable {
         this.description = actualDescription;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder details = new StringBuilder(String.format("\n%14s%03d\n", "ID:", this.getId()));
+        details.append(String.format("%14s%s\n", "Name:", this.getName()));
+        details.append(String.format("%14s%s\n", "Owner:", this.owner.getName()));
+
+        return details.toString();
+    }
+
+    /* GETTERS & SETTERS */
+
     public String getDescription() {
         return description;
     }

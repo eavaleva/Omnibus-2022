@@ -11,6 +11,28 @@ public class Base extends Gadget {
         this.location = location;
     }
 
+    @Override
+    public String getDetails(boolean getFullDetails) {
+        if (!getFullDetails) return super.toString();
+
+        return this.toString();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder details = new StringBuilder(super.toString());
+        details.append(String.format("%14s%s\n", "Type:", this.getClass().getSimpleName()));
+        details.append(String.format("%14s%s\n", "Location:", this.getLocation()));
+
+        return details.toString();
+    }
+
+    /* GETTERS & SETTERS */
+
+    public String getLocation() {
+        return this.location;
+    }
+
     public void setLocation(String actualLocation) {
         this.location = actualLocation;
     }

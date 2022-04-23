@@ -23,10 +23,14 @@ public class EnhancedBeing extends Nameable {
 
     /** Prints the phrase of an EnhancedBeing to the terminal. */
     public void speakPhrase() {
-        System.out.println(phrase);
+        System.out.println(this.phrase);
     }
 
     /* GETTERS AND SETTERS */
+
+    public String getMostActiveLocation() {
+        return this.mostActiveLocation;
+    }
 
     public int getPowerLevel() {
         // TODO: Should actually return a calculated value which is the powerLevel of an Hero or Villain +
