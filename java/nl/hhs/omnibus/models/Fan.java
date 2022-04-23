@@ -1,14 +1,13 @@
 package java.nl.hhs.omnibus.models;
 
-import com.sun.source.tree.BreakTree;
+import nl.hhs.omnibus.models.EnhancedBeing;
+import nl.hhs.omnibus.models.Nameable;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 
 public class Fan extends Nameable {
-    private final ArrayList<EnhancedBeing> fanOf = new ArrayList<>();
-
+    private final Set<EnhancedBeing> favoriteCharacters = new HashSet<>();
 
     public Fan(String name) {
         super(name);
@@ -18,24 +17,27 @@ public class Fan extends Nameable {
         return true;
     }
 
-    public ArrayList<EnhancedBeing> getFanOf() {
-        return fanOf;
+    public Set<EnhancedBeing> getAllFavoriteCharacters(){
+        return this.favoriteCharacters;
     }
 
-    public void addAllFavorites(EnhancedBeing favorite){
-        Collections.addAll(this.fanOf, favorite);
+    public void addAllFavorites(EnhancedBeing... characters){
+        for(EnhancedBeing favorite : characters){
+            this.addFavorite(favorite);
+        }
     }
 
-    // #Oscar het is mij niet duidelijk wat je hiermee wilt. Kun je aub uitleggen?
-    public void removeFromFavorite(EnhancedBeing favorite){
-
+    public void addFavorite(EnhancedBeing character){
+        this.favoriteCharacters.add(character);
     }
 
-    public void addMostFavorite(EnhancedBeing mostFavorite){
-
+    public void removeAllFavorites(EnhancedBeing... characters){
+        for(EnhancedBeing character : characters){
+            this.removeAllFavorites(character);
+        }
     }
-    // #Oscar het is mij niet duidelijk wat je hiermee wilt. Kun je aub uitleggen?
-    public void removeMostFavorite(EnhancedBeing mostFavorite){
 
+    public void removeFavorite(EnhancedBeing character){
+        this.favoriteCharacters.remove(character);
     }
 }
