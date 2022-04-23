@@ -29,6 +29,7 @@ public class Omnibus {
 
     /** Ties the different Menus and the MenuItems within those Menus together. */
     private static void initializeMenus() {
+        // Set up the main navigation
         MenuItems.MI_PEOPLE_TEAMS.setNextMenu(Menus.MENU_PEOPLE);
         MenuItems.MI_GADGETS.setNextMenu(Menus.MENU_GADGETS);
         MenuItems.MI_FIGHTS.setNextMenu(Menus.MENU_FIGHTS);
