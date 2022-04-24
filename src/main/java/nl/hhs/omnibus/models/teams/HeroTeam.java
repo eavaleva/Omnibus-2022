@@ -1,6 +1,6 @@
 package nl.hhs.omnibus.models.teams;
 
-import nl.hhs.omnibus.persons.Hero;
+import nl.hhs.omnibus.models.persons.Hero;
 import nl.hhs.omnibus.models.Nameable;
 
 import java.util.Arrays;
