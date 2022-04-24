@@ -23,10 +23,7 @@ public class Hero extends EnhancedBeing {
 
     @Override
     public String getDetails(boolean getFullDetails) {
-        // Only get the simple details of a Hero (ID and name)
-        if (!getFullDetails) return super.toString();
-
-        return this.toString();
+        return !getFullDetails ? super.toString() : this.toString();
     }
 
     @Override
