@@ -1,27 +1,28 @@
 package nl.hhs.omnibus.models.gadgets;
 
-import nl.hhs.omnibus.models.EnhancedBeing;
+import nl.hhs.omnibus.common.Constants;
 
 public class Weapon extends Gadget {
     private int powerLevel;
 
-    Weapon(String name, String description, EnhancedBeing owner, int powerLevel) {
-        super(name, description, owner);
+    public Weapon(String name, String description, int powerLevel) {
+        super(name, description);
+
         this.powerLevel = powerLevel;
     }
 
     @Override
     public String getDetails(boolean getFullDetails) {
-        if (!getFullDetails) return super.toString();
-
-        return this.toString();
+        return !getFullDetails ? super.toString() : this.toString();
     }
 
     @Override
     public String toString() {
-        StringBuilder details = new StringBuilder(super.toString());
-        details.append(String.format("%14s%s\n", "Type:", this.getClass().getSimpleName()));
-        details.append(String.format("%14s%d\n", "Power level:", this.getPowerLevel()));
+        StringBuilder details = new StringBuilder(String.format("\n%14s:%03d\n", Constants.ID, this.getId()));
+        details.append(String.format("%14s:%s\n", Constants.NAME, this.getName()));
+        details.append(String.format("%14s:%s\n", Constants.OWNER, this.getOwner().getName()));
+        details.append(String.format("%14s:%s\n", Constants.TYPE, this.getClass().getSimpleName()));
+        details.append(String.format("%14s:%d\n", Constants.POWER_LEVEL, this.getPowerLevel()));
 
         return details.toString();
     }

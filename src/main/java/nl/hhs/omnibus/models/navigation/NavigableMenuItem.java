@@ -39,10 +39,6 @@ public class NavigableMenuItem extends MenuItem {
 
     /* GETTERS & SETTERS */
 
-    public Menu getNextMenu() {
-        return this.nextMenu;
-    }
-
     public void setNextMenu(Menu nextMenu) {
         this.nextMenu = nextMenu;
     }

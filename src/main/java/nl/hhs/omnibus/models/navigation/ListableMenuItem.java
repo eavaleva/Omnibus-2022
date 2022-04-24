@@ -36,10 +36,10 @@ public class ListableMenuItem extends NavigableMenuItem {
          * Prints the list header and the simple details of all the items in the list,
          * and then goes back to the menu.
          */
-        StringBuilder stringBuilder = new StringBuilder(String.format("\n%s\n", this.listHeader));
+        StringBuilder listString = new StringBuilder(String.format("\n%s\n", this.listHeader));
 
-        Arrays.stream(this.items).forEach(item -> stringBuilder.append(String.format("%s\n", item.getDetails())));
-        System.out.print(stringBuilder);
+        Arrays.stream(this.items).forEach(item -> listString.append(String.format("%s\n", item.getDetails())));
+        System.out.print(listString);
 
         super.executeAction();
     }
