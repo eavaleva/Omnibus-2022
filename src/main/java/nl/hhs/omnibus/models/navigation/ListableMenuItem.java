@@ -52,6 +52,10 @@ public class ListableMenuItem extends NavigableMenuItem {
     /* GETTERS & SETTERS */
 
     public void setItems(Nameable[] items) {
+        if (items == null) {
+            this.items = new Nameable[] {};
+            return;
+        }
         this.items = items.clone();
     }
 }
