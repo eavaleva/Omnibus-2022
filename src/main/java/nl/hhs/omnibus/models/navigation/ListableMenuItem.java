@@ -1,5 +1,6 @@
 package nl.hhs.omnibus.models.navigation;
 
+import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.Nameable;
 
 import java.util.Arrays;
@@ -39,6 +40,10 @@ public class ListableMenuItem extends NavigableMenuItem {
         StringBuilder listString = new StringBuilder(String.format("\n%s\n", this.listHeader));
 
         Arrays.stream(this.items).forEach(item -> listString.append(String.format("%s\n", item.getDetails())));
+
+        if (this.items.length == 0) {
+            listString.append(String.format("\t%s\n", Constants.NO_ITEMS));
+        }
         System.out.print(listString);
 
         super.executeAction();

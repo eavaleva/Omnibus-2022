@@ -14,4 +14,6 @@ public class Constants {
     public static final String FAVORITE_CHARACTERS_HEADER = "Fan of";
 
     public static final String NO_FAVORITE_CHARACTERS = "CURRENTLY DOESN'T FAVOR ANY HERO OR VILLAIN.";
+
+    public static final String NO_ITEMS = "NO ITEMS TO SHOW.";
 }
