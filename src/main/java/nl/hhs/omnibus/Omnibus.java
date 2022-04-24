@@ -1,5 +1,6 @@
 package nl.hhs.omnibus;
 
+import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.navigation.Menu;
 import nl.hhs.omnibus.models.navigation.Menu.Menus;
 import nl.hhs.omnibus.models.navigation.MenuItem.MenuItems;
@@ -11,7 +12,7 @@ public class Omnibus {
     public static Menu currentMenu;
 
     public static void main(String[] args) {
-        System.out.println("\nWelcome to Omnibus...");
+        System.out.println(Constants.LAUNCHING_APPLICATION_MESSAGE);
 
         initializeMenus();
 
