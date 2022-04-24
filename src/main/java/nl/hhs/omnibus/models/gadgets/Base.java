@@ -21,11 +21,11 @@ public class Base extends Gadget {
 
     @Override
     public String toString() {
-        StringBuilder details = new StringBuilder(String.format("\n%14s:%03d\n", Constants.ID, this.getId()));
-        details.append(String.format("%14s:%s\n", Constants.NAME, this.getName()));
-        details.append(String.format("%14s:%s\n", Constants.OWNER, this.getOwner().getName()));
-        details.append(String.format("%14s:%s\n", Constants.TYPE, this.getClass().getSimpleName()));
-        details.append(String.format("%14s:%s\n", Constants.LOCATION, this.getLocation()));
+        StringBuilder details = new StringBuilder(String.format("%s%-14s%03d\n", Constants.SEPARATOR, Constants.ID, this.getId()));
+        details.append(String.format("%-14s%s\n", Constants.NAME, this.getName()));
+        details.append(String.format("%-14s%s\n", Constants.OWNER, this.getOwner().getName()));
+        details.append(String.format("%-14s%s\n", Constants.TYPE, this.getClass().getSimpleName()));
+        details.append(String.format("%-14s%s\n%s", Constants.LOCATION, this.getLocation(), Constants.SEPARATOR));
 
         return details.toString();
     }
