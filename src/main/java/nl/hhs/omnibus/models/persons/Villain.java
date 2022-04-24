@@ -1,5 +1,6 @@
 package nl.hhs.omnibus.models.persons;
 
+import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.EnhancedBeing;
 
 import java.util.HashMap;
@@ -10,7 +11,7 @@ public class Villain extends EnhancedBeing {
     private final Map<Hero, Boolean> rivals = new HashMap<>();
 
     public Villain(String name, String mostActiveLocation, int powerLevel, String evilPlan) {
-        super(name, mostActiveLocation, powerLevel, "Oneliner Villain!");
+        super(name, mostActiveLocation, powerLevel, String.format(Constants.DEFAULT_ONE_LINER, Villain.class.getSimpleName()));
 
         this.evilPlan = evilPlan;
     }
@@ -28,14 +29,14 @@ public class Villain extends EnhancedBeing {
 
     @Override
     public String toString() {
-        StringBuilder details = new StringBuilder(String.format("%14s#%03d\n", "ID:", this.getId()));
-        details.append(String.format("%14s%s\n", "Villain:", this.getName()));
-        details.append(String.format("%14s%s\n", "Location:", this.getMostActiveLocation()));
-        details.append(String.format("%14s%s\n", "Evil plan:", this.evilPlan));
-        details.append(String.format("\n%14s\"%s\"\n", "One-liner:", this.getPhrase()));
+        StringBuilder details = new StringBuilder(String.format("%14s:#%03d\n", Constants.ID, this.getId()));
+        details.append(String.format("%14s:%s\n", Constants.VILLAIN, this.getName()));
+        details.append(String.format("%14s:%s\n", Constants.LOCATION, this.getMostActiveLocation()));
+        details.append(String.format("%14s:%s\n", Constants.EVIL_PLAN, this.evilPlan));
+        details.append(String.format("\n%14s:\"%s\"\n", Constants.ONE_LINER, this.getPhrase()));
 
-        StringBuilder rivals = new StringBuilder("\nRivals:\n");
-        StringBuilder archRival = new StringBuilder("\nArch rival:\n");
+        StringBuilder rivals = new StringBuilder(String.format("\n%s\n", Constants.RIVALS_HEADER));
+        StringBuilder archRival = new StringBuilder(String.format("\n%s\n", Constants.ARCH_RIVALS_HEADER));
 
         // Add all rivals and the arch rival to their own lists
         for (Map.Entry<Hero, Boolean> entry : this.rivals.entrySet()) {
@@ -52,18 +53,18 @@ public class Villain extends EnhancedBeing {
 
         // When a Villain has rivals no
         if (this.rivals.size() == 0) {
-            rivals.append("\tNone\n");
-            archRival.append("\tNone\n");
+            rivals.append(String.format("\t%s\n", Constants.NO_RIVALS));
+            rivals.append(String.format("\t%s\n", Constants.NO_ARCH_RIVALS));
         }
 
         // When a Villain has no arch rival
-        if (!this.rivals.containsValue(true) && !archRival.toString().contains("None")) {
-            archRival.append("\tNone\n");
+        if (!this.rivals.containsValue(true) && !archRival.toString().contains(Constants.NO_ARCH_RIVALS)) {
+            rivals.append(String.format("\t%s\n", Constants.NO_ARCH_RIVALS));
         }
 
         // When a Villain has no regular rivals (but does have an arch rival)
-        if (!this.rivals.containsValue(false) && !archRival.toString().contains("None")) {
-            rivals.append("\tNone\n");
+        if (!this.rivals.containsValue(false) && !archRival.toString().contains(Constants.NO_RIVALS)) {
+            rivals.append(String.format("\t%s\n", Constants.NO_RIVALS));
         }
         details.append(rivals);
         details.append(archRival);
