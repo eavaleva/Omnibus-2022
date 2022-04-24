@@ -12,7 +12,7 @@ public class VillainTeam extends Nameable {
         super(name);
     }
 
-    //Is asking for an object. Am I doing something wrong with this method?\\
+
     public boolean isMemberOf(Villain villain) {
         return members.contains(villain);
     }
@@ -21,7 +21,7 @@ public class VillainTeam extends Nameable {
 
     public void addAllMembers(Villain... members){
        this.members.addAll(Arrays.asList(members));
-       //Is this the right way to do it? \\
+
     }
 
     public void addMember(Villain member){
