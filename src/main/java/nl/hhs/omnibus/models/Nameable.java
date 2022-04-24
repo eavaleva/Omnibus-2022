@@ -1,10 +1,10 @@
 package nl.hhs.omnibus.models;
 
-public class Nameable extends Identifiable {
+public abstract class Nameable extends Identifiable {
     /** The name of an individual object. */
     private final String name;
 
-    public Nameable(String name) {
+    protected Nameable(String name) {
         super();
 
         this.name = name;
