@@ -5,7 +5,7 @@ import nl.hhs.omnibus.models.EnhancedBeing;
 public class Weapon extends Gadget {
     private int powerLevel;
 
-    Weapon(String name, String description, EnhancedBeing owner, int powerLevel) {
+    public Weapon(String name, String description, EnhancedBeing owner, int powerLevel) {
         super(name, description, owner);
         this.powerLevel = powerLevel;
     }
