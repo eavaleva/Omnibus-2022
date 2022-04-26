@@ -1,7 +1,5 @@
 package nl.hhs.omnibus.models.data;
 
-import jdk.jfr.internal.consumer.RecordingInput;
-import jdk.jfr.internal.tool.Main;
 import nl.hhs.omnibus.models.gadgets.Base;
 import nl.hhs.omnibus.models.gadgets.Vehicle;
 import nl.hhs.omnibus.models.gadgets.Weapon;
@@ -22,25 +20,6 @@ public class DataLists {
     private final ArrayList<Vehicle> vehicles;
     private final ArrayList<Weapon> weapons;
 
-
-//    // Fans
-//    private final Fan oscar;
-//
-//
-//    // Heroes
-//    private final Hero batman;
-//
-//    // Villains
-//    private final Villain theJoker;
-//
-//
-//    // Gadget Base
-//    private final Base
-//    // Gadget Vehicle
-//    // Gadget Weapon
-//
-//
-//
 
     public DataLists() {
 
