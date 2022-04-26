@@ -106,6 +106,8 @@ public class Villain extends EnhancedBeing {
         public static Villain DESAAD = new Villain("Desaad", "Apokolips", -1, "");
         public static Villain STEPPENWOLF = new Villain("Steppenwolf", "Apokolips", -1, "");
 
-        public static Villain[] VILLAINS = { THE_JOKER, RIDDLER, BLACK_MANTA, DARKSEID, MISTER_FREEZE, BASILISK, ABRA_KADABRA, BLACK_RACER, KILLER_MOTH, MIDAS, THE_DROWNED, DAWNBREAKER, ZUMBADO, DESPERO, LEX_LUTHER, GRID, CAPTAIN_COLD, CHARNN, HUMAN_FLAME, DESAAD, STEPPENWOLF };
+        public static Villain LOKI = new Villain("Loki Laufeyson", "Mobile", -1, "");
+
+        public static Villain[] VILLAINS = { THE_JOKER, RIDDLER, BLACK_MANTA, DARKSEID, MISTER_FREEZE, BASILISK, ABRA_KADABRA, BLACK_RACER, KILLER_MOTH, MIDAS, THE_DROWNED, DAWNBREAKER, ZUMBADO, DESPERO, LEX_LUTHER, GRID, CAPTAIN_COLD, CHARNN, HUMAN_FLAME, DESAAD, STEPPENWOLF, LOKI };
     }
 }
