@@ -11,7 +11,7 @@ public class Hero extends EnhancedBeing {
     private final Map<Villain, Boolean> rivals = new HashMap<>();
 
     public Hero(String name, String mostActiveLocation, int powerLevel, String realName) {
-        super(name, mostActiveLocation, powerLevel, String.format(Constants.DEFAULT_ONE_LINER, Villain.class.getSimpleName()));
+        super(name, mostActiveLocation, powerLevel, String.format(Constants.DEFAULT_ONE_LINER, Hero.class.getSimpleName()));
 
         this.realName = realName;
     }
