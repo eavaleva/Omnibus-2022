@@ -13,7 +13,7 @@ public class Hero extends EnhancedBeing {
      */
     private String realName;
 
-    public Hero(String name, String mostActiveLocation, int powerLevel, String phrase, String realName) {
+    public Hero(String name, String mostActiveLocation, int powerLevel, String realName, String phrase) {
         super(name, mostActiveLocation, powerLevel, phrase);
         this.realName = realName;
     }
