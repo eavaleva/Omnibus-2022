@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * An Identifiable is something which where it should be able to be identified by an ID.
  */
-public abstract class Identifiable {
+public abstract class Identifiable implements Comparable<Identifiable> {
     private static int nextId = 0;
 
     /** An internal identifier which is used in the system to identify an object. */
@@ -32,5 +32,10 @@ public abstract class Identifiable {
     @Override
     public int hashCode() {
         return Objects.hash(this.id);
+    }
+
+    @Override
+    public int compareTo(Identifiable other) {
+        return Integer.compare(this.id, other.id);
     }
 }
