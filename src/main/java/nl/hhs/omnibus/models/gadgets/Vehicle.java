@@ -6,7 +6,7 @@ public class Vehicle extends Gadget {
     private int speed;
     private int capacity;
 
-    Vehicle(String name, String description, EnhancedBeing owner, int speed, int capacity) {
+  public Vehicle(String name, String description, EnhancedBeing owner, int speed, int capacity) {
         super(name, description, owner);
         this.speed = speed;
         this.capacity = capacity;
