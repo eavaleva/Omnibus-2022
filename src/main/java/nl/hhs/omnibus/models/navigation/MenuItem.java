@@ -2,7 +2,7 @@ package nl.hhs.omnibus.models.navigation;
 
 /** A basic MenuItem with a label. */
 public abstract class MenuItem {
-    private final String label;
+    private String label;
 
     public MenuItem(String label) {
         this.label = label;
@@ -13,6 +13,10 @@ public abstract class MenuItem {
     /* GETTERS & SETTERS */
 
     public String getLabel() {
-        return label;
+        return this.label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 }

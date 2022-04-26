@@ -31,9 +31,13 @@ public class Constants {
     public static final String MAKE_OPTION_SELECTION_MESSAGE = "Please select an option [0-%d]: ";
     public static final String MAKE_LIST_SELECTION_MESSAGE = "\nPlease select an item from the list by providing the ID or the name of the item: ";
     public static final String CLOSING_APPLICATION_MESSAGE = "\nClosing Omnibus...";
+    public static final String SEARCH_LABEL = "Search...";
 
     public static final String SELECTION_OUTSIDE_RANGE_EXCEPTION_MESSAGE = "\tYour selection (%d) is outside of the accepted range. Please, make another selection within the following range [0-%d]\n\n";
 
-    public static final String NO_ITEMS = "\tNO ITEMS TO SHOW.\n";
-    public static final String NO_SELECTION_RESULT = "\tNO ITEM WAS FOUND BY '%s': %s\n";
+    public static final String NO_ITEMS_ACTIONABLE = "\tNo items %s.\n";
+    public static final String SELECT_ACTION = "select";
+    public static final String SHOW_ACTION = "show";
+    public static final String NO_SEARCH_RESULTS = "\tNo result were found for searching by %s: '%s'\n";
+    public static final String TO_MANY_SEARCH_RESULTS = "\tTo many results (%d) were found by searching by %s: '%s'. Please, try to narrow down your search query.\n";
 }

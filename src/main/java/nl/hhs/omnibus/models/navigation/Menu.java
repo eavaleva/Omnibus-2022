@@ -28,10 +28,10 @@ public class Menu {
      * Retries when the provided input value is outside the range of provided options.
      */
     public void awaitMenuItemSelection() {
-        int selectedOptionIndex = -1;
+        int selectedOptionIndex = Integer.MIN_VALUE;
 
         try {
-            String nextActionQuestion = String.format(Constants.MAKE_SELECTION_MESSAGE, Omnibus.currentMenu.numberOfOptions() - 1);
+            String nextActionQuestion = String.format(Constants.MAKE_OPTION_SELECTION_MESSAGE, Omnibus.currentMenu.numberOfOptions() - 1);
             selectedOptionIndex = UserInputParsing.processUserInputToInt(nextActionQuestion);
 
             Omnibus.currentMenu.selectOptionByIndex(selectedOptionIndex);
