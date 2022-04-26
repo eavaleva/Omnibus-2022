@@ -99,7 +99,7 @@ public class DataLists {
                 "take over the planet");
         Villain theAbomination = new Villain("The Abomination", "Harlem", 50,
                 "Kill the Hulk! Gain more power in order to be able to become the most powerful warrior on Earth by killing everyone who stands in his way.");
-        Villain vipor = new Villain("Vipor", "location", 35, "");
+        Villain viper = new Villain("Viper", "None", 35, "");
         Villain ladyDeathstrike = new Villain("Lady Deathstrike", "location", 30,
                 "");
         Villain venum = new Villain("Venum", "New York", 55,
@@ -107,7 +107,7 @@ public class DataLists {
         Villain greenGoblin = new Villain("Green Goblin", "New York", 25,
                 "To gain full control over Spidermen's mind.");
 
-        this.villains = (ArrayList<Villain>) Arrays.asList(joker,mrFreeze,lokiLaufeyson,theAbomination,vipor,
+        this.villains = (ArrayList<Villain>) Arrays.asList(joker,mrFreeze,lokiLaufeyson,theAbomination,viper,
                 ladyDeathstrike,venum,greenGoblin);
 
 
@@ -135,56 +135,30 @@ public class DataLists {
 
         /** Create list of Weapons
          * */
-
-                // Batman
         Weapon rocketPropelledGrenade = new Weapon("Rocket propelled grenade", "Click, BOOM!", batman, 75);
         Weapon batarang = new Weapon("Batarang", "Batman's boomerang", batman, 35);
-                //Catwoman
         Weapon whip = new Weapon("Whip", "Uses her whip to attack in combat, and to trip up enemies. ", catwoman, 0);
         Weapon caltrop = new Weapon("Caltrop", "A sharp, metal jacks that could be dropped and used as a trap. Enemies trip and fall down when they step on them.", catwoman , 0);
-                // Black Widow
         Weapon teaserDisks = new Weapon("Teaser Disks", "Teaser disks are an extension of her widow bites, and these disks can electrocute a person without needing to make contact with them.", blackWidow, 0);
         Weapon dualBatons= new Weapon("Dual Batons", "Similar to her widow bites, Natasha's dual batons are electrically charged, where she is able to electrocute the Ultron bots, taking them offline after only a few precise blows.", blackWidow, 0);
-                //Wolverine
-                new Weapon("Weapon X", "", wolverine, 0);
-                new Weapon("", "", wolverine, 0);
-                // Iron Man
-                new Weapon("", "", ironMan, 0);
-                new Weapon("", "", ironMan, 0);
-                // Thor
-                new Weapon("", "", thor, 0);
-                new Weapon("", "", thor, 0);
-                //Hulk
-                new Weapon("", "", hulk, 0);
-                new Weapon("", "", hulk, 0);
-                //Spidar man
-                new Weapon("", "", spidarman, 0);
-                new Weapon("", "", spidarman, 0);
-                //Joker
-                new Weapon("", "", joker, 0);
-                new Weapon("", "", joker, 0);
-                //Mr. Freeze
-                new Weapon("", "", mrFreeze, 0);
-                new Weapon("", "", mrFreeze, 0);
-                //Loki Laufeyson
-                new Weapon("", "", lokiLaufeyson, 0);
-                new Weapon("", "", lokiLaufeyson, 0);
-                // The Abomination
-                new Weapon("", "", theAbomination, 0);
-                new Weapon("", "", theAbomination, 0);
-                // Vipor
-                new Weapon("", "", vipor, 0);
-                new Weapon("", "", vipor, 0);
-                // Lady Deathstrike
-                new Weapon("", "", ladyDeathstrike, 0);
-                new Weapon("", "", ladyDeathstrike, 0);
-                // Venum
-                new Weapon("", "", venum, 0);
-                new Weapon("", "", venum, 0);
-                //Green Goblin
-                new Weapon("", "", greenGoblin, 0);
-                new Weapon("", "", greenGoblin, 0);
-        this.weapons = (ArrayList<Weapon>)Arrays.asList(rocketPropelledGrenade, batarang,whip,caltrop,teaserDisks,dualBatons);
+        Weapon adamantiumClaws = new Weapon("adamantium claws ", "His Claws Are Fused With Adamantium(a rare metal).", wolverine, 0);
+        Weapon healingPowers = new Weapon("healing powers", "The ability to heal others ", wolverine, 0);
+        Weapon flameThrower = new Weapon("Flame thrower", "Create one hot enough and it could have melted some Ultron robots. ", ironMan, 0);
+        Weapon missiles = new Weapon("Missiles", "To kit out his suits with enough firepower to take down a tank or even a bunker", ironMan, 0);
+        Weapon jarnbjorn = new Weapon("Jarnbjorn", "The Battle Axe", thor, 0);
+        Weapon ultimateMjolnir = new Weapon("Ultimate Mjolnir", "the mystical Uru Warhammer.", thor, 0);
+        Weapon utilityBelt = new Weapon("Utility Belt", "A belt", spidarman, 0);
+        Weapon acidFlower = new Weapon("Acid Flower", "Acidic flowers, that kill everyone who touches them. ", joker, 0);
+        Weapon razorCards = new Weapon("Razor cards", "Sharp razor cards", joker, 0);
+        Weapon iceGun = new Weapon("Ice Gun", "Also known simply as the 'Cold Gun' and 'Freeze Ray', is a piece of cryogenics weaponry which serves as Mister Freeze's signature weapon.", mrFreeze, 0);
+        Weapon magicSword = new Weapon("Magic sword", "A magic sword, known in Norse mythology as Laevateinn, which means \"wounding wand\".", lokiLaufeyson, 0);
+        Weapon cyberpathy = new Weapon("Cyberpathy", "Deathstrike is able to cybernetically interface her consciousness with external computer systems, " + "allowing for direct data access to her brain's memory centers and granting " + "her the ability to remotely operate digital & computerized systems.", ladyDeathstrike, 0);
+        Weapon weaponV = new Weapon("Weapon V ", "In addition to wielding military ordinance, Weapon V operatives can use their symbiotes to manifest claws, fangs, spikes, tendrils, and blades.[4]", venum, 0);
+        Weapon pumpkinBombs = new Weapon("Pumpkin Bombs", "Osborn uses these specialized bombs to blow up or disintegrate his targets.", greenGoblin, 0);
+        Weapon razorBats = new Weapon("Razor Bats", "Osborn uses these drones to slice his enemies.", greenGoblin, 0);
+
+        this.weapons = (ArrayList<Weapon>)Arrays.asList(rocketPropelledGrenade, batarang,whip,caltrop,teaserDisks,
+                dualBatons,adamantiumClaws,healingPowers,flameThrower,missiles,jarnbjorn,ultimateMjolnir,utilityBelt,acidFlower,razorCards,iceGun,magicSword,cyberpathy,weaponV,pumpkinBombs,razorBats);
 
     }
     /** GETTERS AND SETTERS **/
