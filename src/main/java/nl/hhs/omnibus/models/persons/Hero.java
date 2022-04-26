@@ -99,6 +99,10 @@ public class Hero extends EnhancedBeing {
         public final static Hero HAWKGIRL = new Hero("Hawkgirl", "Blackhawk Island", -1 , "Kendra Saunders");
         public final static Hero NAOMI = new Hero("Naomi", "Post Oswego", -1, "Naomi McDuffe");
 
-        public final static Hero[] HEROES = { BATMAN, GREEN_LANTERN, THE_FLASH, SUPERMAN, WONDER_WOMAN, AQUAMAN, CYBORG, MARTIAN_MANHUNTER, GREEN_ARROW, BLACK_CANARY, BLACK_ADAM, HAWKGIRL, NAOMI };
+        public final static Hero CATWOMAN = new Hero("Catwoman", "Gotham City", - 1, "Selina Kyle");
+
+        public final static Hero HULK = new Hero("Hulk", "New York City", -1, "Dr. Robert Bruce Banner");
+
+        public final static Hero[] HEROES = { BATMAN, GREEN_LANTERN, THE_FLASH, SUPERMAN, WONDER_WOMAN, AQUAMAN, CYBORG, MARTIAN_MANHUNTER, GREEN_ARROW, BLACK_CANARY, BLACK_ADAM, HAWKGIRL, NAOMI, HULK, CATWOMAN };
     }
 }
