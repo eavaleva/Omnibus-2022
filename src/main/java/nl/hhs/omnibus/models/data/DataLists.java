@@ -40,10 +40,9 @@ public class DataLists {
         Fan albertCamus = new Fan("Albert Camus");
         Fan aldusHuxley = new Fan("Aldus Huxley");
 
-       this.fans = (ArrayList<Fan>)Arrays.asList(
-                titosPullo,oscarWellner,eleonoraAvaleva,jordyHuizer,milevaMaric,maryCurieary,rogerPenrose,jamesGosling,
-                joseSaramago,guidoVanRossum,dennisRitchie,adaLovelace,albertCamus,aldusHuxley);
-
+        this.fans = (ArrayList<Fan>) Arrays.asList(
+                titosPullo, oscarWellner, eleonoraAvaleva, jordyHuizer, milevaMaric, maryCurieary, rogerPenrose, jamesGosling,
+                joseSaramago, guidoVanRossum, dennisRitchie, adaLovelace, albertCamus, aldusHuxley);
 
 
         /** Create list of Heroes
@@ -66,7 +65,7 @@ public class DataLists {
         Hero spidarman = new Hero("Spiderman", "New York", 14,
                 "Peter Parker", "With great power, comes great responsibility");
 
-        this.heroes = (ArrayList<Hero>) Arrays.asList(batman,catwoman,blackWidow,wolverine,ironMan,thor,hulk,spidarman);
+        this.heroes = (ArrayList<Hero>) Arrays.asList(batman, catwoman, blackWidow, wolverine, ironMan, thor, hulk, spidarman);
 
         /** Create list of Villains
          * */
@@ -86,40 +85,39 @@ public class DataLists {
         Villain greenGoblin = new Villain("Green Goblin", "New York", 25,
                 "To gain full control over Spidermen's mind.");
 
-        this.villains = (ArrayList<Villain>) Arrays.asList(joker,mrFreeze,lokiLaufeyson,theAbomination,viper,
-                ladyDeathstrike,venum,greenGoblin);
-
+        this.villains = (ArrayList<Villain>) Arrays.asList(joker, mrFreeze, lokiLaufeyson, theAbomination, viper,
+                ladyDeathstrike, venum, greenGoblin);
 
 
         /** Create a list with bases
          * */
         Base batcave = new Base("Batcave", "Batman's cave", batman, "Gotham City");
-        Base underwaterBase =  new Base("Underwater base", "A well designed underwater base", thor, "Under the see");
+        Base underwaterBase = new Base("Underwater base", "A well designed underwater base", thor, "Under the see");
         Base jokersFunHouse = new Base("Joker's Funhouse", "Is located at the center of Amusement Mile in Otisburg district", joker, "Gotham City");
         Base lokiPalace = new Base("Loki Palace", "It is an underground palave hideout located in the Void.", lokiLaufeyson, "Unknown");
         Base bannerB773hideout = new Base("Banner Hideout B-733", "An underground grotto located beneath a " + "lake in the Chihuahuan Desert", hulk, "New Mexico");
 
-        this.bases = (ArrayList<Base>)Arrays.asList(batcave,underwaterBase,jokersFunHouse,lokiPalace,bannerB773hideout);
+        this.bases = (ArrayList<Base>) Arrays.asList(batcave, underwaterBase, jokersFunHouse, lokiPalace, bannerB773hideout);
 
         /** Create list of Vehicles
          * */
 
-        Vehicle batmobile = new Vehicle("Batmobile", "Batman's supercar",heroes.get(0), 380, 1);
-        Vehicle blackWidowMotor = new Vehicle("Black Widow's Motorcycle", "Fast Harley-Davidson bike", heroes.get(2), 350, 2);
-        Vehicle dodgeViper = new Vehicle("Dodge Viper", "Fast car", villains.get(4), 480, 2);
-        Vehicle zephyrOne = new Vehicle("Zephyr One", "Is a mobile airborne command plane", heroes.get(6), 1875, 30);
-        Vehicle f22Raptor = new Vehicle("F-22 Raptor", "A single-seat, twin-engine fifth-generation supermaneuverable fighter aircraft that uses stealth technology.", heroes.get(4), 1845, 1);
+        Vehicle batmobile = new Vehicle("Batmobile", "Batman's supercar", batman, 380, 1);
+        Vehicle blackWidowMotor = new Vehicle("Black Widow's Motorcycle", "Fast Harley-Davidson bike", blackWidow, 350, 2);
+        Vehicle dodgeViper = new Vehicle("Dodge Viper", "Fast car", viper, 480, 2);
+        Vehicle zephyrOne = new Vehicle("Zephyr One", "Is a mobile airborne command plane", hulk, 1875, 30);
+        Vehicle f22Raptor = new Vehicle("F-22 Raptor", "A single-seat, twin-engine fifth-generation supermaneuverable fighter aircraft that uses stealth technology.", ironMan, 1845, 1);
 
-         this.vehicles = (ArrayList<Vehicle>)Arrays.asList(batmobile,blackWidowMotor,dodgeViper,zephyrOne,f22Raptor);
+        this.vehicles = (ArrayList<Vehicle>) Arrays.asList(batmobile, blackWidowMotor, dodgeViper, zephyrOne, f22Raptor);
 
         /** Create list of Weapons
          * */
         Weapon rocketPropelledGrenade = new Weapon("Rocket propelled grenade", "Click, BOOM!", batman, 75);
         Weapon batarang = new Weapon("Batarang", "Batman's boomerang", batman, 35);
         Weapon whip = new Weapon("Whip", "Uses her whip to attack in combat, and to trip up enemies. ", catwoman, 0);
-        Weapon caltrop = new Weapon("Caltrop", "A sharp, metal jacks that could be dropped and used as a trap. Enemies trip and fall down when they step on them.", catwoman , 0);
+        Weapon caltrop = new Weapon("Caltrop", "A sharp, metal jacks that could be dropped and used as a trap. Enemies trip and fall down when they step on them.", catwoman, 0);
         Weapon teaserDisks = new Weapon("Teaser Disks", "Teaser disks are an extension of her widow bites, and these disks can electrocute a person without needing to make contact with them.", blackWidow, 0);
-        Weapon dualBatons= new Weapon("Dual Batons", "Similar to her widow bites, Natasha's dual batons are electrically charged, where she is able to electrocute the Ultron bots, taking them offline after only a few precise blows.", blackWidow, 0);
+        Weapon dualBatons = new Weapon("Dual Batons", "Similar to her widow bites, Natasha's dual batons are electrically charged, where she is able to electrocute the Ultron bots, taking them offline after only a few precise blows.", blackWidow, 0);
         Weapon adamantiumClaws = new Weapon("adamantium claws ", "His Claws Are Fused With Adamantium(a rare metal).", wolverine, 0);
         Weapon healingPowers = new Weapon("healing powers", "The ability to heal others ", wolverine, 0);
         Weapon flameThrower = new Weapon("Flame thrower", "Create one hot enough and it could have melted some Ultron robots. ", ironMan, 0);
@@ -136,9 +134,35 @@ public class DataLists {
         Weapon pumpkinBombs = new Weapon("Pumpkin Bombs", "Osborn uses these specialized bombs to blow up or disintegrate his targets.", greenGoblin, 0);
         Weapon razorBats = new Weapon("Razor Bats", "Osborn uses these drones to slice his enemies.", greenGoblin, 0);
 
-        this.weapons = (ArrayList<Weapon>)Arrays.asList(rocketPropelledGrenade, batarang,whip,caltrop,teaserDisks,
-                dualBatons,adamantiumClaws,healingPowers,flameThrower,missiles,jarnbjorn,ultimateMjolnir,utilityBelt,acidFlower,razorCards,iceGun,magicSword,cyberpathy,weaponV,pumpkinBombs,razorBats);
+        this.weapons = (ArrayList<Weapon>) Arrays.asList(rocketPropelledGrenade, batarang, whip, caltrop, teaserDisks,
+                dualBatons, adamantiumClaws, healingPowers, flameThrower, missiles, jarnbjorn, ultimateMjolnir, utilityBelt, acidFlower, razorCards, iceGun, magicSword, cyberpathy, weaponV, pumpkinBombs, razorBats);
 
     }
-    /** GETTERS AND SETTERS **/
+
+    /**
+     * GETTERS AND SETTERS
+     **/
+    public ArrayList<Fan> getFans() {
+        return fans;
+    }
+
+    public ArrayList<Hero> getHeroes() {
+        return heroes;
+    }
+
+    public ArrayList<Villain> getVillains() {
+        return villains;
+    }
+
+    public ArrayList<Base> getBases() {
+        return bases;
+    }
+
+    public ArrayList<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public ArrayList<Weapon> getWeapons() {
+        return weapons;
+    }
 }
