@@ -4,6 +4,7 @@ import nl.hhs.omnibus.Omnibus;
 import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.Nameable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +22,20 @@ public class ListableMenuItem extends NavigableMenuItem {
 
     /** Whether the selecting process is active on this ListableMenuItem. */
     private boolean makeSelection;
+
+    public ListableMenuItem(String label, String listHeader, List items, boolean selectable) {
+        this(label, listHeader, items);
+
+        this.makeSelection = selectable;
+    }
+
+    public ListableMenuItem(String label, String listHeader, List items) {
+        this(label, listHeader);
+
+        List<Nameable> itemsList = new ArrayList<Nameable>(items);
+
+        this.items = itemsList.toArray(new Nameable[0]);
+    }
 
     public ListableMenuItem(String label, String listHeader) {
         super(label);
@@ -54,8 +69,12 @@ public class ListableMenuItem extends NavigableMenuItem {
         return menuItem;
     }
 
+    public ListableMenuItem makeSelectable(Menu previousMenu) {
+        return this.makeSelectable(previousMenu, this.items);
+    }
+
     /** Creates a duplicate of the ListableMenuItem and activates the selection process for that MenuItem. */
-    public NavigableMenuItem makeSelectable(Menu previousMenu, Nameable[] items) {
+    public ListableMenuItem makeSelectable(Menu previousMenu, Nameable[] items) {
         ListableMenuItem menuItem = withPreviousMenu(previousMenu);
         menuItem.setLabel(Constants.SEARCH_LABEL);
         menuItem.setItems(items);
