@@ -7,6 +7,7 @@ public class Base extends Gadget {
 
     public Base(String name, String description, String location) {
         super(name, description);
+
         this.location = location;
     }
 
