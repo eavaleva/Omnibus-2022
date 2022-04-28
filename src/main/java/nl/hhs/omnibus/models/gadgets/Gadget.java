@@ -35,14 +35,4 @@ public abstract class Gadget extends Nameable {
         this.owner = owner;
         this.owner.addGadget(this);
     }
-
-    public static class Gadgets {
-        public static Base BAT_CAVE = new Base("Batcave", "Batman's base of operation", "Gotham City");
-        public static Base UNDERWATER_BASE = new Base("Underwater base", "A well designed underwater base", "Under the see");
-        public static Base JOKERS_FUNHOUSE = new Base("Joker's funhouse", "Located at the center of Amusement Mile in Otisburg district", "Gotham City");
-        public static Base LOKIS_PALACE = new Base("Loki's palace", "An underground palace hideout located in the void", "The void");
-        public static Base BANNER_HIDEHOUT = new Base("Banner Hideout B-733", "An underground grotto located beneath a lake in the Chihuahuan Desert", "New Mexico");
-
-        public static Gadget[] GADGETS = { BAT_CAVE, UNDERWATER_BASE, JOKERS_FUNHOUSE, LOKIS_PALACE, BANNER_HIDEHOUT };
-    }
 }
