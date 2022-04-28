@@ -75,13 +75,4 @@ public class Menu {
 
         return stringBuilder.toString();
     }
-
-    /* DATA */
-
-    public static class Menus {
-        public static final Menu MENU_MAIN = new Menu("Main Menu");
-        public static final Menu MENU_PEOPLE = new Menu("Menu People");
-        public static final Menu MENU_GADGETS = new Menu("Menu Gadgets");
-        public static final Menu MENU_FIGHTS = new Menu("Menu Fights");
-    }
 }

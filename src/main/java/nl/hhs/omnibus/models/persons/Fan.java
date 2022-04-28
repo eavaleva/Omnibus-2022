@@ -24,9 +24,9 @@ public class Fan extends Nameable {
 
     @Override
     public String toString() {
-        StringBuilder details = new StringBuilder(String.format("%14s#%03d\n", Constants.ID, this.getId()));
-        details.append(String.format("%14s:#%s\n", Constants.NAME, this.getName()));
-        details.append(String.format("%s:\n", Constants.FAVORITE_CHARACTERS_HEADER));
+        StringBuilder details = new StringBuilder(String.format("%s%-14s#%03d\n", Constants.SEPARATOR, Constants.ID, this.getId()));
+        details.append(String.format("%-14s%s\n", Constants.NAME, this.getName()));
+        details.append(String.format("\n%s\n", Constants.FAVORITE_CHARACTERS_HEADER));
 
         this.favoriteCharacters.forEach(character -> {
             details.append("\t");
@@ -37,6 +37,8 @@ public class Fan extends Nameable {
         if (this.favoriteCharacters.isEmpty()) {
             details.append(String.format("\t%s\n", Constants.NO_FAVORITE_CHARACTERS));
         }
+        details.append(Constants.SEPARATOR);
+
         return details.toString();
     }
 
@@ -60,12 +62,5 @@ public class Fan extends Nameable {
 
     public void removeFavorite(EnhancedBeing character) {
         this.favoriteCharacters.remove(character);
-    }
-
-    /* DATA */
-
-    public static class Fans {
-
-        public static Fan[] FANS = {};
     }
 }
