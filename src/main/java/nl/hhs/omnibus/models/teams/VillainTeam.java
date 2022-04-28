@@ -1,6 +1,7 @@
 package nl.hhs.omnibus.models.teams;
-import nl.hhs.omnibus.Villain;
+
 import nl.hhs.omnibus.models.Nameable;
+import nl.hhs.omnibus.models.persons.Villain;
 
 import java.util.Arrays;
 import java.util.HashSet;
