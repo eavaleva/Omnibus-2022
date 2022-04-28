@@ -7,29 +7,35 @@ public abstract class Gadget extends Nameable {
     private String description;
     private EnhancedBeing owner;
 
-    Gadget(String name, String description, EnhancedBeing owner) {
+    public Gadget(String name, String description) {
         super(name);
+
         this.description = description;
-        this.owner = owner;
+    }
+
+    private boolean isOwner(EnhancedBeing enhancedBeing) {
+        return this.owner.equals(enhancedBeing);
+    }
+
+    /* GETTERS & SETTERS */
+
+    public String getDescription() {
+        return this.description;
     }
 
     public void setDescription(String actualDescription) {
         this.description = actualDescription;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setOwner(EnhancedBeing actualOwner) {
-        this.owner = actualOwner;
-    }
-
-    private boolean isOwner(EnhancedBeing enhancedBeing) {
-        return this.owner == enhancedBeing;
-    }
-
     public EnhancedBeing getOwner() {
-        return owner;
+        return this.owner;
+    }
+
+    public void setOwner(EnhancedBeing owner) {
+        if (this.owner != null) {
+            this.owner.removeGadget(this);
+        }
+        this.owner = owner;
+        this.owner.addGadget(this);
     }
 }

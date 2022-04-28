@@ -1,6 +1,7 @@
 package nl.hhs.omnibus.models.navigation;
 
 import nl.hhs.omnibus.Omnibus;
+import nl.hhs.omnibus.common.Constants;
 
 /**
  * A MenuItem which provides navigational abilities.
@@ -12,6 +13,12 @@ public class NavigableMenuItem extends MenuItem {
 
     public NavigableMenuItem(String label) {
         super(label);
+    }
+
+    public NavigableMenuItem(String label, Menu menu) {
+        super(label);
+
+        this.nextMenu = menu;
     }
 
     /**
@@ -29,7 +36,7 @@ public class NavigableMenuItem extends MenuItem {
     public void executeAction() {
         // When no nextMenu is defined, close the application.
         if (this.nextMenu == null) {
-            System.out.println("\nClosing Omnibus...");
+            System.out.println(Constants.CLOSING_APPLICATION_MESSAGE);
             System.exit(0);
 
             return;

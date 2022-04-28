@@ -1,6 +1,7 @@
 package nl.hhs.omnibus.models.navigation;
 
 import nl.hhs.omnibus.Omnibus;
+import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.common.UserInputParsing;
 
 import java.util.*;
@@ -30,17 +31,13 @@ public class Menu {
         int selectedOptionIndex = -1;
 
         try {
-            String nextActionQuestion = String.format("Please select a an option [0-%d]: ", Omnibus.currentMenu.numberOfOptions() - 1);
+            String nextActionQuestion = String.format(Constants.MAKE_SELECTION_MESSAGE, Omnibus.currentMenu.numberOfOptions() - 1);
             selectedOptionIndex = UserInputParsing.processUserInputToInt(nextActionQuestion);
 
             Omnibus.currentMenu.selectOptionByIndex(selectedOptionIndex);
         }
         catch (IndexOutOfBoundsException exception) {
-            System.out.printf(
-                "\tYour selection (%d) is outside of the accepted range. Please, make another selection within the following range [0-%d]\n\n",
-                selectedOptionIndex,
-                Omnibus.currentMenu.numberOfOptions() - 1
-            );
+            System.out.printf(Constants.SELECTION_OUTSIDE_RANGE_EXCEPTION_MESSAGE, selectedOptionIndex, Omnibus.currentMenu.numberOfOptions() - 1);
 
             this.awaitMenuItemSelection();
         }
@@ -77,14 +74,5 @@ public class Menu {
         stringBuilder.append(String.format(" (%d)\t%s\n", 0, this.options.get(0).getLabel()));
 
         return stringBuilder.toString();
-    }
-
-    /* DATA */
-
-    public static class Menus {
-        public static final Menu MENU_MAIN = new Menu("Main Menu");
-        public static final Menu MENU_PEOPLE = new Menu("Menu People");
-        public static final Menu MENU_GADGETS = new Menu("Menu Gadgets");
-        public static final Menu MENU_FIGHTS = new Menu("Menu Fights");
     }
 }
