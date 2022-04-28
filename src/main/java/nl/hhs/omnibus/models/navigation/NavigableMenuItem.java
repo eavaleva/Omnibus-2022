@@ -15,6 +15,12 @@ public class NavigableMenuItem extends MenuItem {
         super(label);
     }
 
+    public NavigableMenuItem(String label, Menu menu) {
+        super(label);
+
+        this.nextMenu = menu;
+    }
+
     /**
      * Creates a clone of a NavigableMenuItem with a Menu to reference back to.
      */
