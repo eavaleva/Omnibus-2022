@@ -1,13 +1,14 @@
 package nl.hhs.omnibus.models.navigation;
 
-import nl.hhs.omnibus.Omnibus;
+import nl.hhs.omnibus.common.ChooseOpponent;
 import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.Nameable;
+import nl.hhs.omnibus.models.exceptions.NoResultsException;
+import nl.hhs.omnibus.models.exceptions.TooManyResultsException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * This MenuItem prints a list of items upon selection and after that
@@ -94,50 +95,18 @@ public class ListableMenuItem extends NavigableMenuItem {
 
     /** Selects an item from the list to print the full details of. */
     private void makeSelection() {
-        // When no items are in the list, skip the selection process
-        if (this.items.length == 0) return;
-
-        System.out.print(Constants.MAKE_LIST_SELECTION_MESSAGE);
-
-        String input = Omnibus.USER_INPUT.nextLine();
-        int parsedInputValue;
-
-        // Try to parse the input into an integer for selecting an item based on id
         try {
-            parsedInputValue = Integer.parseInt(input);
+            Nameable item = ChooseOpponent.chooseItem(Arrays.asList(this.items));
+
+            if (item == null){
+                return;
+            }
+
+            System.out.print(item);
         }
-        catch (NumberFormatException exception) {
-            parsedInputValue = Integer.MAX_VALUE;
+        catch (NoResultsException | TooManyResultsException exception){
+            System.out.print(exception.getMessage());
         }
-        int inputInteger = parsedInputValue;
-
-        // Find an item in the list that either matches the given name or ID,
-        // based on whether the parsing of the ID to an Integer was successful
-        List<Nameable> foundItems = Arrays.stream(this.getItems())
-            .filter(item -> inputInteger == Integer.MAX_VALUE ? item.getName().toLowerCase().contains(input.toLowerCase()) : item.getId() == inputInteger)
-            .collect(Collectors.toList());
-
-        String itemDetails = this.determineSearchResults(foundItems, input, parsedInputValue != Integer.MAX_VALUE);
-
-        System.out.printf("%s", itemDetails);
-    }
-
-    /** Prints either the full details out when 1 item is found by ID or name, and otherwise shows a warning to a user. */
-    private String determineSearchResults(List<Nameable> items, String query, boolean selectedById) {
-        String itemFoundBy = selectedById ? "ID" : "Name";
-
-        // When there is exactly 1 search result
-        if (items.size() == 1) {
-            return items.get(0).getDetails(true);
-        }
-
-        // When there are too many search results (more than 1)
-        if (items.size() > 1) {
-            return String.format(Constants.TO_MANY_SEARCH_RESULTS, items.size(), itemFoundBy, query);
-        }
-
-        // When there are no search results
-        return String.format(Constants.NO_SEARCH_RESULTS, itemFoundBy, query);
     }
 
     /* GETTERS & SETTERS */
