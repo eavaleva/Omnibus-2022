@@ -6,8 +6,8 @@ import nl.hhs.omnibus.models.EnhancedBeing;
 public class Weapon extends Gadget {
     private int powerLevel;
 
-    public Weapon(String name, String description, int powerLevel) {
-        super(name, description);
+    public Weapon(String name, String description, EnhancedBeing owner, int powerLevel) {
+        super(name, description, owner);
 
         this.powerLevel = powerLevel;
     }
@@ -31,7 +31,7 @@ public class Weapon extends Gadget {
     /* GETTERS & SETTERS */
 
     public int getPowerLevel() {
-        return powerLevel;
+        return this.powerLevel;
     }
 
     public void setPowerLevel(int powerLevel) {

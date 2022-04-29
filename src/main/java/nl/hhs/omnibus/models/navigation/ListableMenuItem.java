@@ -62,8 +62,7 @@ public class ListableMenuItem extends NavigableMenuItem {
 
     @Override
     public ListableMenuItem withPreviousMenu(Menu previousMenu) {
-        ListableMenuItem menuItem = new ListableMenuItem(this.getLabel(), this.listHeader);
-        menuItem.setItems(this.items);
+        ListableMenuItem menuItem = new ListableMenuItem(this.getLabel(), this.listHeader, Arrays.asList(this.items), this.makeSelection);
         menuItem.setNextMenu(previousMenu);
 
         return menuItem;

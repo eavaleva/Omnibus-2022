@@ -16,9 +16,7 @@ public class Vehicle extends Gadget {
 
     @Override
     public String getDetails(boolean getFullDetails) {
-        if (!getFullDetails) return super.toString();
-
-        return this.toString();
+        return !getFullDetails ? super.toString() : this.toString();
     }
 
     @Override
@@ -45,5 +43,9 @@ public class Vehicle extends Gadget {
 
     public int getCapacity() {
         return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }
