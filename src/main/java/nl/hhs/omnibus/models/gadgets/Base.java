@@ -14,9 +14,7 @@ public class Base extends Gadget {
 
     @Override
     public String getDetails(boolean getFullDetails) {
-        if (!getFullDetails) return super.toString();
-
-        return this.toString();
+        return !getFullDetails ? super.toString() : this.toString();
     }
 
     @Override

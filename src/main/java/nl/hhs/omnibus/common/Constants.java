@@ -23,9 +23,12 @@ public class Constants {
 
     public static final String FAVORITE_CHARACTERS_HEADER = "Fan of:";
 
+    public static final String MEMBERS_HEADER = "Members:";
+
     public static final String NO_FAVORITE_CHARACTERS = "CURRENTLY DOESN'T FAVOR ANY HERO OR VILLAIN.";
     public static final String NO_RIVALS = "NO RIVALS";
     public static final String NO_ARCH_RIVALS = "NO ARCH RIVALS";
+    public static final String NO_TEAM_MEMBERS = "CURRENTLY HAS NO MEMBERS.";
 
     public static final String LAUNCHING_APPLICATION_MESSAGE = "\nWelcome to Omnibus...";
     public static final String MAKE_OPTION_SELECTION_MESSAGE = "Please select an option [0-%d]: ";

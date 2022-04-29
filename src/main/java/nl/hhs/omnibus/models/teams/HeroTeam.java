@@ -1,5 +1,6 @@
 package nl.hhs.omnibus.models.teams;
 
+import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.persons.Hero;
 import nl.hhs.omnibus.models.Nameable;
 
@@ -16,7 +17,23 @@ public class HeroTeam extends Nameable {
 
     @Override
     public String getDetails(boolean getFullDetails) {
-        return null;
+        return !getFullDetails ? super.toString() : this.toString();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder details = new StringBuilder(String.format("%s%-14s%03d\n", Constants.SEPARATOR, Constants.ID, this.getId()));
+        details.append(String.format("%-14s%s\n", Constants.NAME, this.getName()));
+        details.append(String.format("%s\n", Constants.MEMBERS_HEADER));
+
+        this.members.forEach(member -> details.append(String.format("%s\n", member.getDetails())));
+
+        if (this.members.isEmpty()) {
+            details.append(String.format("\t%s\n", Constants.NO_TEAM_MEMBERS));
+        }
+        details.append(Constants.SEPARATOR);
+
+        return details.toString();
     }
 
     public boolean isMemberOf(Hero hero) {
