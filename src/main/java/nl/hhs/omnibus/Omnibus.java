@@ -1,7 +1,7 @@
 package nl.hhs.omnibus;
 
 import nl.hhs.omnibus.common.Constants;
-import nl.hhs.omnibus.common.Database;
+import nl.hhs.omnibus.data.Database;
 import nl.hhs.omnibus.models.navigation.Menu;
 
 import java.util.Scanner;

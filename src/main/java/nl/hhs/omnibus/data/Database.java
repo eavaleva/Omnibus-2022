@@ -16,7 +16,6 @@ import nl.hhs.omnibus.models.persons.Villain;
 import nl.hhs.omnibus.models.teams.HeroTeam;
 import nl.hhs.omnibus.models.teams.VillainTeam;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -84,8 +83,11 @@ public class Database {
 
         this.heroes = Arrays.asList(batman, catwoman, blackWidow, wolverine, ironMan, thor, hulk, spiderman);
 
-        // TODO - Teams of Heroes
-        this.heroicTeams = new ArrayList<>();
+        // Teams of Heroes
+        HeroTeam theAvengers = new HeroTeam("The Avengers");
+        HeroTeam theFantasticFour = new HeroTeam("The Fantastic Four");
+
+        this.heroicTeams = Arrays.asList(theAvengers, theFantasticFour);
 
         // Villains
         Villain joker = new Villain("Joker", "Gotham City", 49, "Selling Smylex", "If you're good at something, never do it for free");
@@ -99,9 +101,11 @@ public class Database {
 
         this.villains = Arrays.asList(joker, mrFreeze, lokiLaufeyson, abomination, viper, ladyDeathstrike, venom, greenGoblin);
 
-        // TODO - Teams of Villains
+        // Teams of Villains
+        VillainTeam theThunderbolts = new VillainTeam("The Thunderbolts");
+        VillainTeam theSinisterSix = new VillainTeam("The Sinister Six");
 
-        this.villainousTeams = new ArrayList<>();
+        this.villainousTeams = Arrays.asList(theThunderbolts, theSinisterSix);
 
         // Gadgets
         Base batcave = new Base("Batcave", "Batman's cave", batman, "Gotham City");
