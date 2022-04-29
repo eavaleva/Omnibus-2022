@@ -1,5 +1,6 @@
-package nl.hhs.omnibus.common;
+package nl.hhs.omnibus.data;
 
+import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.Identifiable;
 import nl.hhs.omnibus.models.Nameable;
 import nl.hhs.omnibus.models.gadgets.Base;
@@ -28,7 +29,7 @@ public class Database {
     private List<Hero> heroes;
     private List<HeroTeam> heroicTeams;
     private List<Villain> villains;
-    private List<VillainTeam> villainTeams;
+    private List<VillainTeam> villainousTeams;
 
     private Menu menuMain;
 
@@ -83,7 +84,7 @@ public class Database {
 
         this.heroes = Arrays.asList(batman, catwoman, blackWidow, wolverine, ironMan, thor, hulk, spiderman);
 
-        // TODO - Hero Teams
+        // TODO - Teams of Heroes
         this.heroicTeams = new ArrayList<>();
 
         // Villains
@@ -100,7 +101,7 @@ public class Database {
 
         // TODO - Teams of Villains
 
-        this.villainTeams = new ArrayList<>();
+        this.villainousTeams = new ArrayList<>();
 
         // Gadgets
         Base batcave = new Base("Batcave", "Batman's cave", batman, "Gotham City");
@@ -171,14 +172,14 @@ public class Database {
 
         // TODO - Link rivalry between Heroes and Villains
 
-        // TODO - Add Villains and Heroes to Fans
+        // TODO - Setup Favorite Characters of Fans
     }
 
     private void initializeMenus() {
         // Combine the Hero- and Villain Teams into one list
         // for listing the various teams under MenuItem for Teams
         // Sorted by the item's ID.
-        List<Nameable> teams = Stream.of(this.heroicTeams, this.villainTeams)
+        List<Nameable> teams = Stream.of(this.heroicTeams, this.villainousTeams)
             .flatMap(Collection::stream)
             .sorted(Identifiable::compareTo)
             .collect(Collectors.toList());
