@@ -2,7 +2,7 @@ package nl.hhs.omnibus.models.navigation;
 
 /** A basic MenuItem with a label. */
 public abstract class MenuItem {
-    private final String label;
+    private String label;
 
     public MenuItem(String label) {
         this.label = label;
@@ -13,16 +13,10 @@ public abstract class MenuItem {
     /* GETTERS & SETTERS */
 
     public String getLabel() {
-        return label;
+        return this.label;
     }
 
-    /* DATA */
-
-    public static class MenuItems {
-        public static final NavigableMenuItem MI_EXIT = new NavigableMenuItem("Exit");
-
-        public static final NavigableMenuItem MI_PEOPLE_TEAMS = new NavigableMenuItem("Menu People & Teams");
-        public static final NavigableMenuItem MI_GADGETS = new NavigableMenuItem("Menu Gadgets");
-        public static final NavigableMenuItem MI_FIGHTS = new NavigableMenuItem("Menu Fights");
+    public void setLabel(String label) {
+        this.label = label;
     }
 }
