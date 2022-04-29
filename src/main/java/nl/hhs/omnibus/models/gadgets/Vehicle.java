@@ -1,13 +1,14 @@
 package nl.hhs.omnibus.models.gadgets;
 
 import nl.hhs.omnibus.common.Constants;
+import nl.hhs.omnibus.models.EnhancedBeing;
 
 public class Vehicle extends Gadget {
     private String speed;
     private int capacity;
 
-    public Vehicle(String name, String description, String speed, int capacity) {
-        super(name, description);
+    public Vehicle(String name, String description, EnhancedBeing owner, String speed, int capacity) {
+        super(name, description, owner);
 
         this.speed = speed;
         this.capacity = capacity;
@@ -15,19 +16,17 @@ public class Vehicle extends Gadget {
 
     @Override
     public String getDetails(boolean getFullDetails) {
-        if (!getFullDetails) return super.toString();
-
-        return this.toString();
+        return !getFullDetails ? super.toString() : this.toString();
     }
 
     @Override
     public String toString() {
-        StringBuilder details = new StringBuilder(String.format("\n%14s:%03d\n", Constants.ID, this.getId()));
-        details.append(String.format("%14s:%s\n", Constants.NAME, this.getName()));
-        details.append(String.format("%14s:%s\n", Constants.OWNER, this.getOwner().getName()));
-        details.append(String.format("%14s:%s\n", Constants.TYPE, this.getClass().getSimpleName()));
-        details.append(String.format("%14s:%s\n", Constants.SPEED, this.getSpeed()));
-        details.append(String.format("%14s:%d\n", Constants.CAPACITY, this.getCapacity()));
+        StringBuilder details = new StringBuilder(String.format("%s%-14s%03d\n", Constants.SEPARATOR, Constants.ID, this.getId()));
+        details.append(String.format("%-14s%s\n", Constants.NAME, this.getName()));
+        details.append(String.format("%-14s%s\n", Constants.OWNER, this.getOwner().getName()));
+        details.append(String.format("%-14s%s\n", Constants.TYPE, this.getClass().getSimpleName()));
+        details.append(String.format("%-14s%s\n", Constants.SPEED, this.getSpeed()));
+        details.append(String.format("%-14s%d\n%s", Constants.CAPACITY, this.getCapacity(), Constants.SEPARATOR));
 
         return details.toString();
     }
@@ -46,7 +45,7 @@ public class Vehicle extends Gadget {
         return capacity;
     }
 
-    public void setCapacity(int actualCapacity) {
-        this.capacity = actualCapacity;
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }

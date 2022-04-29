@@ -26,15 +26,13 @@ public class NavigableMenuItem extends MenuItem {
      */
     public NavigableMenuItem withPreviousMenu(Menu previousMenu) {
         NavigableMenuItem menuItem = new NavigableMenuItem(this.getLabel());
-
         menuItem.nextMenu = previousMenu;
 
         return menuItem;
     }
 
-    @Override
-    public void executeAction() {
-        // When no nextMenu is defined, close the application.
+    /** Navigates to the provided Menu or closes the application of no Menu is provided. */
+    protected void navigateBack() {
         if (this.nextMenu == null) {
             System.out.println(Constants.CLOSING_APPLICATION_MESSAGE);
             System.exit(0);
@@ -42,6 +40,11 @@ public class NavigableMenuItem extends MenuItem {
             return;
         }
         Omnibus.goToMenu(this.nextMenu);
+    }
+
+    @Override
+    public void executeAction() {
+        this.navigateBack();
     }
 
     /* GETTERS & SETTERS */

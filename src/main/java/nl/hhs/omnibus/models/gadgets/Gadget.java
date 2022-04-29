@@ -7,10 +7,11 @@ public abstract class Gadget extends Nameable {
     private String description;
     private EnhancedBeing owner;
 
-    public Gadget(String name, String description) {
+    public Gadget(String name, String description, EnhancedBeing owner) {
         super(name);
 
         this.description = description;
+        this.owner = owner;
     }
 
     private boolean isOwner(EnhancedBeing enhancedBeing) {
@@ -23,8 +24,8 @@ public abstract class Gadget extends Nameable {
         return this.description;
     }
 
-    public void setDescription(String actualDescription) {
-        this.description = actualDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public EnhancedBeing getOwner() {
