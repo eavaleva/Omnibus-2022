@@ -19,6 +19,7 @@ import nl.hhs.omnibus.models.persons.Villain;
 import nl.hhs.omnibus.models.teams.HeroTeam;
 import nl.hhs.omnibus.models.teams.VillainTeam;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -194,7 +195,7 @@ public class Database {
 
         // TODO - Link rivalry between Heroes and Villains
 
-        // hero rivals
+        // link hero rivals
         batman.addAllRivals(venom,abomination);
         catwoman.addAllRivals(joker,deadPool,venom);
         blackWidow.addAllRivals(abomination,greenGoblin,deadPool,joker);
@@ -204,14 +205,14 @@ public class Database {
         hulk.addAllRivals(deadPool,ladyDeathstrike,joker,venom);
         spiderman.addAllRivals(venom,deadPool,lokiLaufeyson,mrFreeze);
 
-        // hero archRivals
+        // link hero archRivals
         batman.setArchRival(joker);
         catwoman.setArchRival(ladyDeathstrike);
         hulk.setArchRival(abomination);
         thor.setArchRival(lokiLaufeyson);
         spiderman.setArchRival(greenGoblin);
 
-        // villain rivals
+        // link villain rivals
         joker.addAllRivals(blackWidow,catwoman,ironMan);
         mrFreeze.addAllRivals(catwoman,ironMan,hulk,spiderman);
         lokiLaufeyson.addAllRivals(thor,wolverine,batman);
@@ -221,7 +222,7 @@ public class Database {
         venom.addAllRivals(wolverine,spiderman,ironMan);
         greenGoblin.addAllRivals(batman,catwoman,wolverine);
 
-        // villain archRivals
+        // link villain archRivals
         joker.setArchRival(batman);
         lokiLaufeyson.setArchRival(hulk);
         abomination.setArchRival(hulk);
@@ -233,17 +234,16 @@ public class Database {
         jordyHuizer.addAllFavorites(spiderman,catwoman,batman,joker);
 
 
-        // TODO - Put heroes in Teams
+        // form a team of heroes
         theAvengers.addAllMembers(hulk,ironMan,batman,blackWidow);
         theFantasticFour.addAllMembers(thor,hulk,catwoman,spiderman);
 
-        // TODO - Put villains in Teams
+        // form a team of villains
         theThunderbolts.addAllMembers(ladyDeathstrike,greenGoblin,venom,deadPool);
         jokerLeagueOfAnarchy.addAllMembers(joker,mrFreeze,deadPool,greenGoblin);
 
         // SoloFights
         SoloFight batmanVsJoker1 = new SoloFight(batman, joker, true);
-
         SoloFight batmanVsJoker2 = new SoloFight(batman, joker, false);
 
         this.soloFights = new ArrayList<>(Arrays.asList(batmanVsJoker1, batmanVsJoker2));
