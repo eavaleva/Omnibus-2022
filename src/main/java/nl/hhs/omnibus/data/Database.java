@@ -35,6 +35,7 @@ public class Database {
     private List<SoloFight> soloFights;
     private List<TeamFight> teamFights;
 
+
     private Menu menuMain;
     private Menu menuFights;
 
@@ -108,21 +109,21 @@ public class Database {
 
         // Villains
         Villain joker = new Villain("Joker", "Gotham City", 49, "Selling Smylex", "If you're good at something, never do it for free");
-        Villain mrFreeze = new Villain("Mr. Freeze", "Gotham City", 19, "destroy everything Batman loves");
-        Villain lokiLaufeyson = new Villain("Loki Laufeyson", "Asgard", 27, "take over the planet");
+        Villain mrFreeze = new Villain("Mr. Freeze", "Gotham City", 19, "Destroy everything Batman loves");
+        Villain lokiLaufeyson = new Villain("Loki Laufeyson", "Asgard", 27, "Take over the planet");
         Villain abomination = new Villain("The Abomination", "Harlem", 50, "Kill the Hulk! Gain more power in order to be able to become the most powerful warrior on Earth by killing everyone who stands in his way.");
-        Villain viper = new Villain("Viper", "None", 35, "");
-        Villain ladyDeathstrike = new Villain("Lady Deathstrike", "location", 30, "");
-        Villain venom = new Villain("Venom", "New York", 55, "");
+        Villain deadPool = new Villain(" Evil Deadpool", "England", 35, "Bring hell to humanity!");
+        Villain ladyDeathstrike = new Villain("Lady Deathstrike", "Osaka", 30, "Destroy everyone!");
+        Villain venom = new Villain("Venom", "New York", 55, "Destroy humanity!");
         Villain greenGoblin = new Villain("Green Goblin", "New York", 25, "To gain full control over Spiderman's mind.");
 
-        this.villains = Arrays.asList(joker, mrFreeze, lokiLaufeyson, abomination, viper, ladyDeathstrike, venom, greenGoblin);
+        this.villains = Arrays.asList(joker, mrFreeze, lokiLaufeyson, abomination, deadPool, ladyDeathstrike, venom, greenGoblin);
 
         // Teams of Villains
         VillainTeam theThunderbolts = new VillainTeam("The Thunderbolts");
-        VillainTeam theSinisterSix = new VillainTeam("The Sinister Six");
+        VillainTeam jokerLeagueOfAnarchy = new VillainTeam("Joker League of Anarchy");
 
-        this.villainousTeams = Arrays.asList(theThunderbolts, theSinisterSix);
+        this.villainousTeams = Arrays.asList(theThunderbolts, jokerLeagueOfAnarchy);
 
         // Gadgets
         Base batcave = new Base("Batcave", "Batman's cave", batman, "Gotham City");
@@ -132,7 +133,7 @@ public class Database {
         Base bannerB773hideout = new Base("Banner Hideout B-733", "An underground grotto located beneath a " + "lake in the Chihuahuan Desert", hulk, "New Mexico");
         Vehicle batmobile = new Vehicle("Batmobile", "Batman's supercar", batman, "380 km/h", 1);
         Vehicle blackWidowMotor = new Vehicle("Black Widow's Motorcycle", "Fast Harley-Davidson bike", blackWidow, "350 km/h", 2);
-        Vehicle dodgeViper = new Vehicle("Dodge Viper", "Fast car", viper, "480 km/h", 2);
+        Vehicle dodgeViper = new Vehicle("Dodge Viper", "Fast car", deadPool, "480 km/h", 2);
         Vehicle zephyrOne = new Vehicle("Zephyr One", "Is a mobile airborne command plane", hulk, "1875 km/h", 30);
         Vehicle f22Raptor = new Vehicle("F-22 Raptor", "A single-seat, twin-engine fifth-generation super maneuverable fighter aircraft that uses stealth technology.", ironMan, "1845 km/h", 1);
         Weapon rocketPropelledGrenade = new Weapon("Rocket propelled grenade", "Click, BOOM!", batman, 75);
@@ -193,20 +194,63 @@ public class Database {
 
         // TODO - Link rivalry between Heroes and Villains
 
-        // TODO - Setup Favorite Characters of Fans
+        // hero rivals
+        batman.addAllRivals(venom,abomination);
+        catwoman.addAllRivals(joker,deadPool,venom);
+        blackWidow.addAllRivals(abomination,greenGoblin,deadPool,joker);
+        wolverine.addAllRivals(abomination,mrFreeze,ladyDeathstrike);
+        ironMan.addAllRivals(joker,mrFreeze,venom,greenGoblin);
+        thor.addAllRivals(abomination,greenGoblin,mrFreeze,venom,deadPool);
+        hulk.addAllRivals(deadPool,ladyDeathstrike,joker,venom);
+        spiderman.addAllRivals(venom,deadPool,lokiLaufeyson,mrFreeze);
 
-        // TODO - Link heroes and villians in Teams
+        // hero archRivals
+        batman.setArchRival(joker);
+        catwoman.setArchRival(ladyDeathstrike);
+        hulk.setArchRival(abomination);
+        thor.setArchRival(lokiLaufeyson);
+        spiderman.setArchRival(greenGoblin);
+
+        // villain rivals
+        joker.addAllRivals(blackWidow,catwoman,ironMan);
+        mrFreeze.addAllRivals(catwoman,ironMan,hulk,spiderman);
+        lokiLaufeyson.addAllRivals(thor,wolverine,batman);
+        ladyDeathstrike.addAllRivals(catwoman,blackWidow,ironMan,spiderman);
+        abomination.addAllRivals(thor,spiderman,batman,blackWidow);
+        deadPool.addAllRivals(spiderman,batman,wolverine);
+        venom.addAllRivals(wolverine,spiderman,ironMan);
+        greenGoblin.addAllRivals(batman,catwoman,wolverine);
+
+        // villain archRivals
+        joker.setArchRival(batman);
+        lokiLaufeyson.setArchRival(hulk);
+        abomination.setArchRival(hulk);
+        greenGoblin.setArchRival(spiderman);
+
+        // TODO - Setup Favorite Characters of Fans
+        eleonoraAvaleva.addAllFavorites(ladyDeathstrike,blackWidow,thor,lokiLaufeyson);
+        oscarWellner.addAllFavorites(joker,batman,blackWidow, greenGoblin);
+        jordyHuizer.addAllFavorites(spiderman,catwoman,batman,joker);
+
+
+        // TODO - Put heroes in Teams
+        theAvengers.addAllMembers(hulk,ironMan,batman,blackWidow);
+        theFantasticFour.addAllMembers(thor,hulk,catwoman,spiderman);
+
+        // TODO - Put villains in Teams
+        theThunderbolts.addAllMembers(ladyDeathstrike,greenGoblin,venom,deadPool);
+        jokerLeagueOfAnarchy.addAllMembers(joker,mrFreeze,deadPool,greenGoblin);
 
         // SoloFights
         SoloFight batmanVsJoker1 = new SoloFight(batman, joker, true);
-        
+
         SoloFight batmanVsJoker2 = new SoloFight(batman, joker, false);
 
         this.soloFights = Arrays.asList(batmanVsJoker1, batmanVsJoker2);
 
         // TeamFights
         TeamFight theAvengersVSTheThunderbolts = new TeamFight(theAvengers, theThunderbolts, true);
-        TeamFight theFantasticFourVSTheSinisterSix = new TeamFight(theFantasticFour, theSinisterSix, false);
+        TeamFight theFantasticFourVSTheSinisterSix = new TeamFight(theFantasticFour, jokerLeagueOfAnarchy, false);
 
         this.teamFights = Arrays.asList(theAvengersVSTheThunderbolts, theFantasticFourVSTheSinisterSix);
     }
