@@ -202,13 +202,13 @@ public class Database {
         
         SoloFight batmanVsJoker2 = new SoloFight(batman, joker, false);
 
-        this.soloFights = Arrays.asList(batmanVsJoker1, batmanVsJoker2);
+        this.soloFights = new ArrayList<>(Arrays.asList(batmanVsJoker1, batmanVsJoker2));
 
         // TeamFights
         TeamFight theAvengersVSTheThunderbolts = new TeamFight(theAvengers, theThunderbolts, true);
         TeamFight theFantasticFourVSTheSinisterSix = new TeamFight(theFantasticFour, theSinisterSix, false);
 
-        this.teamFights = Arrays.asList(theAvengersVSTheThunderbolts, theFantasticFourVSTheSinisterSix);
+        this.teamFights = new ArrayList<>(Arrays.asList(theAvengersVSTheThunderbolts, theFantasticFourVSTheSinisterSix));
     }
 
     private void initializeMenus() {
