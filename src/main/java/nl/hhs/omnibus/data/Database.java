@@ -3,10 +3,13 @@ package nl.hhs.omnibus.data;
 import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.Identifiable;
 import nl.hhs.omnibus.models.Nameable;
+import nl.hhs.omnibus.models.fight.SoloFight;
+import nl.hhs.omnibus.models.fight.TeamFight;
 import nl.hhs.omnibus.models.gadgets.Base;
 import nl.hhs.omnibus.models.gadgets.Gadget;
 import nl.hhs.omnibus.models.gadgets.Vehicle;
 import nl.hhs.omnibus.models.gadgets.Weapon;
+import nl.hhs.omnibus.models.navigation.FightMenuItem;
 import nl.hhs.omnibus.models.navigation.ListableMenuItem;
 import nl.hhs.omnibus.models.navigation.Menu;
 import nl.hhs.omnibus.models.navigation.NavigableMenuItem;
@@ -29,12 +32,26 @@ public class Database {
     private List<HeroTeam> heroicTeams;
     private List<Villain> villains;
     private List<VillainTeam> villainousTeams;
+    private List<SoloFight> soloFights;
+    private List<TeamFight> teamFights;
 
     private Menu menuMain;
+    private Menu menuFights;
 
     public Database() {
         this.initializeData();
         this.initializeMenus();
+    }
+
+    public void updateFightsList() {
+        this.menuFights.removeOptionByLabel("List Fights");
+        this.menuFights.removeOptionByLabel(Constants.SEARCH_LABEL);
+
+        ListableMenuItem lmiFights = new ListableMenuItem("List Fights", "Fights:", fights());
+        ListableMenuItem lmiSearchFights = lmiFights.makeSelectable(this.menuFights);
+
+        this.menuFights.addOptionOnIndex(lmiFights, 1);
+        this.menuFights.addOptionOnIndex(lmiSearchFights, 3);
     }
 
     private void initializeData() {
@@ -55,20 +72,20 @@ public class Database {
         Fan aldusHuxley = new Fan("Aldus Huxley");
 
         this.fans = Arrays.asList(
-            oscarWellner,
-            eleonoraAvaleva,
-            jordyHuizer,
-            milevaMaric,
-            maryCurieary,
-            rogerPenrose,
-            jamesGosling,
-            joseSaramago,
-            titosPullo,
-            guidoVanRossum,
-            dennisRitchie,
-            adaLovelace,
-            albertCamus,
-            aldusHuxley
+                oscarWellner,
+                eleonoraAvaleva,
+                jordyHuizer,
+                milevaMaric,
+                maryCurieary,
+                rogerPenrose,
+                jamesGosling,
+                joseSaramago,
+                titosPullo,
+                guidoVanRossum,
+                dennisRitchie,
+                adaLovelace,
+                albertCamus,
+                aldusHuxley
         );
 
         // Heroes
@@ -141,42 +158,57 @@ public class Database {
         Weapon razorBats = new Weapon("Razor Bats", "Osborn uses these drones to slice his enemies.", greenGoblin, 0);
 
         this.gadgets = Arrays.asList(
-            batcave,
-            underwaterBase,
-            jokersFunHouse,
-            lokiPalace,
-            bannerB773hideout,
-            batmobile,
-            blackWidowMotor,
-            dodgeViper,
-            zephyrOne,
-            f22Raptor,
-            rocketPropelledGrenade,
-            batarang,
-            whip,
-            caltrop,
-            teaserDisks,
-            dualBatons,
-            adamantiumClaws,
-            healingPowers,
-            flameThrower,
-            missiles,
-            jarnbjorn,
-            ultimateMjolnir,
-            utilityBelt,
-            acidFlower,
-            razorCards,
-            iceGun,
-            magicSword,
-            cyberpathy,
-            weaponV,
-            pumpkinBombs,
-            razorBats
+                batcave,
+                underwaterBase,
+                jokersFunHouse,
+                lokiPalace,
+                bannerB773hideout,
+                batmobile,
+                blackWidowMotor,
+                dodgeViper,
+                zephyrOne,
+                f22Raptor,
+                rocketPropelledGrenade,
+                batarang,
+                whip,
+                caltrop,
+                teaserDisks,
+                dualBatons,
+                adamantiumClaws,
+                healingPowers,
+                flameThrower,
+                missiles,
+                jarnbjorn,
+                ultimateMjolnir,
+                utilityBelt,
+                acidFlower,
+                razorCards,
+                iceGun,
+                magicSword,
+                cyberpathy,
+                weaponV,
+                pumpkinBombs,
+                razorBats
         );
 
         // TODO - Link rivalry between Heroes and Villains
 
         // TODO - Setup Favorite Characters of Fans
+
+        // TODO - Link heroes and villians in Teams
+
+        // SoloFights
+        SoloFight batmanVsJoker1 = new SoloFight(batman, joker, true);
+        
+        SoloFight batmanVsJoker2 = new SoloFight(batman, joker, false);
+
+        this.soloFights = Arrays.asList(batmanVsJoker1, batmanVsJoker2);
+
+        // TeamFights
+        TeamFight theAvengersVSTheThunderbolts = new TeamFight(theAvengers, theThunderbolts, true);
+        TeamFight theFantasticFourVSTheSinisterSix = new TeamFight(theFantasticFour, theSinisterSix, false);
+
+        this.teamFights = Arrays.asList(theAvengersVSTheThunderbolts, theFantasticFourVSTheSinisterSix);
     }
 
     private void initializeMenus() {
@@ -200,7 +232,7 @@ public class Database {
         this.menuMain = new Menu("Main Menu");
         Menu menuPeople = new Menu("People Menu");
         Menu menuGadgets = new Menu("Gadgets Menu");
-        Menu menuFights = new Menu("Fights Menu");
+        this.menuFights = new Menu("Fights Menu");
 
         // Common MenuItems
         NavigableMenuItem miExit = new NavigableMenuItem("Exit");
@@ -221,22 +253,32 @@ public class Database {
         ListableMenuItem lmiGadgets = new ListableMenuItem("List Gadgets", "Gadgets:", this.gadgets);
         ListableMenuItem lmiSearchGadgets = lmiGadgets.makeSelectable(menuGadgets);
 
+        // Fight MenuItems
+        ListableMenuItem lmiFights = new ListableMenuItem("List Fights", "Fights:", fights());
+        FightMenuItem fightMenuItem = new FightMenuItem("New Fights...", this.menuFights);
+        ListableMenuItem lmiSearchFights = lmiFights.makeSelectable(this.menuFights);
+
         // Tying all the Menu's and MenuItems together
         this.menuMain.addAllOptions(miExit, miPeopleAndTeams, miGadgets, miFights);
         menuPeople.addAllOptions(
-            miExit.withPreviousMenu(this.menuMain),
-            lmiHeroes.withPreviousMenu(menuPeople),
-            lmiVillains.withPreviousMenu(menuPeople),
-            lmiTeams.withPreviousMenu(menuPeople),
-            lmiFans.withPreviousMenu(menuPeople),
-            lmiSearchPeople.withPreviousMenu(menuPeople)
+                miExit.withPreviousMenu(this.menuMain),
+                lmiHeroes.withPreviousMenu(menuPeople),
+                lmiVillains.withPreviousMenu(menuPeople),
+                lmiTeams.withPreviousMenu(menuPeople),
+                lmiFans.withPreviousMenu(menuPeople),
+                lmiSearchPeople.withPreviousMenu(menuPeople)
         );
         menuGadgets.addAllOptions(
-            miExit.withPreviousMenu(this.menuMain),
-            lmiGadgets.withPreviousMenu(menuGadgets),
-            lmiSearchGadgets
+                miExit.withPreviousMenu(this.menuMain),
+                lmiGadgets.withPreviousMenu(menuGadgets),
+                lmiSearchGadgets
         );
-        menuFights.addAllOptions(miExit.withPreviousMenu(this.menuMain));
+        this.menuFights.addAllOptions(
+            miExit.withPreviousMenu(this.menuMain),
+            lmiFights.withPreviousMenu(this.menuFights),
+            fightMenuItem,
+            lmiSearchFights
+        );
     }
 
     /* GETTERS & SETTERS */
@@ -244,4 +286,37 @@ public class Database {
     public Menu getMainMenu() {
         return this.menuMain;
     }
+
+    /** Combine Solo- and TeamFights lists into one list for searching for a Fight Sorted by the item's ID. */
+    public List<Nameable> fights() {
+        return Stream.of(this.soloFights, this.teamFights)
+                .flatMap(Collection::stream)
+                .sorted(Identifiable::compareTo)
+                .collect(Collectors.toList());
+    }
+
+    public List<Hero> getHeroes() {
+        return this.heroes;
+    }
+
+    public List<HeroTeam> getHeroicTeams() {
+        return this.heroicTeams;
+    }
+
+    public List<Villain> getVillains() {
+        return this.villains;
+    }
+
+    public List<VillainTeam> getVillainousTeams() {
+        return this.villainousTeams;
+    }
+
+    public void addSoloFight(SoloFight fight) {
+        this.soloFights.add(fight);
+    }
+
+    public void addTeamFight(TeamFight fight) {
+        this.teamFights.add(fight);
+    }
 }
+

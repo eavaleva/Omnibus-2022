@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class Menu {
     private final String label;
-    private final List<MenuItem> options = new ArrayList<>();
+    private List<MenuItem> options = new ArrayList<>(10);
 
     public Menu(String label) {
         this.label = label;
@@ -48,18 +48,6 @@ public class Menu {
         this.options.get(index).executeAction();
     }
 
-    /** Adds multiple MenuItems as options to a Menu. */
-    public void addAllOptions(MenuItem... options) {
-        Arrays.stream(options).forEach(this::addOption);
-    }
-
-    /** Adds a single MenuItem as option to a Menu when it is not already an option of the same Menu. */
-    public void addOption(MenuItem option) {
-        if (this.options.contains(option)) return;
-
-        this.options.add(option);
-    }
-
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder(String.format("\n%s:\n", this.label));
@@ -74,5 +62,37 @@ public class Menu {
         stringBuilder.append(String.format(" (%d)\t%s\n", 0, this.options.get(0).getLabel()));
 
         return stringBuilder.toString();
+    }
+
+    /* GETTERS & SETTERS */
+
+    public List<MenuItem> getOptions() {
+        return this.options;
+    }
+
+    /** Adds multiple MenuItems as options to a Menu. */
+    public void addAllOptions(MenuItem... options) {
+        Arrays.stream(options).forEach(this::addOption);
+    }
+
+    /** Adds a single MenuItem as option to a Menu when it is not already an option of the same Menu. */
+    public void addOption(MenuItem option) {
+        if (this.options.contains(option)) return;
+
+        this.options.add(option);
+    }
+
+    public void addOptionOnIndex(MenuItem option, int index) {
+        if (this.options.contains(option)) return;
+
+        this.options.add(index, option);
+    }
+
+    public void removeOptionByLabel(String menuItemLabel) {
+        for (MenuItem menuItem: new ArrayList<>(this.options)) {
+            if (!menuItem.getLabel().equals(menuItemLabel)) continue;
+
+            this.options.remove(menuItem);
+        }
     }
 }

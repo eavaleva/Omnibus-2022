@@ -3,12 +3,12 @@ package nl.hhs.omnibus.models.persons;
 import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.EnhancedBeing;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Villain extends EnhancedBeing {
     private final String evilPlan;
-    private final Map<Hero, Boolean> rivals = new HashMap<>();
+    private Hero archRival;
+    private final Set<Hero> rivals = new HashSet<>();
 
     public Villain(String name, String mostActiveLocation, int powerLevel, String evilPlan) {
         super(name, mostActiveLocation, powerLevel, String.format(Constants.DEFAULT_ONE_LINER, Villain.class.getSimpleName()));
@@ -38,33 +38,21 @@ public class Villain extends EnhancedBeing {
         StringBuilder rivals = new StringBuilder(String.format("\n%s\n", Constants.RIVALS_HEADER));
         StringBuilder archRival = new StringBuilder(String.format("\n%s\n", Constants.ARCH_RIVALS_HEADER));
 
-        // Add all rivals and the arch rival to their own lists
-        for (Map.Entry<Hero, Boolean> entry : this.rivals.entrySet()) {
-            Hero rival = entry.getKey();
-            boolean isArchRival = entry.getValue();
-
-            if (isArchRival) {
-                archRival.append(String.format("\t%s\n", rival.getName()));
-
-                continue;
-            }
+        // Add all rivals
+        for (Hero rival : this.rivals) {
             rivals.append(String.format("\t%s\n", rival.getName()));
         }
 
-        // When a Villain has rivals no
+        // When a Hero has rivals no
         if (this.rivals.size() == 0) {
             rivals.append(String.format("\t%s\n", Constants.NO_RIVALS));
-            archRival.append(String.format("\t%s\n", Constants.NO_ARCH_RIVALS));
         }
 
-        // When a Villain has no arch rival
-        if (!this.rivals.containsValue(true) && !archRival.toString().contains(Constants.NO_ARCH_RIVALS)) {
+        // When a Hero has no arch rival
+        if (this.archRival == null) {
             archRival.append(String.format("\t%s\n", Constants.NO_ARCH_RIVALS));
-        }
-
-        // When a Villain has no regular rivals (but does have an arch rival)
-        if (!this.rivals.containsValue(false) && !rivals.toString().contains(Constants.NO_RIVALS)) {
-            rivals.append(String.format("\t%s\n", Constants.NO_RIVALS));
+        } else {
+            archRival.append(String.format("\t%s\n", this.archRival.getName()));
         }
         details.append(rivals);
         details.append(archRival);
@@ -73,13 +61,31 @@ public class Villain extends EnhancedBeing {
         return details.toString();
     }
 
-    /* GETTERS & SETTERS */
+    public int getPowerLevel(Hero potentialArchRival) {
+        int powerLevel = super.getPowerLevel();
+        int archRivalBonus = 0;
 
-    public void addAllRivals(Map<Hero, Boolean> rivals) {
-        rivals.forEach(this::addRival);
+        if (Objects.equals(this.archRival, potentialArchRival)) {
+            archRivalBonus = 30;
+        }
+        return powerLevel + archRivalBonus;
     }
 
-    public void addRival(Hero rival, boolean isArchRival) {
-        this.rivals.put(rival, isArchRival);
+    /* GETTERS & SETTERS */
+
+    public Hero getArchRival() {
+        return this.archRival;
+    }
+
+    public void setArchRival(Hero archRival) {
+        this.archRival = archRival;
+    }
+
+    public void addAllRivals(Hero... rivals) {
+        Arrays.stream(rivals).forEach(this::addRival);
+    }
+
+    public void addRival(Hero rival) {
+        this.rivals.add(rival);
     }
 }

@@ -2,7 +2,7 @@ package nl.hhs.omnibus.models;
 
 public abstract class Nameable extends Identifiable {
     /** The name of an individual object. */
-    private final String name;
+    private String name;
 
     protected Nameable(String name) {
         super();
@@ -34,5 +34,9 @@ public abstract class Nameable extends Identifiable {
 
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -45,22 +45,6 @@ public class ListableMenuItem extends NavigableMenuItem {
         this.makeSelection = false;
     }
 
-    /**
-     * Prints the list header and the simple details of all the items in the list,
-     * and then goes back to the menu.
-     */
-    protected void printList() {
-        StringBuilder listString = new StringBuilder(String.format("\n%s\n", this.listHeader));
-
-        Arrays.stream(this.items).forEach(item -> listString.append(String.format("%s\n", item.getDetails())));
-
-        // Show an alternative message when there are no items in the list
-        if (this.items.length == 0) {
-            listString.append(String.format(Constants.NO_ITEMS_ACTIONABLE, this.makeSelection ? Constants.SELECT_ACTION : Constants.SHOW_ACTION));
-        }
-        System.out.print(listString);
-    }
-
     @Override
     public ListableMenuItem withPreviousMenu(Menu previousMenu) {
         ListableMenuItem menuItem = new ListableMenuItem(this.getLabel(), this.listHeader, Arrays.asList(this.items), this.makeSelection);
@@ -85,7 +69,7 @@ public class ListableMenuItem extends NavigableMenuItem {
 
     @Override
     public void executeAction() {
-        this.printList();
+        ChooseOpponent.showOptions(this.items, this.listHeader, this.makeSelection);
 
         if (this.makeSelection) {
             this.makeSelection();
@@ -96,7 +80,7 @@ public class ListableMenuItem extends NavigableMenuItem {
     /** Selects an item from the list to print the full details of. */
     private void makeSelection() {
         try {
-            Nameable item = ChooseOpponent.chooseItem(Arrays.asList(this.items));
+            Nameable item = ChooseOpponent.chooseItem(this.items);
 
             if (item == null){
                 return;

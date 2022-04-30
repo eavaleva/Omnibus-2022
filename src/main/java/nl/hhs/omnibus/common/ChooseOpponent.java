@@ -5,14 +5,15 @@ import nl.hhs.omnibus.models.Nameable;
 import nl.hhs.omnibus.models.exceptions.NoResultsException;
 import nl.hhs.omnibus.models.exceptions.TooManyResultsException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ChooseOpponent {
-    //TODO: List might need to be changed to Array
-    public static Nameable chooseItem(List<Nameable> choices) {
+    public static Nameable chooseItem(Nameable[] choices) {
         // When no items are in the list, skip the selection process
-        if (choices.size() == 0) {
+        if (choices.length == 0) {
             return null;
         }
         System.out.print(Constants.MAKE_LIST_SELECTION_MESSAGE);
@@ -31,9 +32,10 @@ public class ChooseOpponent {
 
         // Find an item in the list that either matches the given name or ID,
         // based on whether the parsing of the ID to an Integer was successful
-        List<Nameable> foundItems = choices.stream()
+        List<Nameable> foundItems = Arrays.stream(choices)
                 .filter(item -> inputInteger == Integer.MAX_VALUE ? item.getName().toLowerCase().contains(input.toLowerCase()) : item.getId() == inputInteger)
                 .collect(Collectors.toList());
+
         return determineSearchResults(foundItems, input, inputInteger != Integer.MAX_VALUE);
     }
 
@@ -53,5 +55,18 @@ public class ChooseOpponent {
 
         // When there are no search results
         throw new NoResultsException(itemFoundBy, query);
+    }
+
+    /** Prints a list header and the simple details of all the items in the list. */
+    public static void showOptions(Nameable[] options, String listHeader, boolean isSelecting) {
+        StringBuilder listString = new StringBuilder(String.format("\n%s\n", listHeader));
+
+        Arrays.stream(options).forEach(item -> listString.append(String.format("%s\n", item.getDetails())));
+
+        // Show an alternative message when there are no items in the list
+        if (options.length == 0) {
+            listString.append(String.format(Constants.NO_ITEMS_ACTIONABLE, isSelecting ? Constants.SELECT_ACTION : Constants.SHOW_ACTION));
+        }
+        System.out.print(listString);
     }
 }
