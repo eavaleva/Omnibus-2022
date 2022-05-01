@@ -1,6 +1,6 @@
 package nl.hhs.omnibus.models.navigation;
 
-import nl.hhs.omnibus.common.ChooseOpponent;
+import nl.hhs.omnibus.common.ItemSelector;
 import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.Nameable;
 import nl.hhs.omnibus.models.exceptions.NoResultsException;
@@ -69,7 +69,7 @@ public class ListableMenuItem extends NavigableMenuItem {
 
     @Override
     public void executeAction() {
-        ChooseOpponent.showOptions(this.items, this.listHeader, this.makeSelection);
+        ItemSelector.showItems(this.items, this.listHeader, this.makeSelection);
 
         if (this.makeSelection) {
             this.makeSelection();
@@ -80,7 +80,7 @@ public class ListableMenuItem extends NavigableMenuItem {
     /** Selects an item from the list to print the full details of. */
     private void makeSelection() {
         try {
-            Nameable item = ChooseOpponent.chooseItem(this.items);
+            Nameable item = ItemSelector.chooseItem(this.items);
 
             if (item == null){
                 return;

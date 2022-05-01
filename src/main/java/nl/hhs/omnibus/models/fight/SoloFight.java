@@ -1,7 +1,7 @@
 package nl.hhs.omnibus.models.fight;
 
 import nl.hhs.omnibus.Omnibus;
-import nl.hhs.omnibus.common.ChooseOpponent;
+import nl.hhs.omnibus.common.ItemSelector;
 import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.common.UserInputParsing;
 import nl.hhs.omnibus.models.EnhancedBeing;
@@ -18,11 +18,13 @@ public class SoloFight extends Nameable {
     public SoloFight() {
         super(null);
 
-        ChooseOpponent.showOptions(Omnibus.database.getHeroes().toArray(new Nameable[0]), "Heroes:", true);
-        Hero hero = (Hero) ChooseOpponent.chooseItem(Omnibus.database.getHeroes().toArray(new Nameable[0]));
+        // Select a Hero opponent for a new Fight
+        ItemSelector.showItems(Omnibus.database.getHeroes().toArray(new Nameable[0]), "Heroes:", true);
+        Hero hero = (Hero) ItemSelector.chooseItem(Omnibus.database.getHeroes().toArray(new Nameable[0]));
 
-        ChooseOpponent.showOptions(Omnibus.database.getVillains().toArray(new Nameable[0]), "Villains:", true);
-        Villain villain = (Villain) ChooseOpponent.chooseItem(Omnibus.database.getVillains().toArray(new Nameable[0]));
+        // Select a Villain opponent for a new Fight
+        ItemSelector.showItems(Omnibus.database.getVillains().toArray(new Nameable[0]), "Villains:", true);
+        Villain villain = (Villain) ItemSelector.chooseItem(Omnibus.database.getVillains().toArray(new Nameable[0]));
 
         if (hero == null || villain == null) {
             throw new MissingOpponentException();

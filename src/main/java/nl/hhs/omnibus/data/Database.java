@@ -158,6 +158,7 @@ public class Database {
         Weapon weaponV = new Weapon("Weapon V ", "In addition to wielding military ordinance, Weapon V operatives can use their symbiotes to manifest claws, fangs, spikes, tendrils, and blades.", venom, 18);
         Weapon pumpkinBombs = new Weapon("Pumpkin Bombs", "Osborn uses these specialized bombs to blow up or disintegrate his targets.", greenGoblin, 14);
         Weapon razorBats = new Weapon("Razor Bats", "Osborn uses these drones to slice his enemies.", greenGoblin, 16);
+
         this.gadgets = Arrays.asList(
                 batcave,
                 underwaterBase,

@@ -5,12 +5,11 @@ import nl.hhs.omnibus.models.Nameable;
 import nl.hhs.omnibus.models.exceptions.NoResultsException;
 import nl.hhs.omnibus.models.exceptions.TooManyResultsException;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ChooseOpponent {
+public class ItemSelector {
     public static Nameable chooseItem(Nameable[] choices) {
         // When no items are in the list, skip the selection process
         if (choices.length == 0) {
@@ -36,11 +35,11 @@ public class ChooseOpponent {
                 .filter(item -> inputInteger == Integer.MAX_VALUE ? item.getName().toLowerCase().contains(input.toLowerCase()) : item.getId() == inputInteger)
                 .collect(Collectors.toList());
 
-        return determineSearchResults(foundItems, input, inputInteger != Integer.MAX_VALUE);
+        return determineSelectionResult(foundItems, input, inputInteger != Integer.MAX_VALUE);
     }
 
     /** Return an item whether it has been found by ID or name, and otherwise shows a warning to a user. */
-    private static Nameable determineSearchResults(List<Nameable> items, String query, boolean selectedById) {
+    private static Nameable determineSelectionResult(List<Nameable> items, String query, boolean selectedById) {
         String itemFoundBy = selectedById ? "ID" : "Name";
 
         // When there is exactly 1 search result
@@ -58,7 +57,7 @@ public class ChooseOpponent {
     }
 
     /** Prints a list header and the simple details of all the items in the list. */
-    public static void showOptions(Nameable[] options, String listHeader, boolean isSelecting) {
+    public static void showItems(Nameable[] options, String listHeader, boolean isSelecting) {
         StringBuilder listString = new StringBuilder(String.format("\n%s\n", listHeader));
 
         Arrays.stream(options).forEach(item -> listString.append(String.format("%s\n", item.getDetails())));

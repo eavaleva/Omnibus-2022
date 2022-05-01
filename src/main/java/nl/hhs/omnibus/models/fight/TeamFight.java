@@ -1,7 +1,7 @@
 package nl.hhs.omnibus.models.fight;
 
 import nl.hhs.omnibus.Omnibus;
-import nl.hhs.omnibus.common.ChooseOpponent;
+import nl.hhs.omnibus.common.ItemSelector;
 import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.common.UserInputParsing;
 import nl.hhs.omnibus.models.Nameable;
@@ -18,11 +18,13 @@ public class TeamFight extends Nameable {
     public TeamFight() {
         super(null);
 
-        ChooseOpponent.showOptions(Omnibus.database.getHeroicTeams().toArray(new Nameable[0]), "Heroic Teams:", true);
-        HeroTeam heroes = (HeroTeam) ChooseOpponent.chooseItem(Omnibus.database.getHeroicTeams().toArray(new Nameable[0]));
+        // Select a Team of Heroes as opponent for a new Fight
+        ItemSelector.showItems(Omnibus.database.getHeroicTeams().toArray(new Nameable[0]), "Heroic Teams:", true);
+        HeroTeam heroes = (HeroTeam) ItemSelector.chooseItem(Omnibus.database.getHeroicTeams().toArray(new Nameable[0]));
 
-        ChooseOpponent.showOptions(Omnibus.database.getVillainousTeams().toArray(new Nameable[0]), "Villainous Teams:", true);
-        VillainTeam villains = (VillainTeam) ChooseOpponent.chooseItem(Omnibus.database.getVillainousTeams().toArray(new Nameable[0]));
+        // Select a Team of Villains as opponent for a new Fight
+        ItemSelector.showItems(Omnibus.database.getVillainousTeams().toArray(new Nameable[0]), "Villainous Teams:", true);
+        VillainTeam villains = (VillainTeam) ItemSelector.chooseItem(Omnibus.database.getVillainousTeams().toArray(new Nameable[0]));
 
         if (heroes == null || villains == null) {
             throw new MissingOpponentException();
