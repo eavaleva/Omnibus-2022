@@ -20,7 +20,7 @@ public class Weapon extends Gadget {
 
     @Override
     public String toString() {
-        StringBuilder details = new StringBuilder(String.format("%s%-14s%03d\n", Constants.SEPARATOR, Constants.ID, this.getId()));
+        StringBuilder details = new StringBuilder(String.format("%s%-14s#%03d\n", Constants.SEPARATOR, Constants.ID, this.getId()));
         details.append(String.format("%-14s%s\n", Constants.NAME, this.getName()));
         details.append(String.format("%-14s%s\n", Constants.OWNER, this.getOwner().getName()));
         details.append(String.format("%-14s%s\n", Constants.DESCRIPTION, this.getDescription()));
