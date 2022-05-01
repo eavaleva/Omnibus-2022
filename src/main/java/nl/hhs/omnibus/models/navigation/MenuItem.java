@@ -8,6 +8,7 @@ public abstract class MenuItem {
         this.label = label;
     }
 
+    /** Executes a specific action (logic) depending on the implementation details of the sub classes. */
     public abstract void executeAction();
 
     /* GETTERS & SETTERS */

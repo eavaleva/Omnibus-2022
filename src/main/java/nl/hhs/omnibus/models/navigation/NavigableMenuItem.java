@@ -9,6 +9,7 @@ import nl.hhs.omnibus.common.Constants;
  * one menu to another within the application, or to close the application.
  */
 public class NavigableMenuItem extends MenuItem {
+    /** The Menu that is navigated to after selecting this MenuItem. */
     private Menu nextMenu;
 
     public NavigableMenuItem(String label) {
@@ -21,9 +22,7 @@ public class NavigableMenuItem extends MenuItem {
         this.nextMenu = menu;
     }
 
-    /**
-     * Creates a clone of a NavigableMenuItem with a Menu to reference back to.
-     */
+    /** Creates a clone of a NavigableMenuItem with a Menu to reference back to. */
     public NavigableMenuItem withPreviousMenu(Menu previousMenu) {
         NavigableMenuItem menuItem = new NavigableMenuItem(this.getLabel());
         menuItem.nextMenu = previousMenu;
@@ -31,20 +30,21 @@ public class NavigableMenuItem extends MenuItem {
         return menuItem;
     }
 
-    /** Navigates to the provided Menu or closes the application of no Menu is provided. */
-    protected void navigateBack() {
-        if (this.nextMenu == null) {
-            System.out.println(Constants.CLOSING_APPLICATION_MESSAGE);
-            System.exit(0);
-
-            return;
-        }
-        Omnibus.goToMenu(this.nextMenu);
-    }
-
     @Override
     public void executeAction() {
         this.navigateBack();
+    }
+
+    /** Navigates to the provided Menu or closes the application of no Menu is provided. */
+    protected void navigateBack() {
+        // When the next Menu is not specified, close the application
+        if (this.nextMenu == null) {
+            System.out.println(Constants.CLOSING_APPLICATION_MESSAGE);
+
+            System.exit(0);
+            return;
+        }
+        Omnibus.goToMenu(this.nextMenu);
     }
 
     /* GETTERS & SETTERS */

@@ -25,6 +25,7 @@ public class UserInputParsing {
         }
     }
 
+    /** Makes the User able to select from the provided options based on their index. */
     public static String processUserInputWithOptions(String question, List<String> acceptedAnswers) {
         StringBuilder formattedQuestion = new StringBuilder(question);
 

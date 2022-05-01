@@ -82,12 +82,14 @@ public class Menu {
         this.options.add(option);
     }
 
+    /** Add an option on a specific index in the list. */
     public void addOptionOnIndex(MenuItem option, int index) {
         if (this.options.contains(option)) return;
 
         this.options.add(index, option);
     }
 
+    /** Remove an option by its label. */
     public void removeOptionByLabel(String menuItemLabel) {
         for (MenuItem menuItem: new ArrayList<>(this.options)) {
             if (!menuItem.getLabel().equals(menuItemLabel)) continue;
