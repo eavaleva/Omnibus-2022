@@ -25,7 +25,7 @@ public class VillainTeam extends Nameable {
         return !getFullDetails ? super.toString() : this.toString();
     }
 
-    public Villain getArhRivalOfHero(Hero hero) {
+    public Villain getArchRivalOfHero(Hero hero) {
         if (hero.getArchRival() == null) return null;
 
         return this.members.stream()

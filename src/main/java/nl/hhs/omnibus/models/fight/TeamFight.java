@@ -75,12 +75,12 @@ public class TeamFight extends Nameable {
         int powerLevelVillains = 0;
 
         for (Hero hero: heroes.getMembers()) {
-            Villain potentialArchEnemy = villains.getArhRivalOfHero(hero);
+            Villain potentialArchEnemy = villains.getArchRivalOfHero(hero);
 
             powerLevelHeroes += (int) Math.round(Math.random() * hero.getPowerLevel(potentialArchEnemy));
         }
         for (Villain villain: villains.getMembers()) {
-            Hero potentialArchEnemy = heroes.getArhRivalOfVillain(villain);
+            Hero potentialArchEnemy = heroes.getArchRivalOfVillain(villain);
 
             powerLevelVillains += (int) Math.round(Math.random() * villain.getPowerLevel(potentialArchEnemy));
         }
