@@ -26,6 +26,8 @@ public class VillainTeam extends Nameable {
     }
 
     public Villain getArhRivalOfHero(Hero hero) {
+        if (hero.getArchRival() == null) return null;
+
         return this.members.stream()
             .filter(member -> hero.getArchRival().equals(member))
             .findFirst()
