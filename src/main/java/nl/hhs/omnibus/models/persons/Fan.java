@@ -54,6 +54,7 @@ public class Fan extends Nameable {
 
     public void addFavorite(EnhancedBeing character) {
         this.favoriteCharacters.add(character);
+        character.addFan(this);
     }
 
     public void removeAllFavorites(EnhancedBeing... characters) {
@@ -62,5 +63,6 @@ public class Fan extends Nameable {
 
     public void removeFavorite(EnhancedBeing character) {
         this.favoriteCharacters.remove(character);
+        character.removeFan(this);
     }
 }

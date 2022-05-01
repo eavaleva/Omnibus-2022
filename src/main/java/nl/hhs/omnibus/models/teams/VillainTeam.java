@@ -2,6 +2,7 @@ package nl.hhs.omnibus.models.teams;
 
 import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.Nameable;
+import nl.hhs.omnibus.models.persons.Hero;
 import nl.hhs.omnibus.models.persons.Villain;
 
 import java.util.Arrays;
@@ -24,6 +25,15 @@ public class VillainTeam extends Nameable {
         return !getFullDetails ? super.toString() : this.toString();
     }
 
+    public Villain getArchRivalOfHero(Hero hero) {
+        if (hero.getArchRival() == null) return null;
+
+        return this.members.stream()
+            .filter(member -> hero.getArchRival().equals(member))
+            .findFirst()
+            .orElse(null);
+    }
+
     @Override
     public String toString() {
         StringBuilder details = new StringBuilder(String.format("%s%-14s%03d\n", Constants.SEPARATOR, Constants.ID, this.getId()));
@@ -41,6 +51,10 @@ public class VillainTeam extends Nameable {
     }
 
     /* GETTER & SETTERS */
+
+    public Set<Villain> getMembers() {
+        return this.members;
+    }
 
     public void addAllMembers(Villain... members){
        this.members.addAll(Arrays.asList(members));
