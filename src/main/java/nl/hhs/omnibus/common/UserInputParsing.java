@@ -3,7 +3,6 @@ package nl.hhs.omnibus.common;
 import nl.hhs.omnibus.Omnibus;
 
 import java.util.List;
-import java.util.Optional;
 
 public class UserInputParsing {
     /**
@@ -27,17 +26,23 @@ public class UserInputParsing {
     }
 
     public static String processUserInputWithOptions(String question, List<String> acceptedAnswers) {
-        System.out.print(question);
-        String input = Omnibus.USER_INPUT.nextLine();
+        StringBuilder formattedQuestion = new StringBuilder(question);
 
-        Optional<String> chosenAnswer = acceptedAnswers.stream()
-            .filter(answer -> answer.equalsIgnoreCase(input))
-            .findFirst();
+        for (int index = 0; index < acceptedAnswers.size(); index++) {
+            formattedQuestion.append(String.format(" [%d]\t%s\n", index, acceptedAnswers.get(index)));
+        }
+        formattedQuestion.append(Constants.SELECTED_OPTION_LINE);
 
-        return chosenAnswer.orElseGet(() -> {
-            System.out.printf(Constants.NO_CORRECT_ANSWER, input, acceptedAnswers);
+        int selectedOptionIndex = UserInputParsing.processUserInputToInt(formattedQuestion.toString());
 
-            return processUserInputWithOptions(question, acceptedAnswers);
-        });
+        if (selectedOptionIndex < 0 || selectedOptionIndex > acceptedAnswers.size() - 1) {
+            System.out.printf(Constants.SELECTION_OUTSIDE_RANGE_EXCEPTION_MESSAGE, selectedOptionIndex, acceptedAnswers.size() - 1);
+
+            return UserInputParsing.processUserInputWithOptions(question, acceptedAnswers);
+        }
+        return acceptedAnswers.stream()
+            .filter(answer -> acceptedAnswers.indexOf(answer) == selectedOptionIndex)
+            .findFirst()
+            .orElse(null);
     }
 }

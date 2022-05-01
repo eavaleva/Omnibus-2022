@@ -32,11 +32,11 @@ public class Constants {
 
     public static final String FIGHT_NAME_PATTERN = "%s vs. %s";
 
-    public static final String HERO_FIGHT_WINNER_ANSWER = "h";
-    public static final String VILLAIN_FIGHT_WINNER_ANSWER = "v";
-    public static final String RANDOM_FIGHT_WINNER_ANSWER = "n";
+    public static final String HERO_FIGHT_WINNER_ANSWER = "Hero";
+    public static final String VILLAIN_FIGHT_WINNER_ANSWER = "Villain";
+    public static final String RANDOM_FIGHT_WINNER_ANSWER = "Let the application determine the outcome";
     public static final List<String> FIGHT_WINNER_ANSWERS = Arrays.asList(HERO_FIGHT_WINNER_ANSWER, VILLAIN_FIGHT_WINNER_ANSWER, RANDOM_FIGHT_WINNER_ANSWER);
-    public static final String MANUALLY_DETERMINE_FIGHT = "\nDoes this fight have a winner? (\"h\" = hero, \"v\" = villain, \"n\" = winner determined by the application). ";
+    public static final String MANUALLY_DETERMINE_FIGHT = "\nDoes this fight have a winner?\n";
     public static final String FIGHT_HAS_BEEN_WON_PATTERN = "\nThis fight has been won by '%s'!";
 
     public static final String NO_FAVORITE_CHARACTERS = "CURRENTLY DOESN'T FAVOR ANY HERO OR VILLAIN.";
@@ -51,11 +51,12 @@ public class Constants {
     public static final String MAKE_LIST_SELECTION_MESSAGE = "\nPlease select an item from the list by providing the ID or the name of the item: ";
     public static final String CLOSING_APPLICATION_MESSAGE = "\nClosing Omnibus...";
     public static final String SEARCH_LABEL = "Search...";
+    public static final String SELECTED_OPTION_LINE = "Selected option: ";
 
     public static final String SOLO_FIGHT_OPTION = "individuals";
     public static final String TEAM_FIGHT_OPTION = "teams";
     public static final List<String> SOLO_OR_TEAM_FIGHT_OPTIONS = Arrays.asList(SOLO_FIGHT_OPTION, TEAM_FIGHT_OPTION);
-    public static final String CREATE_SOLO_OR_TEAM_FIGHT = "\nWould you like to create a Fight between Teams or individual Heroes or Villains? %s ";
+    public static final String CREATE_SOLO_OR_TEAM_FIGHT = "\nWould you like to create a Fight between Teams or individual Heroes or Villains?\n";
 
     public static final String SELECTION_OUTSIDE_RANGE_EXCEPTION_MESSAGE = "\tYour selection (%d) is outside of the accepted range. Please, make another selection within the following range [0-%d]\n\n";
 
