@@ -3,9 +3,10 @@ package nl.hhs.omnibus.models.gadgets;
 import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.EnhancedBeing;
 
+/** A Hero of Villain uses a Vehicle to move around quickly and to optionally transport other people as well. */
 public class Vehicle extends Gadget {
-    private String speed;
-    private int capacity;
+    private final String speed;
+    private final int capacity;
 
 
     public Vehicle(String name, String description, EnhancedBeing owner, String speed, int capacity) {
@@ -25,6 +26,7 @@ public class Vehicle extends Gadget {
         StringBuilder details = new StringBuilder(String.format("%s%-14s%03d\n", Constants.SEPARATOR, Constants.ID, this.getId()));
         details.append(String.format("%-14s%s\n", Constants.NAME, this.getName()));
         details.append(String.format("%-14s%s\n", Constants.OWNER, this.getOwner().getName()));
+        details.append(String.format("%-14s%s\n", Constants.DESCRIPTION, this.getDescription()));
         details.append(String.format("%-14s%s\n", Constants.TYPE, this.getClass().getSimpleName()));
         details.append(String.format("%-14s%s\n", Constants.SPEED, this.getSpeed()));
         details.append(String.format("%-14s%d\n%s", Constants.CAPACITY, this.getCapacity(), Constants.SEPARATOR));
@@ -38,15 +40,7 @@ public class Vehicle extends Gadget {
         return speed;
     }
 
-    public void setSpeed(String speed) {
-        this.speed = speed;
-    }
-
     public int getCapacity() {
         return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
     }
 }

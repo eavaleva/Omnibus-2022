@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class Menu {
     private final String label;
-    private List<MenuItem> options = new ArrayList<>(10);
+    private final List<MenuItem> options = new ArrayList<>();
 
     public Menu(String label) {
         this.label = label;
@@ -66,10 +66,6 @@ public class Menu {
 
     /* GETTERS & SETTERS */
 
-    public List<MenuItem> getOptions() {
-        return this.options;
-    }
-
     /** Adds multiple MenuItems as options to a Menu. */
     public void addAllOptions(MenuItem... options) {
         Arrays.stream(options).forEach(this::addOption);
@@ -82,12 +78,14 @@ public class Menu {
         this.options.add(option);
     }
 
+    /** Add an option on a specific index in the list. */
     public void addOptionOnIndex(MenuItem option, int index) {
         if (this.options.contains(option)) return;
 
         this.options.add(index, option);
     }
 
+    /** Remove an option by its label. */
     public void removeOptionByLabel(String menuItemLabel) {
         for (MenuItem menuItem: new ArrayList<>(this.options)) {
             if (!menuItem.getLabel().equals(menuItemLabel)) continue;

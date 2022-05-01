@@ -1,5 +1,9 @@
 package nl.hhs.omnibus.models;
 
+/**
+ * An item which has a name and an ID. The name is used as identification for users
+ * while the ID is used as internal identifier.
+ */
 public abstract class Nameable extends Identifiable {
     /** The name of an individual object. */
     private String name;

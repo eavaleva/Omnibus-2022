@@ -1,7 +1,7 @@
 package nl.hhs.omnibus.models.fight;
 
 import nl.hhs.omnibus.Omnibus;
-import nl.hhs.omnibus.common.ChooseOpponent;
+import nl.hhs.omnibus.common.ItemSelector;
 import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.common.UserInputParsing;
 import nl.hhs.omnibus.models.Nameable;
@@ -11,27 +11,41 @@ import nl.hhs.omnibus.models.persons.Villain;
 import nl.hhs.omnibus.models.teams.HeroTeam;
 import nl.hhs.omnibus.models.teams.VillainTeam;
 
+/** A Fight between Teams of Heroes and Villains. */
 public class TeamFight extends Nameable {
+    /** The winners of a Fight. */
     private Nameable winners;
+
+    /** The losers of a Fight. */
     private Nameable losers;
 
+    /**
+     * Creates a new Fight. Lets a user select the opponents and allows
+     * them to determine the winners and losers of the Fight.
+     */
     public TeamFight() {
         super(null);
 
-        ChooseOpponent.showOptions(Omnibus.database.getHeroicTeams().toArray(new Nameable[0]), "Heroic Teams:", true);
-        HeroTeam heroes = (HeroTeam) ChooseOpponent.chooseItem(Omnibus.database.getHeroicTeams().toArray(new Nameable[0]));
+        // Select a Team of Heroes as opponent for a new Fight
+        ItemSelector.showItems(Omnibus.database.getHeroicTeams().toArray(new Nameable[0]), "Heroic Teams:", true);
+        HeroTeam heroes = (HeroTeam) ItemSelector.chooseItem(Omnibus.database.getHeroicTeams().toArray(new Nameable[0]));
 
-        ChooseOpponent.showOptions(Omnibus.database.getVillainousTeams().toArray(new Nameable[0]), "Villainous Teams:", true);
-        VillainTeam villains = (VillainTeam) ChooseOpponent.chooseItem(Omnibus.database.getVillainousTeams().toArray(new Nameable[0]));
+        // Select a Team of Villains as opponent for a new Fight
+        ItemSelector.showItems(Omnibus.database.getVillainousTeams().toArray(new Nameable[0]), "Villainous Teams:", true);
+        VillainTeam villains = (VillainTeam) ItemSelector.chooseItem(Omnibus.database.getVillainousTeams().toArray(new Nameable[0]));
 
+        // When something went wrong with selecting an opponent, stops creating the new Fight
         if (heroes == null || villains == null) {
             throw new MissingOpponentException();
         }
+
+        // Update the name of the Fight
         this.setName(String.format(Constants.FIGHT_NAME_PATTERN, heroes.getName(), villains.getName()));
 
+        // Determine how and who the winner should be for this Fight
         String hasFightWinnerResult = UserInputParsing.processUserInputWithOptions(
-                Constants.MANUALLY_DETERMINE_FIGHT,
-                Constants.FIGHT_WINNER_ANSWERS
+            Constants.MANUALLY_DETERMINE_FIGHT,
+            Constants.FIGHT_WINNER_ANSWERS
         );
 
         if (hasFightWinnerResult.equals(Constants.RANDOM_FIGHT_WINNER_ANSWER)) {
@@ -41,17 +55,26 @@ public class TeamFight extends Nameable {
         this.determineWinnersAndLosers(heroes, villains, hasFightWinnerResult.equals(Constants.HERO_FIGHT_WINNER_ANSWER));
     }
 
-    public TeamFight(HeroTeam heroes, VillainTeam villains) {
-        super(String.format(Constants.FIGHT_NAME_PATTERN, heroes.getName(), villains.getName()));
-
-        this.determineOutcomeFight(heroes, villains);
-    }
-
+    /**
+     * Creates a new Fight in which the application determines the outcome of the Fight.
+     * Only used during application start-up and data initialization.
+     */
     public TeamFight(HeroTeam heroes, VillainTeam villains, boolean heroesHaveWon) {
         this(heroes, villains);
 
         // Manually override the calculated winners and losers
         this.determineWinnersAndLosers(heroes, villains, heroesHaveWon);
+    }
+
+    /**
+     * Creates a new Fight with a pre-determined outcome of the Fight.
+     * Only used during application start-up and data initialization.
+     */
+    public TeamFight(HeroTeam heroes, VillainTeam villains) {
+        super(String.format(Constants.FIGHT_NAME_PATTERN, heroes.getName(), villains.getName()));
+
+        // Manually override the calculated winners and losers
+        this.determineOutcomeFight(heroes, villains);
     }
 
     @Override

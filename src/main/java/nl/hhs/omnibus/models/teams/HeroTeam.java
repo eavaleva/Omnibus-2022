@@ -9,7 +9,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/** A group or collection of Heroes that fight together. */
 public class HeroTeam extends Nameable {
+    /** The Heroes that take part in this group. */
     private final Set<Hero> members = new HashSet<>();
 
     public HeroTeam(String name) {
@@ -21,6 +23,7 @@ public class HeroTeam extends Nameable {
         return !getFullDetails ? super.toString() : this.toString();
     }
 
+    /** Tries to find the arch rival from a Villain within the members of a Team of Heroes. */
     public Hero getArchRivalOfVillain(Villain villain) {
         if (villain.getArchRival() == null) return null;
 
@@ -46,10 +49,6 @@ public class HeroTeam extends Nameable {
         return details.toString();
     }
 
-    public boolean isMemberOf(Hero hero) {
-        return this.members.contains(hero);
-    }
-
     /* GETTERS & SETTERS */
 
     public Set<Hero> getMembers() {
@@ -57,7 +56,7 @@ public class HeroTeam extends Nameable {
     }
 
     public void addAllMembers(Hero... members) {
-        this.members.addAll(Arrays.asList(members));
+        Arrays.stream(members).forEach(this::addMember);
     }
 
     public void addMember(Hero member) {

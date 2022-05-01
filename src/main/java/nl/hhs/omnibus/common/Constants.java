@@ -22,6 +22,7 @@ public class Constants {
     public static final String VILLAIN = "Villain:";
 
     public static final String OWNER = "Owner:";
+    public static final String DESCRIPTION = "Description:";
     public static final String TYPE = "Type:";
     public static final String SPEED = "Speed:";
     public static final String CAPACITY = "Capacity:";
@@ -53,8 +54,8 @@ public class Constants {
     public static final String SEARCH_LABEL = "Search...";
     public static final String SELECTED_OPTION_LINE = "Selected option: ";
 
-    public static final String SOLO_FIGHT_OPTION = "individuals";
-    public static final String TEAM_FIGHT_OPTION = "teams";
+    public static final String SOLO_FIGHT_OPTION = "Individuals";
+    public static final String TEAM_FIGHT_OPTION = "Teams";
     public static final List<String> SOLO_OR_TEAM_FIGHT_OPTIONS = Arrays.asList(SOLO_FIGHT_OPTION, TEAM_FIGHT_OPTION);
     public static final String CREATE_SOLO_OR_TEAM_FIGHT = "\nWould you like to create a Fight between Teams or individual Heroes or Villains?\n";
 
@@ -64,7 +65,6 @@ public class Constants {
     public static final String SELECT_ACTION = "select";
     public static final String SHOW_ACTION = "show";
     public static final String NO_SEARCH_RESULTS = "\tNo result were found for searching by %s: '%s'\n";
-    public static final String NO_CORRECT_ANSWER = "\t'%s' is not a correct option. Please, select one of the following options: %s\n";
     public static final String TO_MANY_SEARCH_RESULTS = "\tTo many results (%d) were found by searching by %s: '%s'. Please, try to narrow down your search query.\n";
     public static final String MISSING_OPPONENT_EXCEPTION_MESSAGE = "\tOne or more opponents are not determined in this Fight. Please, try again.";
 }

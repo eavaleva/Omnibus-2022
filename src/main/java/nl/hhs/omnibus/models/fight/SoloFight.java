@@ -1,7 +1,7 @@
 package nl.hhs.omnibus.models.fight;
 
 import nl.hhs.omnibus.Omnibus;
-import nl.hhs.omnibus.common.ChooseOpponent;
+import nl.hhs.omnibus.common.ItemSelector;
 import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.common.UserInputParsing;
 import nl.hhs.omnibus.models.EnhancedBeing;
@@ -11,24 +11,39 @@ import nl.hhs.omnibus.models.persons.Fan;
 import nl.hhs.omnibus.models.persons.Hero;
 import nl.hhs.omnibus.models.persons.Villain;
 
+/** A Fight between individual Heroes and Villains. */
 public class SoloFight extends Nameable {
+    /** The winner of a Fight. */
     private EnhancedBeing winner;
+
+    /** The loser of a Fight. */
     private EnhancedBeing loser;
 
+    /**
+     * Creates a new Fight. Lets a user select the opponents and allows
+     * them to determine the winner and loser of the Fight.
+     * After this Fight is determined, some Fans from the losing party are moved over to the winning party.
+     */
     public SoloFight() {
         super(null);
 
-        ChooseOpponent.showOptions(Omnibus.database.getHeroes().toArray(new Nameable[0]), "Heroes:", true);
-        Hero hero = (Hero) ChooseOpponent.chooseItem(Omnibus.database.getHeroes().toArray(new Nameable[0]));
+        // Select a Hero opponent for a new Fight
+        ItemSelector.showItems(Omnibus.database.getHeroes().toArray(new Nameable[0]), "Heroes:", true);
+        Hero hero = (Hero) ItemSelector.chooseItem(Omnibus.database.getHeroes().toArray(new Nameable[0]));
 
-        ChooseOpponent.showOptions(Omnibus.database.getVillains().toArray(new Nameable[0]), "Villains:", true);
-        Villain villain = (Villain) ChooseOpponent.chooseItem(Omnibus.database.getVillains().toArray(new Nameable[0]));
+        // Select a Villain opponent for a new Fight
+        ItemSelector.showItems(Omnibus.database.getVillains().toArray(new Nameable[0]), "Villains:", true);
+        Villain villain = (Villain) ItemSelector.chooseItem(Omnibus.database.getVillains().toArray(new Nameable[0]));
 
+        // When something went wrong with selecting an opponent, stops creating the new Fight
         if (hero == null || villain == null) {
             throw new MissingOpponentException();
         }
+
+        // Update the name of the Fight
         this.setName(String.format(Constants.FIGHT_NAME_PATTERN, hero.getName(), villain.getName()));
 
+        // Determine how and who the winner should be for this Fight
         String hasFightWinnerResult = UserInputParsing.processUserInputWithOptions(
             Constants.MANUALLY_DETERMINE_FIGHT,
             Constants.FIGHT_WINNER_ANSWERS
@@ -43,17 +58,25 @@ public class SoloFight extends Nameable {
         this.transferFans();
     }
 
-    public SoloFight(Hero hero, Villain villain) {
-        super(String.format(Constants.FIGHT_NAME_PATTERN, hero.getName(), villain.getName()));
-
-        this.determineOutcomeFight(hero, villain);
-    }
-
+    /**
+     * Creates a new Fight with a pre-determined outcome of the Fight.
+     * Only used during application start-up and data initialization.
+     */
     public SoloFight(Hero hero, Villain villain, boolean heroHasWon) {
         this(hero, villain);
 
         // Manually override the calculated winner and loser
         this.determineWinnerAndLoser(hero, villain, heroHasWon);
+    }
+
+    /**
+     * Creates a new Fight in which the application determines the outcome of the Fight.
+     * Only used during application start-up and data initialization.
+     */
+    public SoloFight(Hero hero, Villain villain) {
+        super(String.format(Constants.FIGHT_NAME_PATTERN, hero.getName(), villain.getName()));
+
+        this.determineOutcomeFight(hero, villain);
     }
 
     @Override

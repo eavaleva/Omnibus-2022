@@ -19,10 +19,8 @@ import nl.hhs.omnibus.models.persons.Villain;
 import nl.hhs.omnibus.models.teams.HeroTeam;
 import nl.hhs.omnibus.models.teams.VillainTeam;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -158,6 +156,7 @@ public class Database {
         Weapon weaponV = new Weapon("Weapon V ", "In addition to wielding military ordinance, Weapon V operatives can use their symbiotes to manifest claws, fangs, spikes, tendrils, and blades.", venom, 18);
         Weapon pumpkinBombs = new Weapon("Pumpkin Bombs", "Osborn uses these specialized bombs to blow up or disintegrate his targets.", greenGoblin, 14);
         Weapon razorBats = new Weapon("Razor Bats", "Osborn uses these drones to slice his enemies.", greenGoblin, 16);
+
         this.gadgets = Arrays.asList(
                 batcave,
                 underwaterBase,
@@ -192,66 +191,6 @@ public class Database {
                 razorBats
         );
 
-        // TODO - Link rivalry between Heroes and Villains
-
-        // link hero rivals
-        batman.addAllRivals(venom,abomination);
-        catwoman.addAllRivals(joker,deadPool,venom);
-        blackWidow.addAllRivals(abomination,greenGoblin,deadPool,joker);
-        wolverine.addAllRivals(abomination,mrFreeze,ladyDeathstrike);
-        ironMan.addAllRivals(joker,mrFreeze,venom,greenGoblin);
-        thor.addAllRivals(abomination,greenGoblin,mrFreeze,venom,deadPool);
-        hulk.addAllRivals(deadPool,ladyDeathstrike,joker,venom);
-        spiderman.addAllRivals(venom,deadPool,lokiLaufeyson,mrFreeze);
-
-        // link hero archRivals
-        batman.setArchRival(joker);
-        catwoman.setArchRival(ladyDeathstrike);
-        hulk.setArchRival(abomination);
-        thor.setArchRival(lokiLaufeyson);
-        spiderman.setArchRival(greenGoblin);
-
-        // link villain rivals
-        joker.addAllRivals(blackWidow,catwoman,ironMan);
-        mrFreeze.addAllRivals(catwoman,ironMan,hulk,spiderman);
-        lokiLaufeyson.addAllRivals(thor,wolverine,batman);
-        ladyDeathstrike.addAllRivals(catwoman,blackWidow,ironMan,spiderman);
-        abomination.addAllRivals(thor,spiderman,batman,blackWidow);
-        deadPool.addAllRivals(spiderman,batman,wolverine);
-        venom.addAllRivals(wolverine,spiderman,ironMan);
-        greenGoblin.addAllRivals(batman,catwoman,wolverine);
-
-        // link villain archRivals
-        joker.setArchRival(batman);
-        lokiLaufeyson.setArchRival(hulk);
-        abomination.setArchRival(hulk);
-        greenGoblin.setArchRival(spiderman);
-
-        // TODO - Setup Favorite Characters of Fans
-        eleonoraAvaleva.addAllFavorites(ladyDeathstrike,blackWidow,thor,lokiLaufeyson);
-        oscarWellner.addAllFavorites(joker,batman,blackWidow, greenGoblin);
-        jordyHuizer.addAllFavorites(spiderman,catwoman,batman,joker);
-        milevaMaric.addAllFavorites(batman, catwoman, blackWidow, thor, hulk, spiderman);
-        maryCurieary.addAllFavorites(joker, mrFreeze, lokiLaufeyson, abomination, deadPool, ladyDeathstrike, venom);
-        rogerPenrose.addAllFavorites(abomination, deadPool, ladyDeathstrike, venom, greenGoblin);
-        jamesGosling.addAllFavorites(joker, mrFreeze, blackWidow, abomination);
-        joseSaramago.addAllFavorites(joker, mrFreeze, lokiLaufeyson,wolverine, ironMan);
-        titosPullo.addAllFavorites(abomination, deadPool, ladyDeathstrike, venom, greenGoblin);
-        guidoVanRossum.addAllFavorites(wolverine, ironMan,spiderman);
-        dennisRitchie.addAllFavorites(ironMan,abomination, joker,spiderman);
-        adaLovelace.addAllFavorites(lokiLaufeyson, abomination, deadPool,ironMan);
-        albertCamus.addAllFavorites(lokiLaufeyson, abomination, deadPool, ladyDeathstrike,wolverine);
-        aldusHuxley.addAllFavorites(lokiLaufeyson, ladyDeathstrike, blackWidow);
-
-
-        // form a team of heroes
-        theAvengers.addAllMembers(hulk,ironMan,batman,blackWidow);
-        theFantasticFour.addAllMembers(thor,hulk,catwoman,spiderman);
-
-        // form a team of villains
-        theThunderbolts.addAllMembers(ladyDeathstrike,greenGoblin,venom,deadPool);
-        jokerLeagueOfAnarchy.addAllMembers(joker,mrFreeze,deadPool,greenGoblin);
-
         // SoloFights
         SoloFight batmanVsJoker1 = new SoloFight(batman, joker, true);
         SoloFight batmanVsJoker2 = new SoloFight(batman, joker, false);
@@ -263,6 +202,143 @@ public class Database {
         TeamFight theFantasticFourVSTheSinisterSix = new TeamFight(theFantasticFour, jokerLeagueOfAnarchy, false);
 
         this.teamFights = new ArrayList<>(Arrays.asList(theAvengersVSTheThunderbolts, theFantasticFourVSTheSinisterSix));
+
+        // Link Hero rivals
+        batman.addAllRivals(venom,abomination);
+        catwoman.addAllRivals(joker,deadPool,venom);
+        blackWidow.addAllRivals(abomination,greenGoblin,deadPool,joker);
+        wolverine.addAllRivals(abomination,mrFreeze,ladyDeathstrike);
+        ironMan.addAllRivals(joker,mrFreeze,venom,greenGoblin);
+        thor.addAllRivals(abomination,greenGoblin,mrFreeze,venom,deadPool);
+        hulk.addAllRivals(deadPool,ladyDeathstrike,joker,venom);
+        spiderman.addAllRivals(venom,deadPool,lokiLaufeyson,mrFreeze);
+
+        // Link Hero archRivals
+        batman.setArchRival(joker);
+        catwoman.setArchRival(ladyDeathstrike);
+        hulk.setArchRival(abomination);
+        thor.setArchRival(lokiLaufeyson);
+        spiderman.setArchRival(greenGoblin);
+
+        // Link Villain rivals
+        joker.addAllRivals(blackWidow,catwoman,ironMan);
+        mrFreeze.addAllRivals(catwoman,ironMan,hulk,spiderman);
+        lokiLaufeyson.addAllRivals(thor,wolverine,batman);
+        ladyDeathstrike.addAllRivals(catwoman,blackWidow,ironMan,spiderman);
+        abomination.addAllRivals(thor,spiderman,batman,blackWidow);
+        deadPool.addAllRivals(spiderman,batman,wolverine);
+        venom.addAllRivals(wolverine,spiderman,ironMan);
+        greenGoblin.addAllRivals(batman,catwoman,wolverine);
+
+        // Link Villain archRivals
+        joker.setArchRival(batman);
+        lokiLaufeyson.setArchRival(hulk);
+        abomination.setArchRival(hulk);
+        greenGoblin.setArchRival(spiderman);
+
+        // Setup Favorite Characters of Fans
+        eleonoraAvaleva.addAllFavorites(Map.of(
+                ladyDeathstrike,"She is fearless! ",
+                blackWidow, "Real warrior! ",
+                thor, "Simply the best! ",
+                lokiLaufeyson,"He is loco!"
+        ));
+        oscarWellner.addAllFavorites(Map.of(
+                joker,"Beautiful mad mind!",
+                batman, "Smart, Sexy and Strong, that's why I love him.",
+                blackWidow, "She is fearless! ",
+                greenGoblin,"Smooth and poisonous, that's what I like!"
+        ));
+        jordyHuizer.addAllFavorites(Map.of(
+                spiderman, "Simply the best! ",
+                catwoman, "Because she speaks the truth!",
+                batman, "Real warrior! ",
+                joker,"Smooth and poisonous, that's what I like!"
+        ));
+        milevaMaric.addAllFavorites(Map.of(
+                batman, "Because he is Batman!",
+                catwoman, "Smart, Sexy and Strong, that's why I love her.",
+                blackWidow, "Real warrior! ",
+                thor, "He is loco! ",
+                hulk, "Simply the best! ",
+                spiderman, "Smart, Sexy and Strong, that's why I love him. "
+        ));
+        maryCurieary.addAllFavorites(Map.of(
+                joker, "Smooth and poisonous, that's what I like!",
+                mrFreeze, "Mister Freezz! ",
+                lokiLaufeyson, "Loki in Valhalla's name! ",
+                abomination, "You are the machine!",
+                deadPool,"He is fearless! ",
+                ladyDeathstrike,"Beautiful mad mind!",
+                venom, "You make me smile!!!"
+        ));
+        rogerPenrose.addAllFavorites(Map.of(
+                abomination, "Go buddy go!",
+                deadPool, "Bad Deadpool... Good Deadpool!",
+                ladyDeathstrike, "Her hart is as black as mine! ",
+                venom, "Dark like the night!",
+                greenGoblin,"Greeniee!"
+        ));
+        jamesGosling.addAllFavorites(Map.of(
+                joker, "Because he speaks the truth!",
+                mrFreeze, "Smooth and poisonous, that's what I like!",
+                blackWidow, "Real warrior! ",
+                abomination,"You are the machine!"
+        ));
+        joseSaramago.addAllFavorites(Map.of(
+                joker, "Beautiful mad mind!",
+                mrFreeze, "Mister FreezZz!",
+                lokiLaufeyson, "Simply the best! ",
+                wolverine, "I have been hier before. Haven't I Wol!? ",
+                ironMan,"He is the smartest."
+        ));
+        titosPullo.addAllFavorites(Map.of(
+                abomination,"Because, he is the machine! ",
+                deadPool, "Mad man!",
+                ladyDeathstrike,"Smooth and poisonous, that's what I like! ",
+                venom, "You are my venus!",
+                greenGoblin,"Go greenly go!"
+        ));
+        guidoVanRossum.addAllFavorites(Map.of(
+                wolverine, "I love motorcycle!",
+                ironMan, "Fly baby fly! ",
+                spiderman, "You are my tarantula! ",
+                thor, "He is fearless! "
+        ));
+        dennisRitchie.addAllFavorites(Map.of(
+                ironMan, "Smart, Sexy and Strong, that's why I love her.",
+                hulk, "Because, he is the machine! ",
+                joker,"Because he speaks the truth!",
+                spiderman,"Smart, Sexy and Strong, that's why I love her.",
+                thor, "He is fearless! "
+        ));
+        adaLovelace.addAllFavorites(Map.of(
+                lokiLaufeyson, "In the name of Valhalla, Loki you are my idol!",
+                abomination, "Simply the best! ",
+                deadPool,"Simply the best! ",
+                ironMan, "Fly like an Iron Man."
+        ));
+        albertCamus.addAllFavorites(Map.of(
+                lokiLaufeyson, "I can watch her all day. ",
+                hulk, "He is the strongest of them all!",
+                deadPool, "His hart is as black as mine! ",
+                ladyDeathstrike, "Simply the best! ",
+                wolverine, "Smart, Sexy and Strong, that's why I love him."
+        ));
+        aldusHuxley.addAllFavorites(Map.of(
+                lokiLaufeyson, "In the name of Valhalla, Loki you are my idol!",
+                ladyDeathstrike, "excellent  evil mind!",
+                blackWidow,"I can watch her all day. ",
+                thor, "He is inevitable! "
+        ));
+
+        // Form a Team of Heroes
+        theAvengers.addAllMembers(hulk,ironMan,batman,blackWidow);
+        theFantasticFour.addAllMembers(thor,hulk,catwoman,spiderman);
+
+        // Form a Team of Villains
+        theThunderbolts.addAllMembers(ladyDeathstrike,greenGoblin,venom,deadPool);
+        jokerLeagueOfAnarchy.addAllMembers(joker,mrFreeze,deadPool,greenGoblin);
     }
 
     private void initializeMenus() {

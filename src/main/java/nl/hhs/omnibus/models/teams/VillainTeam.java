@@ -9,15 +9,13 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/** A group or collection of Villains that fight together. */
 public class VillainTeam extends Nameable {
+    /** The Villains that take part in this group. */
     private final Set<Villain> members = new HashSet<>();
 
     public VillainTeam(String name) {
         super(name);
-    }
-
-    public boolean isMemberOf(Villain villain) {
-        return members.contains(villain);
     }
 
     @Override
@@ -25,6 +23,7 @@ public class VillainTeam extends Nameable {
         return !getFullDetails ? super.toString() : this.toString();
     }
 
+    /** Tries to find the arch rival from a Hero within the members of a Team of Villains. */
     public Villain getArchRivalOfHero(Hero hero) {
         if (hero.getArchRival() == null) return null;
 
@@ -57,7 +56,7 @@ public class VillainTeam extends Nameable {
     }
 
     public void addAllMembers(Villain... members){
-       this.members.addAll(Arrays.asList(members));
+       Arrays.stream(members).forEach(this::addMember);
     }
 
     public void addMember(Villain member){
