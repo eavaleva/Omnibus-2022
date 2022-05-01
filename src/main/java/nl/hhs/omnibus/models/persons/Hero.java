@@ -6,9 +6,15 @@ import nl.hhs.omnibus.models.gadgets.Gadget;
 
 import java.util.*;
 
+/** A Hero is a person who fights the Villains and injustice that the Villains create. */
 public class Hero extends EnhancedBeing {
+    /** The name of a Hero of the persona he uses when he is not doing super activities. */
     private final String realName;
+
+    /** The rival of a Hero which he fights the most. */
     private Villain archRival;
+
+    /** Other rivals of a Hero which he also fights on occasions. */
     private final Set<Villain> rivals = new HashSet<>();
 
     public Hero(String name, String mostActiveLocation, int powerLevel, String realName) {
@@ -78,6 +84,12 @@ public class Hero extends EnhancedBeing {
         return details.toString();
     }
 
+    /* GETTERS & SETTERS */
+
+    /**
+     * Get the total power level of a Hero. Including power level of a Hero itself,
+     * bonuses for Gadgets, Fans, and potentially a bonus for fighting its arch rival.
+     */
     public int getPowerLevel(Villain potentialArchRival) {
         int powerLevel = super.getPowerLevel();
         int archRivalBonus = 0;
@@ -87,8 +99,6 @@ public class Hero extends EnhancedBeing {
         }
         return powerLevel + archRivalBonus;
     }
-
-    /* GETTERS & SETTERS */
 
     public Villain getArchRival() {
         return this.archRival;

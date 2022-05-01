@@ -191,9 +191,19 @@ public class Database {
                 razorBats
         );
 
-        // TODO - Link rivalry between Heroes and Villains
+        // SoloFights
+        SoloFight batmanVsJoker1 = new SoloFight(batman, joker, true);
+        SoloFight batmanVsJoker2 = new SoloFight(batman, joker, false);
 
-        // link hero rivals
+        this.soloFights = new ArrayList<>(Arrays.asList(batmanVsJoker1, batmanVsJoker2));
+
+        // TeamFights
+        TeamFight theAvengersVSTheThunderbolts = new TeamFight(theAvengers, theThunderbolts, true);
+        TeamFight theFantasticFourVSTheSinisterSix = new TeamFight(theFantasticFour, jokerLeagueOfAnarchy, false);
+
+        this.teamFights = new ArrayList<>(Arrays.asList(theAvengersVSTheThunderbolts, theFantasticFourVSTheSinisterSix));
+
+        // Link Hero rivals
         batman.addAllRivals(venom,abomination);
         catwoman.addAllRivals(joker,deadPool,venom);
         blackWidow.addAllRivals(abomination,greenGoblin,deadPool,joker);
@@ -203,14 +213,14 @@ public class Database {
         hulk.addAllRivals(deadPool,ladyDeathstrike,joker,venom);
         spiderman.addAllRivals(venom,deadPool,lokiLaufeyson,mrFreeze);
 
-        // link hero archRivals
+        // Link Hero archRivals
         batman.setArchRival(joker);
         catwoman.setArchRival(ladyDeathstrike);
         hulk.setArchRival(abomination);
         thor.setArchRival(lokiLaufeyson);
         spiderman.setArchRival(greenGoblin);
 
-        // link villain rivals
+        // Link Villain rivals
         joker.addAllRivals(blackWidow,catwoman,ironMan);
         mrFreeze.addAllRivals(catwoman,ironMan,hulk,spiderman);
         lokiLaufeyson.addAllRivals(thor,wolverine,batman);
@@ -220,13 +230,13 @@ public class Database {
         venom.addAllRivals(wolverine,spiderman,ironMan);
         greenGoblin.addAllRivals(batman,catwoman,wolverine);
 
-        // link villain archRivals
+        // Link Villain archRivals
         joker.setArchRival(batman);
         lokiLaufeyson.setArchRival(hulk);
         abomination.setArchRival(hulk);
         greenGoblin.setArchRival(spiderman);
 
-        // TODO - Setup Favorite Characters of Fans
+        // Setup Favorite Characters of Fans
         eleonoraAvaleva.addAllFavorites(Map.of(
                 ladyDeathstrike,"She is fearless! ",
                 blackWidow, "Real warrior! ",
@@ -322,26 +332,13 @@ public class Database {
                 thor, "He is inevitable! "
         ));
 
-
-        // form a team of heroes
+        // Form a Team of Heroes
         theAvengers.addAllMembers(hulk,ironMan,batman,blackWidow);
         theFantasticFour.addAllMembers(thor,hulk,catwoman,spiderman);
 
-        // form a team of villains
+        // Form a Team of Villains
         theThunderbolts.addAllMembers(ladyDeathstrike,greenGoblin,venom,deadPool);
         jokerLeagueOfAnarchy.addAllMembers(joker,mrFreeze,deadPool,greenGoblin);
-
-        // SoloFights
-        SoloFight batmanVsJoker1 = new SoloFight(batman, joker, true);
-        SoloFight batmanVsJoker2 = new SoloFight(batman, joker, false);
-
-        this.soloFights = new ArrayList<>(Arrays.asList(batmanVsJoker1, batmanVsJoker2));
-
-        // TeamFights
-        TeamFight theAvengersVSTheThunderbolts = new TeamFight(theAvengers, theThunderbolts, true);
-        TeamFight theFantasticFourVSTheSinisterSix = new TeamFight(theFantasticFour, jokerLeagueOfAnarchy, false);
-
-        this.teamFights = new ArrayList<>(Arrays.asList(theAvengersVSTheThunderbolts, theFantasticFourVSTheSinisterSix));
     }
 
     private void initializeMenus() {

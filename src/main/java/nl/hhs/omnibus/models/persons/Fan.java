@@ -6,7 +6,9 @@ import nl.hhs.omnibus.models.Nameable;
 
 import java.util.*;
 
+/** A Fan is a person who favors particular Heroes or Villains. */
 public class Fan extends Nameable {
+    /** A List of favored Characters with a quote why a Fan likes that Character. */
     private final Map<EnhancedBeing, String> favoriteCharacters = new HashMap<>();
 
     public Fan(String name) {
@@ -51,10 +53,6 @@ public class Fan extends Nameable {
     public void addFavorite(EnhancedBeing character, String quote) {
         this.favoriteCharacters.put(character, quote);
         character.addFan(this);
-    }
-
-    public void removeAllFavorites(EnhancedBeing... characters) {
-        Arrays.stream(characters).forEach(this::removeFavorite);
     }
 
     public void removeFavorite(EnhancedBeing character) {
