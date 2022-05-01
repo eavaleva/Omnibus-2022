@@ -50,7 +50,7 @@ public class Hero extends EnhancedBeing {
 
         // When a Hero has no arch rival
         if (this.archRival == null) {
-            archRival.append(String.format("\t%s\n", Constants.NO_ARCH_RIVALS));
+            archRival.append(String.format("\t%s\n", Constants.NO_ARCH_RIVAL));
         } else {
             archRival.append(String.format("\t%s\n", this.archRival.getName()));
         }

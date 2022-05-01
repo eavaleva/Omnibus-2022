@@ -39,7 +39,7 @@ public class Constants {
 
     public static final String NO_FAVORITE_CHARACTERS = "CURRENTLY DOESN'T FAVOR ANY HERO OR VILLAIN.";
     public static final String NO_RIVALS = "NO RIVALS";
-    public static final String NO_ARCH_RIVALS = "NO ARCH RIVAL";
+    public static final String NO_ARCH_RIVAL = "NO ARCH RIVAL";
     public static final String NO_TEAM_MEMBERS = "CURRENTLY HAS NO MEMBERS.";
 
     public static final String LAUNCHING_APPLICATION_MESSAGE = "\nWelcome to Omnibus...";
