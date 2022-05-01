@@ -15,7 +15,7 @@ public abstract class Gadget extends Nameable {
         super(name);
 
         this.description = description;
-        this.owner = owner;
+        this.setOwner(owner);
     }
 
     /* GETTERS & SETTERS */
