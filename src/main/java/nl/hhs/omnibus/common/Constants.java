@@ -12,8 +12,10 @@ public class Constants {
 
     public static final String DEFAULT_ONE_LINER = "One-liner %s!";
     public static final String ONE_LINER = "One-liner:";
+    public static final String FANS_HEADER = "\nFans:\n";
+    public static final String GADGETS_HEADER = "\nGadgets:\n";
     public static final String RIVALS_HEADER = "Rivals:";
-    public static final String ARCH_RIVALS_HEADER = "Arch rivals:";
+    public static final String ARCH_RIVAL_HEADER = "Arch rival:";
     public static final String REAL_NAME = "Real name:";
     public static final String EVIL_PLAN = "Evil plan:";
     public static final String HERO = "Hero:";
@@ -39,7 +41,9 @@ public class Constants {
 
     public static final String NO_FAVORITE_CHARACTERS = "CURRENTLY DOESN'T FAVOR ANY HERO OR VILLAIN.";
     public static final String NO_RIVALS = "NO RIVALS";
-    public static final String NO_ARCH_RIVALS = "NO ARCH RIVAL";
+    public static final String NO_FANS = "NO FANS";
+    public static final String NO_GADGETS = "NO GADGETS";
+    public static final String NO_ARCH_RIVAL = "NO ARCH RIVAL";
     public static final String NO_TEAM_MEMBERS = "CURRENTLY HAS NO MEMBERS.";
 
     public static final String LAUNCHING_APPLICATION_MESSAGE = "\nWelcome to Omnibus...";

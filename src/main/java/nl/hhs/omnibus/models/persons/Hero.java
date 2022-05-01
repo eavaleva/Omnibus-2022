@@ -2,6 +2,7 @@ package nl.hhs.omnibus.models.persons;
 
 import nl.hhs.omnibus.common.Constants;
 import nl.hhs.omnibus.models.EnhancedBeing;
+import nl.hhs.omnibus.models.gadgets.Gadget;
 
 import java.util.*;
 
@@ -36,26 +37,42 @@ public class Hero extends EnhancedBeing {
         details.append(String.format("\n%-14s\"%s\"\n", Constants.ONE_LINER, this.getPhrase()));
 
         StringBuilder rivals = new StringBuilder(String.format("\n%s\n", Constants.RIVALS_HEADER));
-        StringBuilder archRival = new StringBuilder(String.format("\n%s\n", Constants.ARCH_RIVALS_HEADER));
+        StringBuilder archRival = new StringBuilder(String.format("\n%s\n", Constants.ARCH_RIVAL_HEADER));
+        StringBuilder fans = new StringBuilder(String.format("%s", Constants.FANS_HEADER));
+        StringBuilder gadgets = new StringBuilder(String.format("%s", Constants.GADGETS_HEADER));
 
-        // Add all rivals
+        // Add all rivals, fans, and gadgets
         for (Villain rival : this.rivals) {
             rivals.append(String.format("\t%s\n", rival.getName()));
         }
+        for (Fan fan: this.getFans()) {
+            fans.append(String.format("\t%s: %s\n", fan.getName(), "Quote reason why love Character"));
+        }
+        for (Gadget gadget: this.getGadgets()) {
+            gadgets.append(String.format("\t%s\n", gadget.getName()));
+        }
 
-        // When a Hero has rivals no
+        // When a Hero has no rivals, fans, or gadgets
         if (this.rivals.size() == 0) {
             rivals.append(String.format("\t%s\n", Constants.NO_RIVALS));
+        }
+        if (this.getFans().size() == 0) {
+            fans.append(String.format("\t%s\n", Constants.NO_FANS));
+        }
+        if (this.getGadgets().size() == 0) {
+            gadgets.append(String.format("\t%s\n", Constants.NO_GADGETS));
         }
 
         // When a Hero has no arch rival
         if (this.archRival == null) {
-            archRival.append(String.format("\t%s\n", Constants.NO_ARCH_RIVALS));
+            archRival.append(String.format("\t%s\n", Constants.NO_ARCH_RIVAL));
         } else {
             archRival.append(String.format("\t%s\n", this.archRival.getName()));
         }
         details.append(rivals);
         details.append(archRival);
+        details.append(fans);
+        details.append(gadgets);
         details.append(Constants.SEPARATOR);
 
         return details.toString();
