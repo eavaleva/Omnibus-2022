@@ -229,9 +229,9 @@ public class Database {
         greenGoblin.setArchRival(spiderman);
 
         // TODO - Setup Favorite Characters of Fans
-        eleonoraAvaleva.addAllFavorites(ladyDeathstrike,blackWidow,thor,lokiLaufeyson);
-        oscarWellner.addAllFavorites(joker,batman,blackWidow, greenGoblin);
-        jordyHuizer.addAllFavorites(spiderman,catwoman,batman,joker);
+        eleonoraAvaleva.addAllFavorites(ladyDeathstrike, blackWidow, thor, lokiLaufeyson);
+        oscarWellner.addAllFavorites(joker, batman, blackWidow, greenGoblin);
+        jordyHuizer.addAllFavorites(spiderman, catwoman, batman, joker);
         milevaMaric.addAllFavorites(batman, catwoman, blackWidow, thor, hulk, spiderman);
         maryCurieary.addAllFavorites(joker, mrFreeze, lokiLaufeyson, abomination, deadPool, ladyDeathstrike, venom);
         rogerPenrose.addAllFavorites(abomination, deadPool, ladyDeathstrike, venom, greenGoblin);

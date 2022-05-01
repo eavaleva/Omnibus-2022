@@ -46,7 +46,7 @@ public class Hero extends EnhancedBeing {
             rivals.append(String.format("\t%s\n", rival.getName()));
         }
         for (Fan fan: this.getFans()) {
-            fans.append(String.format("\t%s: %s\n", fan.getName(), "Quote reason why love Character"));
+            fans.append(String.format("\t%s: %s\n", fan.getName(), fan.getQuoteFavoriteCharacter(this)));
         }
         for (Gadget gadget: this.getGadgets()) {
             gadgets.append(String.format("\t%s\n", gadget.getName()));

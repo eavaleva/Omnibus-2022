@@ -7,14 +7,10 @@ import nl.hhs.omnibus.models.Nameable;
 import java.util.*;
 
 public class Fan extends Nameable {
-    private final Set<EnhancedBeing> favoriteCharacters = new HashSet<>();
+    private final Map<EnhancedBeing, String> favoriteCharacters = new HashMap<>();
 
     public Fan(String name) {
         super(name);
-    }
-
-    public boolean isFanOF(EnhancedBeing enhancedBeing) {
-        return this.favoriteCharacters.contains(enhancedBeing);
     }
 
     @Override
@@ -28,7 +24,7 @@ public class Fan extends Nameable {
         details.append(String.format("%-14s%s\n", Constants.NAME, this.getName()));
         details.append(String.format("\n%s\n", Constants.FAVORITE_CHARACTERS_HEADER));
 
-        this.favoriteCharacters.forEach(character -> {
+        this.favoriteCharacters.keySet().forEach(character -> {
             details.append("\t");
             details.append(character.getDetails(false));
             details.append("\n");
@@ -44,16 +40,16 @@ public class Fan extends Nameable {
 
     /* GETTER & SETTERS */
 
-    public Set<EnhancedBeing> getAllFavoriteCharacters() {
-        return this.favoriteCharacters;
+    public String getQuoteFavoriteCharacter(EnhancedBeing character) {
+        return this.favoriteCharacters.get(character);
     }
 
-    public void addAllFavorites(EnhancedBeing... characters) {
-        Arrays.stream(characters).forEach(this::addFavorite);
+    public void addAllFavorites(Map<EnhancedBeing, String> characters) {
+        characters.forEach(this::addFavorite);
     }
 
-    public void addFavorite(EnhancedBeing character) {
-        this.favoriteCharacters.add(character);
+    public void addFavorite(EnhancedBeing character, String quote) {
+        this.favoriteCharacters.put(character, quote);
         character.addFan(this);
     }
 
