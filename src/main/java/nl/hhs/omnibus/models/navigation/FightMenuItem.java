@@ -17,6 +17,7 @@ public class FightMenuItem extends NavigableMenuItem {
         this.navigateBack();
     }
 
+    /** Creates a new Fight, and prints its details when it has been created. */
     private void initializeFight() {
         String resultTeamOrSoloFight = UserInputParsing.processUserInputWithOptions(
             String.format(Constants.CREATE_SOLO_OR_TEAM_FIGHT, Constants.SOLO_OR_TEAM_FIGHT_OPTIONS),
@@ -35,6 +36,6 @@ public class FightMenuItem extends NavigableMenuItem {
 
         int indexLastFight = Omnibus.database.fights().size() - 1;
 
-        System.out.println(Omnibus.database.fights().get(indexLastFight).getDetails(true));
+        System.out.print(Omnibus.database.fights().get(indexLastFight).getDetails(true));
     }
 }
