@@ -35,7 +35,7 @@ public class HeroTeam extends Nameable {
 
     @Override
     public String toString() {
-        StringBuilder details = new StringBuilder(String.format("%s%-14s%03d\n", Constants.SEPARATOR, Constants.ID, this.getId()));
+        StringBuilder details = new StringBuilder(String.format("%s%-14s#%03d\n", Constants.SEPARATOR, Constants.ID, this.getId()));
         details.append(String.format("%-14s%s\n", Constants.NAME, this.getName()));
         details.append(String.format("%s\n", Constants.MEMBERS_HEADER));
 

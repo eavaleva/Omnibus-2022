@@ -84,8 +84,10 @@ public class TeamFight extends Nameable {
 
     @Override
     public String toString() {
-        StringBuilder details = new StringBuilder(this.winners.getDetails(true));
-        details.append(this.losers.getDetails(true));
+        StringBuilder details = new StringBuilder(String.format("%s%-14s#%03d\n", Constants.SEPARATOR, Constants.ID, this.getId()));
+        details.append(String.format("%-14s%s\n", Constants.NAME, this.getName()));
+        details.append(String.format("%s\n%s", Constants.TEAM_1, this.winners.getDetails(true)));
+        details.append(String.format("%s\n%s", Constants.TEAM_2, this.losers.getDetails(true)));
         details.append(String.format(Constants.FIGHT_HAS_BEEN_WON_PATTERN, this.winners.getName()));
         details.append(String.format("\n%s", Constants.SEPARATOR));
 

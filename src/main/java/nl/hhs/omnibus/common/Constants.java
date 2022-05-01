@@ -58,6 +58,8 @@ public class Constants {
     public static final String TEAM_FIGHT_OPTION = "Teams";
     public static final List<String> SOLO_OR_TEAM_FIGHT_OPTIONS = Arrays.asList(SOLO_FIGHT_OPTION, TEAM_FIGHT_OPTION);
     public static final String CREATE_SOLO_OR_TEAM_FIGHT = "\nWould you like to create a Fight between Teams or individual Heroes or Villains?\n";
+    public static final String TEAM_1 = "Team 1:";
+    public static final String TEAM_2 = "Team 2:";
 
     public static final String SELECTION_OUTSIDE_RANGE_EXCEPTION_MESSAGE = "\tYour selection (%d) is outside of the accepted range. Please, make another selection within the following range [0-%d]\n\n";
 

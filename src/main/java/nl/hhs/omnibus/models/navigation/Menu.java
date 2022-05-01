@@ -37,6 +37,7 @@ public class Menu {
             Omnibus.currentMenu.selectOptionByIndex(selectedOptionIndex);
         }
         catch (IndexOutOfBoundsException exception) {
+            // TODO - Gets randomly triggered but don't know why, how and when....
             System.out.printf(Constants.SELECTION_OUTSIDE_RANGE_EXCEPTION_MESSAGE, selectedOptionIndex, Omnibus.currentMenu.numberOfOptions() - 1);
 
             this.awaitMenuItemSelection();

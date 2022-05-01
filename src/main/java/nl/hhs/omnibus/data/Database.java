@@ -1,6 +1,7 @@
 package nl.hhs.omnibus.data;
 
 import nl.hhs.omnibus.common.Constants;
+import nl.hhs.omnibus.models.EnhancedBeing;
 import nl.hhs.omnibus.models.Identifiable;
 import nl.hhs.omnibus.models.Nameable;
 import nl.hhs.omnibus.models.fight.SoloFight;
@@ -237,100 +238,127 @@ public class Database {
         greenGoblin.setArchRival(spiderman);
 
         // Setup Favorite Characters of Fans
-        eleonoraAvaleva.addAllFavorites(Map.of(
-                ladyDeathstrike,"She is fearless! ",
-                blackWidow, "Real warrior! ",
-                thor, "Simply the best! ",
-                lokiLaufeyson,"He is loco!"
-        ));
-        oscarWellner.addAllFavorites(Map.of(
-                joker,"Beautiful mad mind!",
-                batman, "Smart, Sexy and Strong, that's why I love him.",
-                blackWidow, "She is fearless! ",
-                greenGoblin,"Smooth and poisonous, that's what I like!"
-        ));
-        jordyHuizer.addAllFavorites(Map.of(
-                spiderman, "Simply the best! ",
-                catwoman, "Because she speaks the truth!",
-                batman, "Real warrior! ",
-                joker,"Smooth and poisonous, that's what I like!"
-        ));
-        milevaMaric.addAllFavorites(Map.of(
-                batman, "Because he is Batman!",
-                catwoman, "Smart, Sexy and Strong, that's why I love her.",
-                blackWidow, "Real warrior! ",
-                thor, "He is loco! ",
-                hulk, "Simply the best! ",
-                spiderman, "Smart, Sexy and Strong, that's why I love him. "
-        ));
-        maryCurieary.addAllFavorites(Map.of(
-                joker, "Smooth and poisonous, that's what I like!",
-                mrFreeze, "Mister Freezz! ",
-                lokiLaufeyson, "Loki in Valhalla's name! ",
-                abomination, "You are the machine!",
-                deadPool,"He is fearless! ",
-                ladyDeathstrike,"Beautiful mad mind!",
-                venom, "You make me smile!!!"
-        ));
-        rogerPenrose.addAllFavorites(Map.of(
-                abomination, "Go buddy go!",
-                deadPool, "Bad Deadpool... Good Deadpool!",
-                ladyDeathstrike, "Her hart is as black as mine! ",
-                venom, "Dark like the night!",
-                greenGoblin,"Greeniee!"
-        ));
-        jamesGosling.addAllFavorites(Map.of(
-                joker, "Because he speaks the truth!",
-                mrFreeze, "Smooth and poisonous, that's what I like!",
-                blackWidow, "Real warrior! ",
-                abomination,"You are the machine!"
-        ));
-        joseSaramago.addAllFavorites(Map.of(
-                joker, "Beautiful mad mind!",
-                mrFreeze, "Mister FreezZz!",
-                lokiLaufeyson, "Simply the best! ",
-                wolverine, "I have been hier before. Haven't I Wol!? ",
-                ironMan,"He is the smartest."
-        ));
-        titosPullo.addAllFavorites(Map.of(
-                abomination,"Because, he is the machine! ",
-                deadPool, "Mad man!",
-                ladyDeathstrike,"Smooth and poisonous, that's what I like! ",
-                venom, "You are my venus!",
-                greenGoblin,"Go greenly go!"
-        ));
-        guidoVanRossum.addAllFavorites(Map.of(
-                wolverine, "I love motorcycle!",
-                ironMan, "Fly baby fly! ",
-                spiderman, "You are my tarantula! ",
-                thor, "He is fearless! "
-        ));
-        dennisRitchie.addAllFavorites(Map.of(
-                ironMan, "Smart, Sexy and Strong, that's why I love her.",
-                hulk, "Because, he is the machine! ",
-                joker,"Because he speaks the truth!",
-                spiderman,"Smart, Sexy and Strong, that's why I love her.",
-                thor, "He is fearless! "
-        ));
-        adaLovelace.addAllFavorites(Map.of(
-                lokiLaufeyson, "In the name of Valhalla, Loki you are my idol!",
-                abomination, "Simply the best! ",
-                deadPool,"Simply the best! ",
-                ironMan, "Fly like an Iron Man."
-        ));
-        albertCamus.addAllFavorites(Map.of(
-                lokiLaufeyson, "I can watch her all day. ",
-                hulk, "He is the strongest of them all!",
-                deadPool, "His hart is as black as mine! ",
-                ladyDeathstrike, "Simply the best! ",
-                wolverine, "Smart, Sexy and Strong, that's why I love him."
-        ));
-        aldusHuxley.addAllFavorites(Map.of(
-                lokiLaufeyson, "In the name of Valhalla, Loki you are my idol!",
-                ladyDeathstrike, "excellent  evil mind!",
-                blackWidow,"I can watch her all day. ",
-                thor, "He is inevitable! "
-        ));
+        Map<EnhancedBeing, String> favorites = new HashMap<>();
+        favorites.put(ladyDeathstrike, "She is fearless!");
+        favorites.put(blackWidow, "Real warrior! ");
+        favorites.put(thor, "Simply the best! ");
+        favorites.put(lokiLaufeyson, "He is loco!");
+
+        eleonoraAvaleva.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(joker, "Beautiful mad mind!");
+        favorites.put(batman, "Smart, Sexy and Strong, that's why I love him.");
+        favorites.put(blackWidow, "She is fearless! ");
+        favorites.put(greenGoblin,"Smooth and poisonous, that's what I like!");
+
+        oscarWellner.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(spiderman, "Simply the best! ");
+        favorites.put(catwoman, "Because she speaks the truth!");
+        favorites.put(batman, "Real warrior! ");
+        favorites.put(joker,"Smooth and poisonous, that's what I like!");
+
+        jordyHuizer.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(batman, "Because he is Batman!");
+        favorites.put(catwoman, "Smart, Sexy and Strong, that's why I love her.");
+        favorites.put(blackWidow, "Real warrior! ");
+        favorites.put(thor, "He is loco! ");
+        favorites.put(hulk, "Simply the best! ");
+        favorites.put(spiderman, "Smart, Sexy and Strong, that's why I love him. ");
+
+        milevaMaric.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(joker, "Smooth and poisonous, that's what I like!");
+        favorites.put(mrFreeze, "Mister Freezz! ");
+        favorites.put(lokiLaufeyson, "Loki in Valhalla's name! ");
+        favorites.put(abomination, "You are the machine!");
+        favorites.put(deadPool, "He is fearless! ");
+        favorites.put(ladyDeathstrike, "Beautiful mad mind!");
+        favorites.put(venom, "You make me smile!!!");
+
+        maryCurieary.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(abomination, "Go buddy go!");
+        favorites.put(deadPool, "Bad Deadpool... Good Deadpool!");
+        favorites.put(ladyDeathstrike, "Her hart is as black as mine! ");
+        favorites.put(venom, "Dark like the night!");
+        favorites.put(greenGoblin, "Greeniee!");
+
+        rogerPenrose.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(joker, "Because he speaks the truth!");
+        favorites.put(mrFreeze, "Smooth and poisonous, that's what I like!");
+        favorites.put(blackWidow, "Real warrior! ");
+        favorites.put(abomination, "You are the machine!");
+
+        jamesGosling.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(joker, "Beautiful mad mind!");
+        favorites.put(mrFreeze, "Mister FreezZz!");
+        favorites.put(lokiLaufeyson, "Simply the best! ");
+        favorites.put(wolverine, "I have been hier before. Haven't I Wol!? ");
+        favorites.put(ironMan, "He is the smartest.");
+
+        joseSaramago.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(abomination, "Because, he is the machine! ");
+        favorites.put(deadPool, "Mad man!");
+        favorites.put(ladyDeathstrike, "Smooth and poisonous, that's what I like! ");
+        favorites.put(venom, "You are my venus!");
+        favorites.put(greenGoblin, "Go greenly go!");
+
+        titosPullo.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(wolverine, "I love motorcycle!");
+        favorites.put(ironMan, "Fly baby fly! ");
+        favorites.put(spiderman, "You are my tarantula! ");
+        favorites.put(thor, "He is fearless! ");
+
+        guidoVanRossum.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(ironMan, "Smart, Sexy and Strong, that's why I love her.");
+        favorites.put(hulk, "Because, he is the machine! ");
+        favorites.put(joker,"Because he speaks the truth!");
+        favorites.put(spiderman, "Smart, Sexy and Strong, that's why I love her.");
+        favorites.put(thor, "He is fearless! ");
+
+        dennisRitchie.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(lokiLaufeyson, "In the name of Valhalla, Loki you are my idol!");
+        favorites.put(abomination, "Simply the best! ");
+        favorites.put(deadPool, "Simply the best! ");
+        favorites.put(ironMan, "Fly like an Iron Man.");
+
+        adaLovelace.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(lokiLaufeyson, "I can watch her all day. ");
+        favorites.put(hulk, "He is the strongest of them all!");
+        favorites.put(deadPool, "His hart is as black as mine! ");
+        favorites.put(ladyDeathstrike, "Simply the best! ");
+        favorites.put(wolverine, "Smart, Sexy and Strong, that's why I love him.");
+
+        albertCamus.addAllFavorites(favorites);
+
+        favorites = new HashMap<>();
+        favorites.put(lokiLaufeyson, "In the name of Valhalla, Loki you are my idol!");
+        favorites.put(ladyDeathstrike, "excellent  evil mind!");
+        favorites.put(blackWidow, "I can watch her all day. ");
+        favorites.put(thor, "He is inevitable! ");
+
+        aldusHuxley.addAllFavorites(favorites);
 
         // Form a Team of Heroes
         theAvengers.addAllMembers(hulk,ironMan,batman,blackWidow);

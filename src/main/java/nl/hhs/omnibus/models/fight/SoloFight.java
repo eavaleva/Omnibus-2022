@@ -86,7 +86,9 @@ public class SoloFight extends Nameable {
 
     @Override
     public String toString() {
-        StringBuilder details = new StringBuilder(String.format("%s%s - %s\n", Constants.SEPARATOR, this.winner.getName(), this.winner.getPhrase()));
+        StringBuilder details = new StringBuilder(String.format("%s%-14s#%03d\n", Constants.SEPARATOR, Constants.ID, this.getId()));
+        details.append(String.format("%-14s%s\n", Constants.NAME, this.getName()));
+        details.append(String.format("%s%s - %s\n", Constants.SEPARATOR, this.winner.getName(), this.winner.getPhrase()));
         details.append(String.format("%s - %s\n", this.loser.getName(), this.loser.getPhrase()));
         details.append(String.format("%s\n%s", String.format(Constants.FIGHT_HAS_BEEN_WON_PATTERN, this.winner.getName()), Constants.SEPARATOR));
 
@@ -130,7 +132,7 @@ public class SoloFight extends Nameable {
             Fan fan = this.loser.getFanByIndex(idx);
 
             fan.removeFavorite(this.loser);
-            fan.addFavorite(this.winner);
+            fan.addFavorite(this.winner, String.format("Because he has won from %s", this.loser.getName()));
         }
     }
 }
