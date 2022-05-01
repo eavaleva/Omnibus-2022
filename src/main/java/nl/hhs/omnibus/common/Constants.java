@@ -22,6 +22,7 @@ public class Constants {
     public static final String VILLAIN = "Villain:";
 
     public static final String OWNER = "Owner:";
+    public static final String DESCRIPTION = "Description:";
     public static final String TYPE = "Type:";
     public static final String SPEED = "Speed:";
     public static final String CAPACITY = "Capacity:";
