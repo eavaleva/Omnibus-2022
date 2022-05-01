@@ -32,5 +32,9 @@ public class FightMenuItem extends NavigableMenuItem {
             Omnibus.database.addTeamFight(fight);
         }
         Omnibus.database.updateFightsList();
+
+        int indexLastFight = Omnibus.database.fights().size() - 1;
+
+        System.out.println(Omnibus.database.fights().get(indexLastFight).getDetails(true));
     }
 }
