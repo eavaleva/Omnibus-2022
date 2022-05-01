@@ -2,10 +2,9 @@ package nl.hhs.omnibus.models;
 
 import java.util.Objects;
 
-/**
- * An Identifiable is something which where it should be able to be identified by an ID.
- */
+/** An Identifiable is something which where it should be able to be identified by an ID. */
 public abstract class Identifiable implements Comparable<Identifiable> {
+    /** The next available ID of an Identifiable object. */
     private static int nextId = 0;
 
     /** An internal identifier which is used in the system to identify an object. */

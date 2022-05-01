@@ -6,9 +6,18 @@ import nl.hhs.omnibus.models.gadgets.Gadget;
 
 import java.util.*;
 
+/**
+ * A Villain tries to mess with a Hero and take over the world in
+ * whatever way he can.
+ */
 public class Villain extends EnhancedBeing {
+    /** The plan of a Villain in how to mess with a Hero or take over the world. */
     private final String evilPlan;
+
+    /** The Hero that a Villain messes with the most. */
     private Hero archRival;
+
+    /** Other Heroes that a Villain will bother on occasions. */
     private final Set<Hero> rivals = new HashSet<>();
 
     public Villain(String name, String mostActiveLocation, int powerLevel, String evilPlan) {
@@ -63,7 +72,7 @@ public class Villain extends EnhancedBeing {
             gadgets.append(String.format("\t%s\n", Constants.NO_GADGETS));
         }
 
-        // When a Hero has no arch rival
+        // When a Villain has no arch rival
         if (this.archRival == null) {
             archRival.append(String.format("\t%s\n", Constants.NO_ARCH_RIVAL));
         } else {
@@ -78,6 +87,12 @@ public class Villain extends EnhancedBeing {
         return details.toString();
     }
 
+    /* GETTERS & SETTERS */
+
+    /**
+     * Get the total power level of a Villain. Including power level of a Villain itself,
+     * bonuses for Gadgets, Fans, and potentially a bonus for fighting its arch rival.
+     */
     public int getPowerLevel(Hero potentialArchRival) {
         int powerLevel = super.getPowerLevel();
         int archRivalBonus = 0;
@@ -87,8 +102,6 @@ public class Villain extends EnhancedBeing {
         }
         return powerLevel + archRivalBonus;
     }
-
-    /* GETTERS & SETTERS */
 
     public Hero getArchRival() {
         return this.archRival;

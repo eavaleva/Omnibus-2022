@@ -1,33 +1,22 @@
 package nl.hhs.omnibus.models;
 
-import nl.hhs.omnibus.data.Database;
 import nl.hhs.omnibus.models.gadgets.Gadget;
 import nl.hhs.omnibus.models.gadgets.Weapon;
 import nl.hhs.omnibus.models.persons.Fan;
 
-import javax.xml.crypto.Data;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * The EnhancedBeing is the Base class for the Hero and Villain classes.
- */
+/** The EnhancedBeing is the Base class for the Hero and Villain classes. */
 public abstract class EnhancedBeing extends Nameable {
-    /**
-     * The location of which an individual Hero or Villain is known for to be most active in.
-     */
-    private String mostActiveLocation;
+    /** The location of which an individual Hero or Villain is known for to be most active in. */
+    private final String mostActiveLocation;
 
-    /**
-     * How strong a Hero or Villain is in a fight.
-     */
-    private int powerLevel;
+    /** How strong a Hero or Villain is in a fight. */
+    private final int powerLevel;
 
-    /**
-     * A word or sentence an individual Hero or Villain is known for saying.
-     */
-    private String phrase;
+    /** A word or sentence an individual Hero or Villain is known for saying. */
+    private final String phrase;
 
     private final Set<Gadget> gadgets = new HashSet<>();
     private final Set<Fan> fans = new HashSet<>();
@@ -40,17 +29,22 @@ public abstract class EnhancedBeing extends Nameable {
         this.phrase = phrase;
     }
 
-    /**
-     * Prints the phrase of an EnhancedBeing to the terminal.
-     */
-    public void speakPhrase() {
-        System.out.println(this.phrase);
-    }
-
     /* GETTERS AND SETTERS */
 
     public String getMostActiveLocation() {
         return this.mostActiveLocation;
+    }
+
+    public int getPowerLevel() {
+        int gadgetPowerLevel = 0;
+
+        for (Gadget gadget : gadgets) {
+            if (!(gadget instanceof Weapon)) {
+                continue;
+            }
+            gadgetPowerLevel += ((Weapon) gadget).getPowerLevel();
+        }
+        return this.powerLevel + this.fans.size() + gadgetPowerLevel;
     }
 
     public String getPhrase() {
@@ -61,10 +55,6 @@ public abstract class EnhancedBeing extends Nameable {
         return this.gadgets;
     }
 
-    public void addAllGadgets(Gadget... gadgets) {
-        Arrays.stream(gadgets).forEach(this::addGadget);
-    }
-
     public void addGadget(Gadget gadget) {
         this.gadgets.add(gadget);
     }
@@ -73,24 +63,12 @@ public abstract class EnhancedBeing extends Nameable {
         this.gadgets.remove(gadget);
     }
 
-    public int getPowerLevel() {
-        int gadgetPowerlevel = 0;
-
-        for (Gadget gadget : gadgets) {
-            if (!(gadget instanceof Weapon)) {
-                continue;
-            }
-            gadgetPowerlevel += ((Weapon) gadget).getPowerLevel();
-        }
-        return powerLevel + gadgetPowerlevel + this.fans.size();
+    public Set<Fan> getFans() {
+        return this.fans;
     }
 
     public Fan getFanByIndex(int index) {
         return this.fans.toArray(new Fan[0])[index];
-    }
-
-    public Set<Fan> getFans() {
-        return this.fans;
     }
 
     public void addFan(Fan fan) {
