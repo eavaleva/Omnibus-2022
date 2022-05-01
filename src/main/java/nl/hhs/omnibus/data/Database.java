@@ -52,7 +52,7 @@ public class Database {
         ListableMenuItem lmiFights = new ListableMenuItem("List Fights", "Fights:", fights());
         ListableMenuItem lmiSearchFights = lmiFights.makeSelectable(this.menuFights);
 
-        this.menuFights.addOptionOnIndex(lmiFights, 1);
+        this.menuFights.addOptionOnIndex(lmiFights.withPreviousMenu(this.menuFights), 1);
         this.menuFights.addOptionOnIndex(lmiSearchFights, 3);
     }
 
