@@ -113,7 +113,7 @@ public class Database {
         Villain mrFreeze = new Villain("Mr. Freeze", "Gotham City", 19, "Destroy everything Batman loves");
         Villain lokiLaufeyson = new Villain("Loki Laufeyson", "Asgard", 27, "Take over the planet");
         Villain abomination = new Villain("The Abomination", "Harlem", 50, "Kill the Hulk! Gain more power in order to be able to become the most powerful warrior on Earth by killing everyone who stands in his way.");
-        Villain deadPool = new Villain(" Evil Deadpool", "England", 35, "Bring hell to humanity!");
+        Villain deadPool = new Villain("Evil Deadpool", "England", 35, "Bring hell to humanity!");
         Villain ladyDeathstrike = new Villain("Lady Deathstrike", "Osaka", 30, "Destroy everyone!");
         Villain venom = new Villain("Venom", "New York", 55, "Destroy humanity!");
         Villain greenGoblin = new Villain("Green Goblin", "New York", 25, "To gain full control over Spiderman's mind.");
