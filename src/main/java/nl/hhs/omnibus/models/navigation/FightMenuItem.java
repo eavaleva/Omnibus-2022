@@ -21,7 +21,7 @@ public class FightMenuItem extends NavigableMenuItem {
     /** Creates a new Fight, and prints its details when it has been created. */
     private void initializeFight() {
         String resultTeamOrSoloFight = UserInputParsing.processUserInputWithOptions(
-            String.format(Constants.CREATE_SOLO_OR_TEAM_FIGHT, Constants.SOLO_OR_TEAM_FIGHT_OPTIONS),
+            Constants.CREATE_SOLO_OR_TEAM_FIGHT,
             Constants.SOLO_OR_TEAM_FIGHT_OPTIONS
         );
 

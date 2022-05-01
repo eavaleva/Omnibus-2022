@@ -82,10 +82,9 @@ public class ListableMenuItem extends NavigableMenuItem {
         try {
             Nameable item = ItemSelector.chooseItem(this.items);
 
-            if (item == null){
+            if (item == null) {
                 return;
             }
-
             System.out.print(item);
         }
         catch (NoResultsException | TooManyResultsException exception){
@@ -94,10 +93,6 @@ public class ListableMenuItem extends NavigableMenuItem {
     }
 
     /* GETTERS & SETTERS */
-
-    public Nameable[] getItems() {
-        return items;
-    }
 
     public void setItems(Nameable[] items) {
         if (items == null) {

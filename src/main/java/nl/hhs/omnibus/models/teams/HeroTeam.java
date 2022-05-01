@@ -46,10 +46,6 @@ public class HeroTeam extends Nameable {
         return details.toString();
     }
 
-    public boolean isMemberOf(Hero hero) {
-        return this.members.contains(hero);
-    }
-
     /* GETTERS & SETTERS */
 
     public Set<Hero> getMembers() {
@@ -57,7 +53,7 @@ public class HeroTeam extends Nameable {
     }
 
     public void addAllMembers(Hero... members) {
-        this.members.addAll(Arrays.asList(members));
+        Arrays.stream(members).forEach(this::addMember);
     }
 
     public void addMember(Hero member) {

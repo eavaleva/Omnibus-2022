@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class Menu {
     private final String label;
-    private List<MenuItem> options = new ArrayList<>(10);
+    private final List<MenuItem> options = new ArrayList<>();
 
     public Menu(String label) {
         this.label = label;
@@ -65,10 +65,6 @@ public class Menu {
     }
 
     /* GETTERS & SETTERS */
-
-    public List<MenuItem> getOptions() {
-        return this.options;
-    }
 
     /** Adds multiple MenuItems as options to a Menu. */
     public void addAllOptions(MenuItem... options) {

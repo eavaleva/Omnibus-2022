@@ -16,10 +16,6 @@ public class VillainTeam extends Nameable {
         super(name);
     }
 
-    public boolean isMemberOf(Villain villain) {
-        return members.contains(villain);
-    }
-
     @Override
     public String getDetails(boolean getFullDetails) {
         return !getFullDetails ? super.toString() : this.toString();
@@ -57,7 +53,7 @@ public class VillainTeam extends Nameable {
     }
 
     public void addAllMembers(Villain... members){
-       this.members.addAll(Arrays.asList(members));
+       Arrays.stream(members).forEach(this::addMember);
     }
 
     public void addMember(Villain member){
