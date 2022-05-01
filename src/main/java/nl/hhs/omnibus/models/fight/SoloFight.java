@@ -27,7 +27,7 @@ public class SoloFight extends Nameable {
         if (hero == null || villain == null) {
             throw new MissingOpponentException();
         }
-        this.setName(String.format("%s vs. %s", hero.getName(), villain.getName()));
+        this.setName(String.format(Constants.FIGHT_NAME_PATTERN, hero.getName(), villain.getName()));
 
         String hasFightWinnerResult = UserInputParsing.processUserInputWithOptions(
             Constants.MANUALLY_DETERMINE_FIGHT,
@@ -44,7 +44,7 @@ public class SoloFight extends Nameable {
     }
 
     public SoloFight(Hero hero, Villain villain) {
-        super(String.format("%s vs. %s", hero.getName(), villain.getName()));
+        super(String.format(Constants.FIGHT_NAME_PATTERN, hero.getName(), villain.getName()));
 
         this.determineOutcomeFight(hero, villain);
     }

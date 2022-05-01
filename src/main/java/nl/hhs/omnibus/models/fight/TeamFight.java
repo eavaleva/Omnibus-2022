@@ -27,7 +27,7 @@ public class TeamFight extends Nameable {
         if (heroes == null || villains == null) {
             throw new MissingOpponentException();
         }
-        this.setName(String.format("%s vs. %s", heroes.getName(), villains.getName()));
+        this.setName(String.format(Constants.FIGHT_NAME_PATTERN, heroes.getName(), villains.getName()));
 
         String hasFightWinnerResult = UserInputParsing.processUserInputWithOptions(
                 Constants.MANUALLY_DETERMINE_FIGHT,
@@ -42,7 +42,7 @@ public class TeamFight extends Nameable {
     }
 
     public TeamFight(HeroTeam heroes, VillainTeam villains) {
-        super(String.format("%s vs. %s", heroes.getName(), villains.getName()));
+        super(String.format(Constants.FIGHT_NAME_PATTERN, heroes.getName(), villains.getName()));
 
         this.determineOutcomeFight(heroes, villains);
     }
