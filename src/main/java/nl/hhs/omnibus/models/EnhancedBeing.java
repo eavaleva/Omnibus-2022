@@ -57,6 +57,10 @@ public abstract class EnhancedBeing extends Nameable {
         return this.phrase;
     }
 
+    public Set<Gadget> getGadgets() {
+        return this.gadgets;
+    }
+
     public void addAllGadgets(Gadget... gadgets) {
         Arrays.stream(gadgets).forEach(this::addGadget);
     }
@@ -79,6 +83,14 @@ public abstract class EnhancedBeing extends Nameable {
             gadgetPowerlevel += ((Weapon) gadget).getPowerLevel();
         }
         return powerLevel + gadgetPowerlevel + this.fans.size();
+    }
+
+    public Fan getFanByIndex(int index) {
+        return this.fans.toArray(new Fan[0])[index];
+    }
+
+    public Set<Fan> getFans() {
+        return this.fans;
     }
 
     public void addFan(Fan fan) {

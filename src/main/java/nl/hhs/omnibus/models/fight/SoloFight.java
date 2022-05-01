@@ -7,6 +7,7 @@ import nl.hhs.omnibus.common.UserInputParsing;
 import nl.hhs.omnibus.models.EnhancedBeing;
 import nl.hhs.omnibus.models.Nameable;
 import nl.hhs.omnibus.models.exceptions.MissingOpponentException;
+import nl.hhs.omnibus.models.persons.Fan;
 import nl.hhs.omnibus.models.persons.Hero;
 import nl.hhs.omnibus.models.persons.Villain;
 
@@ -35,9 +36,11 @@ public class SoloFight extends Nameable {
 
         if (hasFightWinnerResult.equals(Constants.RANDOM_FIGHT_WINNER_ANSWER)) {
             this.determineOutcomeFight(hero, villain);
-            return;
         }
-        this.determineWinnerAndLoser(hero, villain, hasFightWinnerResult.equals(Constants.HERO_FIGHT_WINNER_ANSWER));
+        else {
+            this.determineWinnerAndLoser(hero, villain, hasFightWinnerResult.equals(Constants.HERO_FIGHT_WINNER_ANSWER));
+        }
+        this.transferFans();
     }
 
     public SoloFight(Hero hero, Villain villain) {
@@ -86,5 +89,25 @@ public class SoloFight extends Nameable {
         this.loser = hero;
     }
 
-    /* GETTERS & SETTERS */
+    /** Transfer the Fans of the losing party to the winning party. */
+    private void transferFans() {
+        // If there are no Fans to remove, don't bother to try to remove Fans
+        if (this.loser.getFans().size() == 0) return;
+
+        // Make sure to remove at least 1 Fan
+        int numberOfFansToTransfer = (int) Math.round(Math.random() * this.loser.getFans().size() + 1);
+
+        // If there are Fans to remove, but there are going to be too many Fans remove,
+        // reduce the amount of Fans to be removed
+        if (this.loser.getFans().size() < numberOfFansToTransfer) {
+            numberOfFansToTransfer--;
+        }
+
+        for(int idx = 0; idx < numberOfFansToTransfer; idx++) {
+            Fan fan = this.loser.getFanByIndex(idx);
+
+            fan.removeFavorite(this.loser);
+            fan.addFavorite(this.winner);
+        }
+    }
 }
