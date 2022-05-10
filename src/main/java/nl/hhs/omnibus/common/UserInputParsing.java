@@ -30,7 +30,7 @@ public class UserInputParsing {
         StringBuilder formattedQuestion = new StringBuilder(question);
 
         for (int index = 0; index < acceptedAnswers.size(); index++) {
-            formattedQuestion.append(String.format(" [%d]\t%s\n", index, acceptedAnswers.get(index)));
+            formattedQuestion.append(String.format(" (%d)\t%s\n", index, acceptedAnswers.get(index)));
         }
         formattedQuestion.append(Constants.SELECTED_OPTION_LINE);
 

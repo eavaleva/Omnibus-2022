@@ -96,7 +96,7 @@ public class Database {
         Hero wolverine = new Hero("Wolverine", "Alberta", 25, "James Howlett", "Meet my claws!");
         Hero ironMan = new Hero("Iron man", "Long Island", 26, "Tony Stark", "The Truth is… I am Iron Man.");
         Hero thor = new Hero("Thor", "Asgardian", 26, "Thor Borson", "You have no idea what you are dealing with.");
-        Hero hulk = new Hero("Hulk", "Sakaaran", 50, "Robert Bruce Banner", "Hulk will break metal man open like a tin can. Metal man thinks he is stronger than Hulk. Metalman wrong.");
+        Hero hulk = new Hero("Hulk", "Sakaaran", 50, "Robert Bruce Banner", "Hulk will break metal man open like a thin can. Metal man thinks he is stronger than Hulk. Metalman wrong.");
         Hero spiderman = new Hero("Spiderman", "New York", 14, "Peter Parker", "With great power, comes great responsibility.");
 
         this.heroes = Arrays.asList(batman, catwoman, blackWidow, wolverine, ironMan, thor, hulk, spiderman);
@@ -193,16 +193,10 @@ public class Database {
         );
 
         // SoloFights
-        SoloFight batmanVsJoker1 = new SoloFight(batman, joker, true);
-        SoloFight batmanVsJoker2 = new SoloFight(batman, joker, false);
-
-        this.soloFights = new ArrayList<>(Arrays.asList(batmanVsJoker1, batmanVsJoker2));
+        this.soloFights = new ArrayList<>(Arrays.asList());
 
         // TeamFights
-        TeamFight theAvengersVSTheThunderbolts = new TeamFight(theAvengers, theThunderbolts, true);
-        TeamFight theFantasticFourVSTheSinisterSix = new TeamFight(theFantasticFour, jokerLeagueOfAnarchy, false);
-
-        this.teamFights = new ArrayList<>(Arrays.asList(theAvengersVSTheThunderbolts, theFantasticFourVSTheSinisterSix));
+        this.teamFights = new ArrayList<>(Arrays.asList());
 
         // Link Hero rivals
         batman.addAllRivals(venom,abomination);
@@ -416,7 +410,7 @@ public class Database {
         FightMenuItem fightMenuItem = new FightMenuItem("New Fights...", this.menuFights);
         ListableMenuItem lmiSearchFights = lmiFights.makeSelectable(this.menuFights);
 
-        // Tying all the Menu's and MenuItems together
+        // Binding all the Menu's and MenuItems together
         this.menuMain.addAllOptions(miExit, miPeopleAndTeams, miGadgets, miFights);
         menuPeople.addAllOptions(
                 miExit.withPreviousMenu(this.menuMain),

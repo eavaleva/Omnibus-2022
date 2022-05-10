@@ -43,6 +43,7 @@ public class Villain extends EnhancedBeing {
         details.append(String.format("%-14s%s\n", Constants.VILLAIN, this.getName()));
         details.append(String.format("%-14s%s\n", Constants.LOCATION, this.getMostActiveLocation()));
         details.append(String.format("%-14s%s\n", Constants.EVIL_PLAN, this.evilPlan));
+        details.append(String.format("%-14s%s\n", Constants.POWER_LEVEL,this.getPowerLevel(getArchRival())));
         details.append(String.format("\n%-14s\"%s\"\n", Constants.ONE_LINER, this.getPhrase()));
 
         StringBuilder rivals = new StringBuilder(String.format("\n%s\n", Constants.RIVALS_HEADER));
