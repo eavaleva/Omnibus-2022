@@ -100,7 +100,7 @@ public class SoloFight extends Nameable {
         for (Fan fan : this.winner.getFans()) {
             details.append(String.format("%s\n", fan.getName()));
         }
-        details.append(String.format("%s - %s\n%s %d", this.loser.getName(), this.loser.getPhrase(), Constants.POWER_LEVEL, loser.getPowerLevel()));
+        details.append(String.format("\n%s%s - %s\n%s %d\n",Constants.SEPARATOR, this.loser.getName(), this.loser.getPhrase(), Constants.POWER_LEVEL, loser.getPowerLevel()));
         details.append(String.format("%s", Constants.FANS_HEADER));
         for (Fan fan : this.loser.getFans()) {
             details.append(String.format("%s\n", fan.getName()));
